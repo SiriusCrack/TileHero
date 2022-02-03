@@ -1,5 +1,5 @@
 # TileHero
-### Developed by 6 People
+### Developed by: 6 People
 ![](https://cdn.discordapp.com/attachments/936307390838603798/938846168325181480/6people_smol1.png)
 
 ___
