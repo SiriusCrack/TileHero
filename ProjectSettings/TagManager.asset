@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hero
   - enemy
+  - EmptyTile
   layers:
   - Default
   - TransparentFX
