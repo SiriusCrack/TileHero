@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public class goalTile : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,4 @@ public abstract class Weapon : MonoBehaviour
     {
         
     }
-
-    public abstract void StatusEffect();
 }
