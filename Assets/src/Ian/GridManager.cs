@@ -13,9 +13,7 @@ public class GridManager : MonoBehaviour
    private float tileSize = 1; // Changes padding of the tiles.
    [SerializeField]
    private int ID = 0;
-
    
-
    void Start() {
       GenerateGrid();
    }
