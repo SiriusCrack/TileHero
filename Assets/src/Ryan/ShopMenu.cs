@@ -5,29 +5,77 @@ using UnityEngine;
 
 public class ShopMenu : MonoBehaviour
 {
-    public MonoBehaviour shopMenu0;
-    public MonoBehaviour shopeMenu1;
-    public MonoBehaviour shopoMenu2;
+    public MonoBehaviour shopMenua;
+    public MonoBehaviour shopMenub;
+    public MonoBehaviour shopMenuc;
+    public MonoBehaviour inventoryMenua;
+    public MonoBehaviour inventoryMenub;
+    public MonoBehaviour inventoryMenuc;
+    public MonoBehaviour equipMenua;
+    public MonoBehaviour equipMenub;
+    public MonoBehaviour equipMenuc;
     // Start is called before the first frame update
     void Start()
     {
-        hideShop();
+        hideInterface();
         Time.timeScale = 1;
+    }
+
+    void showInterface()
+    {
+        showShop();
+        showInventory();
+        showEquip();
+    }
+    void hideInterface() {
+        hideShop();
+        hideInventory();
+        hideEquip();
     }
 
     void hideShop()
     {
-        shopMenu0.enabled = false;
-        shopeMenu1.enabled = false;
-        shopoMenu2.enabled = false;
+        shopMenua.enabled = false;
+        shopMenub.enabled = false;
+        shopMenuc.enabled = false;
     }
 
     void showShop()
     {
-        shopMenu0.enabled = true;
-        shopeMenu1.enabled = true;
-        shopoMenu2.enabled = true;
+        shopMenua.enabled = true;
+        shopMenub.enabled = true;
+        shopMenuc.enabled = true;
     }
+
+    void hideInventory()
+    {
+        inventoryMenua.enabled = false;
+        inventoryMenub.enabled = false;
+        inventoryMenuc.enabled = false;
+    }
+
+    void showInventory()
+    {
+        inventoryMenua.enabled = true;
+        inventoryMenub.enabled = true;
+        inventoryMenuc.enabled = true;
+    }
+
+
+    void hideEquip()
+    {
+        equipMenua.enabled = false;
+        equipMenub.enabled = false;
+        equipMenuc.enabled = false;
+    }
+
+    void showEquip()
+    {
+        equipMenua.enabled = true;
+        equipMenub.enabled = true;
+        equipMenuc.enabled = true;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -36,12 +84,12 @@ public class ShopMenu : MonoBehaviour
         {
             if (Time.timeScale == 1)
             {
-                showShop();
+                showInterface();
                 Time.timeScale = 0;
             }
             else if (Time.timeScale == 0)
             {
-                hideShop();
+                hideInterface();
                 Time.timeScale = 1;
             }
 
