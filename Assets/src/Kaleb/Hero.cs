@@ -20,51 +20,61 @@ public class Hero : NPC
     }
     void FixedUpdate()
     {
-        
         if(!incombat)
         {
             Move(1);
         }
     }
+
+    //move hero automatically between tiles
+    //takes in the direction of the next tile
+    //moves hero by a set distance in direction specified
     public override void Move(int nextDirection)
     {
 
+        //move right one tile
         if(nextDirection == 1)
         {
-            if(distTraveled < 5f)
+            if(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(1,0,0*Time.deltaTime);
+                transform.Translate(.05f,0,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
             }
         }
+
+        //move left one tile
         if(nextDirection == 2)
         {
-             if(distTraveled < 5f)
+             if(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(-1,0,0*Time.deltaTime);
+                transform.Translate(-.05f,0,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
             }
         }
+
+        //move up one tile
         if(nextDirection == 3)
         {
-             if(distTraveled < 5f)
+             if(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(0,1,0*Time.deltaTime);
+                transform.Translate(0,0.05f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
             }
         }
+
+        //move down one tile
         if(nextDirection == 4)
         {
-             if(distTraveled < 5f)
+             if(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(0,-1,0*Time.deltaTime);
+                transform.Translate(0,.05f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
             }
