@@ -24,17 +24,17 @@ public class GridManager : MonoBehaviour
          for (int col = 0; col < cols; col++) {
             if (col == 0) {
                GameObject tile = (GameObject)Instantiate(Resources.Load("StartTile"), transform);
-               tile.tag = "StartTile";
                float posX = col * tileSize;
                float posY = row * tileSize;
                tile.transform.position = new Vector2(posX, posY);
+               Debug.Log("Start Tile Created");
             }
             else if (col == cols-1) {
                GameObject tile = (GameObject)Instantiate(Resources.Load("EndTile"), transform);
-               tile.tag = "EndTile";
                float posX = col * tileSize;
                float posY = row * tileSize;
                tile.transform.position = new Vector2(posX, posY);
+               Debug.Log("End Tile Created");
             }
             else {
                GameObject tile = (GameObject)Instantiate(emptyTile, transform);
