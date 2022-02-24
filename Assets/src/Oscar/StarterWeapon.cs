@@ -19,7 +19,7 @@ public class StarterWeapon : Weapon
     // Will include damage amount, and any special effects.
     public override void StatusEffect()
     {
-        
+        Debug.Log("Status Effect used here");
     }
 
 }
