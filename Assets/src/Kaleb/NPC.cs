@@ -23,5 +23,5 @@ public abstract class NPC : MonoBehaviour
         
     }
 
-    public abstract void Move();
+    public abstract void Move(int goalCoords);
 }

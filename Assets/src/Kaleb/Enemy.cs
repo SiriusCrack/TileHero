@@ -16,7 +16,7 @@ public class Enemy : NPC
     {
         
     }
-    public override void Move()
+    public override void Move(int heroLocation)
     {
         
     }
