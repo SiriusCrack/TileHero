@@ -7,10 +7,11 @@ public class Hero : NPC
 {
     private bool incombat = false;
     private float distTraveled = 0f;
+    private Vector3 finalCoordinates; 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //finalCoordinates = GameObject.FindGameObjectWithTag("EndTile").transform.position;
     }
 
     // Update is called once per frame
@@ -20,6 +21,11 @@ public class Hero : NPC
     }
     void FixedUpdate()
     {
+        if(Vector3.Distance(finalCoordinates, transform.position)<= 64)
+        {
+            //やった! ゴールゲット!
+            
+        }
         if(!incombat)
         {
             Move(1);
