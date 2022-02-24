@@ -20,33 +20,36 @@ public class GridManager : MonoBehaviour
    {
       GameObject emptyTile = (GameObject)Instantiate(Resources.Load("EmptyTile"));
       
-      createStart();
-
       for(int row = 0; row < rows; row++) {
          for (int col = 0; col < cols; col++) {
-            GameObject tile = (GameObject)Instantiate(emptyTile, transform);
-            float posX = col * tileSize;
-            float posY = row * tileSize;
-
-            tile.transform.position = new Vector2(posX, posY);
+            if (col == 0) {
+               GameObject tile = (GameObject)Instantiate(Resources.Load("StartTile"), transform);
+               tile.tag = "StartTile";
+               float posX = col * tileSize;
+               float posY = row * tileSize;
+               tile.transform.position = new Vector2(posX, posY);
+            }
+            else if (col == cols-1) {
+               GameObject tile = (GameObject)Instantiate(Resources.Load("EndTile"), transform);
+               tile.tag = "EndTile";
+               float posX = col * tileSize;
+               float posY = row * tileSize;
+               tile.transform.position = new Vector2(posX, posY);
+            }
+            else {
+               GameObject tile = (GameObject)Instantiate(emptyTile, transform);
+               float posX = col * tileSize;
+               float posY = row * tileSize;
+               tile.transform.position = new Vector2(posX, posY);
+            }
          }
       }
       Destroy(emptyTile);
 
-      createEnd();
-
-      float gridW = cols * tileSize;
+      float gridW = cols  * tileSize;
       float gridH = rows * -tileSize;
       transform.position = new Vector2((-gridW / 2) + (tileSize / 2), 0); // Use '(gridH / 2) - (tileSize / 2)' if rows > 1.
+
+
    }
-
-   private void createStart() {
-      GameObject startTile = (GameObject)Instantiate(Resources.Load("StartTile"), transform);
-   }
-
-   private void createEnd() {
-      GameObject endTile = (GameObject)Instantiate(Resources.Load("EndTile"), transform);
-   }
-
-
 }

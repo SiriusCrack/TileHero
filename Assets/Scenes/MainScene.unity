@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rows: 1
-  cols: 3
+  cols: 5
   tileSize: 1.15
 --- !u!224 &2015153251
 RectTransform:
