@@ -7,9 +7,9 @@ TagManager:
   - hero
   - enemy
   - EmptyTile
-  - GoalTile
   - StartTile
   - Tile
+  - EndTile
   layers:
   - Default
   - TransparentFX
