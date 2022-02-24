@@ -8,7 +8,7 @@ public class GridManager : MonoBehaviour
    [SerializeField]
    private int rows = 1; // Change amount of rows the grid has.
    [SerializeField]
-   private int cols = 3; // Change amount of cols the grid has.
+   private int cols = 5; // Change amount of cols the grid has.
    [SerializeField]
    private float tileSize = 1; // Changes padding of the tiles.
 
@@ -19,10 +19,10 @@ public class GridManager : MonoBehaviour
    private void GenerateGrid()
    {
       GameObject emptyTile = (GameObject)Instantiate(Resources.Load("EmptyTile"));
+      
       for(int row = 0; row < rows; row++) {
          for (int col = 0; col < cols; col++) {
             GameObject tile = (GameObject)Instantiate(emptyTile, transform);
-
             float posX = col * tileSize;
             float posY = row * tileSize;
 
