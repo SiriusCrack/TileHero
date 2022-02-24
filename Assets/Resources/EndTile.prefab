@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5018300927817497291}
   - component: {fileID: 2850979226409152106}
-  - component: {fileID: 1880380460456410979}
+  - component: {fileID: 497521510793839237}
   m_Layer: 0
   m_Name: EndTile
   m_TagString: EndTile
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1880380460456410979
+--- !u!114 &497521510793839237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
