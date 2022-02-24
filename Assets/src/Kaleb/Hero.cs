@@ -5,13 +5,16 @@ using static NPC;
 
 public class Hero : NPC
 {
+    public Weapon weapon;
+    public ShopMenu inventory;
     private bool incombat = false;
     private float distTraveled = 0f;
-    private Vector3 finalCoordinates; 
+    private float finalCoordinates; 
     // Start is called before the first frame update
     void Start()
     {
-        //finalCoordinates = GameObject.FindGameObjectWithTag("EndTile").transform.position;
+        //finalCoordinates = GameObject.FindGameObjectWithTag("EndTile").transform.localPosition.x;
+        //print(finalCoordinates);
     }
 
     // Update is called once per frame
@@ -21,9 +24,11 @@ public class Hero : NPC
     }
     void FixedUpdate()
     {
-        if(Vector3.Distance(finalCoordinates, transform.position)<= 64)
+        //やった! ゴールゲット
+        if(transform.position.x > 1.8)
         {
-            //やった! ゴールゲット!
+            Time.timeScale = 0;
+            inventory.showInterface();
             
         }
         if(!incombat)
@@ -32,12 +37,16 @@ public class Hero : NPC
         }
     }
 
+    public void useWeapon()
+    {
+        weapon.StatusEffect();
+    }
     //move hero automatically between tiles
     //takes in the direction of the next tile
     //moves hero by a set distance in direction specified
     public override void Move(int nextDirection)
     {
-
+        distTraveled = 0f;
         //move right one tile
         if(nextDirection == 1)
         {
@@ -46,7 +55,7 @@ public class Hero : NPC
                 Vector3 oldPosition = transform.position;
                 transform.Translate(.05f,0,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
-                Debug.Log(transform.position);
+                //Debug.Log(transform.position);
             }
         }
 

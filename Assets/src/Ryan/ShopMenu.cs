@@ -21,7 +21,7 @@ public class ShopMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void showInterface()
+    public void showInterface()
     {
         showShop();
         showInventory();

@@ -97,4 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   base_atk: 0
-  incombat: 0
+  weapon: {fileID: 8861393206462885043, guid: b4b7893d1baf2184ca7bcffa31e1ce84, type: 3}

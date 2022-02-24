@@ -5,7 +5,9 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
     public Hero hero;
+    public Enemy enemy;
     float heroPos;
+    float enemyPos;
     bool messagePrinted;
 
     // Start is called before the first frame update
@@ -19,10 +21,12 @@ public class CombatManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(heroPos);
-        heroPos = hero.transform.localPosition.y;
-        if ((heroPos > 0.5) && (messagePrinted == false))
+        heroPos = hero.transform.localPosition.x;
+        enemyPos = enemy.transform.localPosition.x;
+        if ((Mathf.Abs(heroPos - enemyPos) < 0.5) && (messagePrinted == false))
         {
             Debug.Log("Combat would begin here");
+            hero.useWeapon();
             messagePrinted = true;
         }
     }
