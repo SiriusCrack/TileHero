@@ -20,6 +20,8 @@ public class GridManager : MonoBehaviour
    {
       GameObject emptyTile = (GameObject)Instantiate(Resources.Load("EmptyTile"));
       
+      createStart();
+
       for(int row = 0; row < rows; row++) {
          for (int col = 0; col < cols; col++) {
             GameObject tile = (GameObject)Instantiate(emptyTile, transform);
@@ -31,9 +33,20 @@ public class GridManager : MonoBehaviour
       }
       Destroy(emptyTile);
 
+      createEnd();
+
       float gridW = cols * tileSize;
       float gridH = rows * -tileSize;
       transform.position = new Vector2((-gridW / 2) + (tileSize / 2), 0); // Use '(gridH / 2) - (tileSize / 2)' if rows > 1.
    }
+
+   private void createStart() {
+      GameObject startTile = (GameObject)Instantiate(Resources.Load("StartTile"), transform);
+   }
+
+   private void createEnd() {
+      GameObject endTile = (GameObject)Instantiate(Resources.Load("EndTile"), transform);
+   }
+
 
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2850979226409152106}
   - component: {fileID: 1880380460456410979}
   m_Layer: 0
-  m_Name: GoalTile
+  m_Name: EndTile
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
