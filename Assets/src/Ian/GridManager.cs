@@ -11,6 +11,10 @@ public class GridManager : MonoBehaviour
    private int cols = 5; // Change amount of cols the grid has.
    [SerializeField]
    private float tileSize = 1; // Changes padding of the tiles.
+   [SerializeField]
+   private int ID = 0;
+
+   
 
    void Start() {
       GenerateGrid();
@@ -41,6 +45,7 @@ public class GridManager : MonoBehaviour
                float posX = col * tileSize;
                float posY = row * tileSize;
                tile.transform.position = new Vector2(posX, posY);
+               Debug.Log(tile.GetInstanceID()); 
             }
          }
       }
