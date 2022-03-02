@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShopMenu : MonoBehaviour
 {
+    public MonoBehaviour total;
     public MonoBehaviour shopMenua;
     public MonoBehaviour shopMenub;
     public MonoBehaviour shopMenuc;
@@ -23,14 +24,16 @@ public class ShopMenu : MonoBehaviour
 
     public void showInterface()
     {
-        showShop();
-        showInventory();
-        showEquip();
+        total.enabled = true;
+        //showShop();
+        //showInventory();
+        //showEquip();
     }
     void hideInterface() {
-        hideShop();
-        hideInventory();
-        hideEquip();
+        total.enabled = false;
+        //hideShop();
+        //hideInventory();
+        //hideEquip();
     }
 
     void hideShop()
