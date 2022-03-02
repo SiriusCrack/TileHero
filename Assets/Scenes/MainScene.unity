@@ -1281,6 +1281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 4761299609847670832, guid: 2a51ef2f3dea0cc4ca099b7a00fa801d, type: 3}
+      propertyPath: uiInventory
+      value: 
+      objectReference: {fileID: 1596459225}
     - target: {fileID: 5890410699991553749, guid: 2a51ef2f3dea0cc4ca099b7a00fa801d, type: 3}
       propertyPath: m_RootOrder
       value: 5

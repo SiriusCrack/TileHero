@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5890410699991553749}
   - component: {fileID: 3198062686072722932}
   - component: {fileID: 6960573136598168317}
+  - component: {fileID: 4761299609847670832}
   m_Layer: 0
   m_Name: Hero
   m_TagString: hero
@@ -98,3 +99,17 @@ MonoBehaviour:
   health: 0
   base_atk: 0
   weapon: {fileID: 8861393206462885043, guid: b4b7893d1baf2184ca7bcffa31e1ce84, type: 3}
+  inventory: {fileID: 0}
+--- !u!114 &4761299609847670832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216617092144729942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a8ccc0016a32b4199f874490fddc04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiInventory: {fileID: 0}
