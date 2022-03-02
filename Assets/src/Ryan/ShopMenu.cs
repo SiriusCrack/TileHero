@@ -5,16 +5,8 @@ using UnityEngine;
 
 public class ShopMenu : MonoBehaviour
 {
-    public MonoBehaviour total;
-    public MonoBehaviour shopMenua;
-    public MonoBehaviour shopMenub;
-    public MonoBehaviour shopMenuc;
-    public MonoBehaviour inventoryMenua;
-    public MonoBehaviour inventoryMenub;
-    public MonoBehaviour inventoryMenuc;
-    public MonoBehaviour equipMenua;
-    public MonoBehaviour equipMenub;
-    public MonoBehaviour equipMenuc;
+    public GameObject total;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,60 +16,14 @@ public class ShopMenu : MonoBehaviour
 
     public void showInterface()
     {
-        total.enabled = true;
-        //showShop();
-        //showInventory();
-        //showEquip();
+        total.SetActive(true);
     }
-    void hideInterface() {
-        total.enabled = false;
-        //hideShop();
-        //hideInventory();
-        //hideEquip();
-    }
-
-    void hideShop()
+    void hideInterface() 
     {
-        shopMenua.enabled = false;
-        shopMenub.enabled = false;
-        shopMenuc.enabled = false;
+        total.SetActive(false);
     }
 
-    void showShop()
-    {
-        shopMenua.enabled = true;
-        shopMenub.enabled = true;
-        shopMenuc.enabled = true;
-    }
-
-    void hideInventory()
-    {
-        inventoryMenua.enabled = false;
-        inventoryMenub.enabled = false;
-        inventoryMenuc.enabled = false;
-    }
-
-    void showInventory()
-    {
-        inventoryMenua.enabled = true;
-        inventoryMenub.enabled = true;
-        inventoryMenuc.enabled = true;
-    }
-
-
-    void hideEquip()
-    {
-        equipMenua.enabled = false;
-        equipMenub.enabled = false;
-        equipMenuc.enabled = false;
-    }
-
-    void showEquip()
-    {
-        equipMenua.enabled = true;
-        equipMenub.enabled = true;
-        equipMenuc.enabled = true;
-    }
+    
 
 
     // Update is called once per frame

@@ -25,6 +25,14 @@ public class UI_Inventory : MonoBehaviour
     {
         RefreshInventoryItems();
     }*/
+    
+    private void HideInventoryItems()
+    {
+        foreach (Item item in inventory.GetItemList())
+        {
+
+        }
+    }
 
     private void RefreshInventoryItems()
     {
