@@ -1,58 +1,34 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
-{  
-   [SerializeField]
-   private int rows = 1; // Change amount of rows the grid has.
-   [SerializeField]
-   private int cols = 5; // Change amount of cols the grid has.
-   [SerializeField]
-   private float tileSize = 1; // Changes padding of the tiles.
-   [SerializeField]
-   private int ID = 0;
-   
-   void Start() {
-      GenerateGrid();
-   }
+public class GridManager : MonoBehaviour {
 
-   private void GenerateGrid()
-   {
-      GameObject emptyTile = (GameObject)Instantiate(Resources.Load("EmptyTile"));
-      
-      for(int row = 0; row < rows; row++) {
-         for (int col = 0; col < cols; col++) {
-            if (col == 0) {
-               GameObject tile = (GameObject)Instantiate(Resources.Load("StartTile"), transform);
-               float posX = col * tileSize;
-               float posY = row * tileSize;
-               tile.transform.position = new Vector2(posX, posY);
-               Debug.Log("Start Tile Created");
+    [SerializeField] private int width, height;
+    [SerializeField] private float tileSize;
+    [SerializeField] private Tile emptyTile, startTile, endTile;
+    [SerializeField] private Transform mainCamera;
+
+    public Dictionary<Vector2, Tile> GridStorage;
+
+    void Start() {
+        initGrid();
+    }
+
+    void initGrid() {
+        GridStorage = new Dictionary<Vector2, Tile>();
+        for( int x = 0; x < width; x++) {
+            for( int y = 0; y < height; y++) {
+                var spawnedTile = Instantiate(emptyTile, new Vector3(x,y), Quaternion.identity);
+                spawnedTile.transform.parent = GameObject.Find("GridManager").transform;
+                spawnedTile.name = $"T[{x}][{y}]";
+                spawnedTile.transform.position = new Vector2(x*tileSize,y*tileSize);
+
+                GridStorage[new Vector2(x,y)] = spawnedTile;
             }
-            else if (col == cols-1) {
-               GameObject tile = (GameObject)Instantiate(Resources.Load("EndTile"), transform);
-               float posX = col * tileSize;
-               float posY = row * tileSize;
-               tile.transform.position = new Vector2(posX, posY);
-               Debug.Log("End Tile Created");
-            }
-            else {
-               GameObject tile = (GameObject)Instantiate(emptyTile, transform);
-               float posX = col * tileSize;
-               float posY = row * tileSize;
-               tile.transform.position = new Vector2(posX, posY);
-               Debug.Log(tile.GetInstanceID()); 
-            }
-         }
-      }
-      Destroy(emptyTile);
+        }
 
-      float gridW = cols  * tileSize;
-      float gridH = rows * -tileSize;
-      transform.position = new Vector2((-gridW / 2) + (tileSize / 2), 0); // Use '(gridH / 2) - (tileSize / 2)' if rows > 1.
-
-
-   }
+        mainCamera.transform.position = new Vector3((float)width/2 - 0.5f, (float)height/2 - 0.5f, -10);
+        mainCamera.transform.position = new Vector3((float)width/2 - 0.5f, (float)height/2 - 0.5f, -10);
+    }
 }

@@ -6,11 +6,8 @@ TagManager:
   tags:
   - hero
   - enemy
-  - EmptyTile
-  - StartTile
-  - Tile
-  - EndTile
   - MenuEntity
+  - EmptyTile
   layers:
   - Default
   - TransparentFX
