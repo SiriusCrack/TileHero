@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 645253543}
   m_Layer: 0
   m_Name: TileType2
-  m_TagString: Untagged
+  m_TagString: tileThumb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -876,6 +876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2a51bba2d4e143eaf0353a3f25d694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tile: {fileID: 645253539}
+  thumbPos: {fileID: 645253540}
 --- !u!61 &645253543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2309,7 +2311,7 @@ GameObject:
   - component: {fileID: 1939669979}
   m_Layer: 0
   m_Name: TileType1
-  m_TagString: Untagged
+  m_TagString: tileThumb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2391,6 +2393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2a51bba2d4e143eaf0353a3f25d694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tile: {fileID: 1939669975}
+  thumbPos: {fileID: 1939669976}
 --- !u!61 &1939669979
 BoxCollider2D:
   m_ObjectHideFlags: 0

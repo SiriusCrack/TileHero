@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - MenuEntity
   - EmptyTile
+  - tileThumb
   layers:
   - Default
   - TransparentFX
