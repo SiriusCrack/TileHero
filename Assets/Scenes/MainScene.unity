@@ -291,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 7
   height: 5
-  tileSize: 1.1
+  tileSize: 1.075
   emptyTile: {fileID: 8759506458992526174, guid: 17b47fb005709404da77332021b1b03c, type: 3}
   startTile: {fileID: 8759506458992526174, guid: 17b47fb005709404da77332021b1b03c, type: 3}
   endTile: {fileID: 8759506458992526174, guid: 17b47fb005709404da77332021b1b03c, type: 3}
@@ -1962,7 +1962,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
