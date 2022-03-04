@@ -6,6 +6,7 @@ public class tileThumb : MonoBehaviour
 {
     [SerializeField] private GameObject Tile;
     [SerializeField] private Transform thumbPos;
+    public Vector3 dropPos; //Should be able to take this and check position relative to valid grid space
 
     private GameObject draggedTileThumb;
 
@@ -18,6 +19,9 @@ public class tileThumb : MonoBehaviour
     }
 
     void OnMouseUp() {
+        dropPos = Input.mousePosition;
+        Debug.Log(dropPos.x);
+        Debug.Log(dropPos.y);
         Destroy(draggedTileThumb);
     }
     
