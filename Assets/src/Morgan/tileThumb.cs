@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class tileThumb : MonoBehaviour
 {
-    [SerializeField] private GameObject Tile;
-    [SerializeField] private Transform thumbPos;
     public Vector3 dropPos; //Should be able to take this and check position relative to valid grid space
 
     private GameObject draggedTileThumb;
 
     void OnMouseDown() {
-        draggedTileThumb = Instantiate(Tile, thumbPos.position, Quaternion.identity, thumbPos);
+        draggedTileThumb = Instantiate(gameObject, gameObject.transform.position, Quaternion.identity, gameObject.transform);
     }
 
     void OnMouseDrag() {
