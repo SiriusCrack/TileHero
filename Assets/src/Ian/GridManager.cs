@@ -6,17 +6,17 @@ public class GridManager : MonoBehaviour {
 
     [SerializeField] private int width, height;
     [SerializeField] private float tileSize;
-    [SerializeField] private Tile emptyTile, startTile, endTile;
+    [SerializeField] private TileSlot emptyTile, startTile, endTile;
     [SerializeField] private Transform mainCamera;
 
-    public Dictionary<Vector2, Tile> GridStorage;
+    public Dictionary<Vector2, TileSlot> GridStorage;
 
     void Start() {
         initGrid();
     }
 
     void initGrid() {
-        GridStorage = new Dictionary<Vector2, Tile>();
+        GridStorage = new Dictionary<Vector2, TileSlot>();
         for( int x = 0; x < width; x++) {
             for( int y = 0; y < height; y++) {
                 var spawnedTile = Instantiate(emptyTile, new Vector3(x,y), Quaternion.identity);
