@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
+
+    [SerializeField]
+    public int atk_speed;
+
+    [SerializeField]
+    public int atk_damage;
+
+    [SerializeField]
+    public int range;
+
+    public Effect effect = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +28,19 @@ public abstract class Weapon : MonoBehaviour
         
     }
 
-    public abstract void StatusEffect();
+    public void Useweapon(NPC target)
+    {
+    //    target.health -= damage;
+    //    if(effect != null)
+    //    {
+    //        applyEffect(target)
+    //    }
+    }
+
+    public void applyEffect(Effect effectType, NPC target)
+    {
+        
+    }
+
+
 }

@@ -26,7 +26,6 @@ public class CombatManager : MonoBehaviour
         if ((Mathf.Abs(heroPos - enemyPos) < 0.5) && (messagePrinted == false))
         {
             Debug.Log("Combat would begin here");
-            hero.useWeapon();
             messagePrinted = true;
         }
     }

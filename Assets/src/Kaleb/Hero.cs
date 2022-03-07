@@ -37,9 +37,10 @@ public class Hero : NPC
         }
     }
 
-    public void useWeapon()
+
+    public void Attack(Weapon weapon)
     {
-        weapon.StatusEffect();
+        print("Attack: " + weapon.atk_damage);
     }
     //move hero automatically between tiles
     //takes in the direction of the next tile

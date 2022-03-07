@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Weapon;
 
+
+
 public class StarterWeapon : Weapon
 {
     // Start is called before the first frame update
@@ -16,10 +18,6 @@ public class StarterWeapon : Weapon
     {
         
     }
-    // Will include damage amount, and any special effects.
-    public override void StatusEffect()
-    {
-        Debug.Log("Status Effect used here");
-    }
+
 
 }
