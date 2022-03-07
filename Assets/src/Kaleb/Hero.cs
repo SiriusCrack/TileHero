@@ -5,11 +5,14 @@ using static NPC;
 
 public class Hero : NPC
 {
-    public Weapon weapon;
     public ShopMenu inventory;
     private bool incombat = false;
     private float distTraveled = 0f;
-    private float finalCoordinates; 
+    private float finalCoordinates;
+    public Enemy currentEnemy;
+    public bool collectEnemy = false;
+    int left = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,23 +31,47 @@ public class Hero : NPC
         if(transform.position.x > 1.8)
         {
             Time.timeScale = 0;
-            inventory.showInterface();
+            //inventory.showInterface();
             
         }
-        if(!incombat)
+        else if(!incombat)
         {
             Move(1);
         }
+        else
+        {
+            attackTimer += 1;
+        }
     }
 
+    public void startCombat()
+    {
+        incombat = true;
+    }
+    public void endCombat()
+    {
+        incombat = false;
+    }
 
     public void Attack(Weapon weapon)
     {
         print("Attack: " + weapon.atk_damage);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "enemy")
+        {
+            currentEnemy = other.GetComponent<Enemy>().thisEnemy;
+            collectEnemy = true;
+            Debug.Log(currentEnemy);
+        }
+    }
+
     //move hero automatically between tiles
     //takes in the direction of the next tile
     //moves hero by a set distance in direction specified
+
     public override void Move(int nextDirection)
     {
         distTraveled = 0f;

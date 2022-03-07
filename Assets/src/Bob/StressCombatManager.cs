@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatManager : MonoBehaviour
+public class StressCombatManager : MonoBehaviour
 {
     public Hero hero;
     public Enemy[] enemies;
@@ -11,23 +11,69 @@ public class CombatManager : MonoBehaviour
     float enemyPos;
     bool messagePrinted;
     bool inCombat;
-    int currentEnemy = 0;
-    int nextEnemy = 1;
+    //int currentEnemy = 0;
+    //int nextEnemy = 1;
     AttackCommand attack;
+    int i;
+    int j;
 
     // Start is called before the first frame update
     void Start()
     {
-        inactiveEnemy.gameObject.SetActive(false);
-        enemies[0] = inactiveEnemy;
+        //inactiveEnemy.gameObject.SetActive(false);
+        //enemies[0] = inactiveEnemy;
         heroPos = hero.transform.localPosition.y;
         messagePrinted = false;
         inCombat = false;
     }
 
+
+    void FixedUpdate()
+    {
+        //Debug.Log("enemy attack");
+        //enemies[0].attackTimer = 0;
+        //attack = new AttackCommand(enemies[0], enemies[1], enemies[0].weapon.atk_damage);
+        //enemies[1].receiveAttack(attack);
+        //Destroy(attack);
+        for (i = 0; i < 49; i++)
+        {
+            for (j = 0; j < 49; j++)
+            {
+                Debug.Log("enemy attack");
+                enemies[i].attackTimer = 0;
+                attack = new AttackCommand(enemies[i], enemies[i+1], enemies[i].weapon.atk_damage);
+                enemies[i].receiveAttack(attack);
+                Destroy(attack);
+                //if (enemies[i].attackTimer >= enemies[i].weapon.atk_speed)
+                //{
+                //    Debug.Log("enemy attack");
+                //    enemies[i].attackTimer = 0;
+                //    attack = new AttackCommand(enemies[i], enemies[j], enemies[i].weapon.atk_damage);
+                //    enemies[j].receiveAttack(attack);
+                //    Destroy(attack);
+                //}
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        for (i = 0; i < 50; i++)
+        {
+            for (j = 0; j < 50; j++)
+            {
+                if (enemies[i].attackTimer >= enemies[i].weapon.atk_speed)
+                {
+                    Debug.Log("enemy attack");
+                    enemies[i].attackTimer = 0;
+                    attack = new AttackCommand(enemies[i], enemies[j], enemies[i].weapon.atk_damage);
+                    enemies[j].receiveAttack(attack);
+                    Destroy(attack);
+                }
+            }
+        }
+        /*
         //Debug.Log(heroPos);
         heroPos = hero.transform.localPosition.x;
         if (enemies[currentEnemy])
@@ -71,7 +117,7 @@ public class CombatManager : MonoBehaviour
                 enemies[currentEnemy].attackTimer = 0;
                 attack = new AttackCommand(enemies[currentEnemy], hero, enemies[currentEnemy].weapon.atk_damage);
                 hero.receiveAttack(attack);
-                Destroy(attack);    
+                Destroy(attack);
             }
             if (hero.attackTimer >= hero.weapon.atk_speed)
             {
@@ -90,6 +136,8 @@ public class CombatManager : MonoBehaviour
             messagePrinted = true;
             hero.attackTimer = 0;
             enemies[currentEnemy].attackTimer = 0;
+        
         }
+        */
     }
 }

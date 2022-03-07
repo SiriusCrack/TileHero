@@ -5,11 +5,14 @@ using UnityEngine;
 public abstract class NPC : MonoBehaviour
 {
     [SerializeField]
-    private int health;
+    public int health;
 
     [SerializeField]
     int base_atk;
-    
+
+    public int attackTimer = 0;
+    public Weapon weapon;
+
     Vector2 position; 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,15 @@ public abstract class NPC : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void receiveAttack(AttackCommand attack)
+    {
+        health -= attack.damage;
+        if (health < 0)
+        {
+            health = 0;
+        }
     }
 
     public abstract void Move(int goalCoords);
