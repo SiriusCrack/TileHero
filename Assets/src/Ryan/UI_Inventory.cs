@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
 {
+    private InventoryTest inventoryT;
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
@@ -20,12 +21,17 @@ public class UI_Inventory : MonoBehaviour
         this.inventory = inventory;
         RefreshInventoryItems();
     }
-
-   /* private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
+    public void SetInventoryT(InventoryTest inventoryT)
     {
+        this.inventoryT = inventoryT;
         RefreshInventoryItems();
-    }*/
-    
+    }
+
+    /* private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
+     {
+         RefreshInventoryItems();
+     }*/
+
     private void HideInventoryItems()
     {
         foreach (Item item in inventory.GetItemList())
@@ -49,10 +55,10 @@ public class UI_Inventory : MonoBehaviour
             Image image = itemSlotRectTrasnfrom.Find("Icon").GetComponent<Image>();
             image.sprite = item.GetSprite();
             x++;
-            if (x > 5)
+            if (x > 7)
             {
                 x = 0;
-                y++;
+                y--;
             }
         }
     }
