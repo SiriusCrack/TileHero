@@ -8,7 +8,7 @@ public abstract class NPC : MonoBehaviour
     public int health;
 
     [SerializeField]
-    int base_atk;
+    float base_atk;
 
     public int attackTimer = 0;
     public Weapon weapon;
@@ -36,4 +36,26 @@ public abstract class NPC : MonoBehaviour
     }
 
     public abstract void Move(int goalCoords);
+    public float getAtk()
+    {
+        return base_atk;
+    }
+
+    public void setAtk(float atk)
+    {
+        base_atk = atk;
+    }
+    public void debuff(string type, float amount)
+    {
+        if(type == "atk")
+        {
+            if(amount >= base_atk)
+            {
+                base_atk = 1f;
+                return;
+            }else{
+                base_atk -= amount;
+            }
+        }
+    }
 }

@@ -23,7 +23,10 @@ public class Hero : NPC
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown("p"))
+        {
+            setTime();
+        }
     }
     void FixedUpdate()
     {
@@ -41,6 +44,19 @@ public class Hero : NPC
         else
         {
             attackTimer += 1;
+        }
+
+    }
+
+    public void setTime()
+    {
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            print("Game Resume");
+        }else{
+            Time.timeScale = 0;
+            print("Game Pause");
         }
     }
 
