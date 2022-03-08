@@ -6,20 +6,49 @@ using UnityEngine.TestTools;
 
 public class InventoryTest
 {
+    GameObject gameObject;
+    GoldManager gold;
+    private Inventory inventory;
+    public List<Item> itemList;
+    
+    [SetUp]
+    public void setUp()
+    {
+        //gameObject = new GameObject();
+        gold = new GoldManager(25);
+        //inventory = gameObject.AddComponent<Inventory>();
+        inventory = new Inventory();
+    }
+    
+
     // A Test behaves as an ordinary method
     [Test]
-    public void InventoryTestSimplePasses()
+    public void Inventory_Bound()
     {
-        // Use the Assert class to test conditions
+        inventory.AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
+        Debug.Log("Expected:" + 15 + " Actual:" + itemList.Count);
+        Assert.AreEqual(15, itemList.Count);
+        inventory.AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        Debug.Log("Expected:" + 16 + " Actual:" + itemList.Count);
+        Assert.AreEqual(16, itemList.Count);
+        inventory.AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        Debug.Log("Expected:" + 16 + " Actual:" + itemList.Count);
+        Assert.AreEqual(16, itemList.Count);
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator InventoryTestWithEnumeratorPasses()
+    [Test]
+    public void Gold_Bounds() {
+        gold.RemoveGold(10);
+        Debug.Log("Expected:" + 15 + " Actual:" + gold.Gold);
+        gold.RemoveGold(10);
+        Debug.Log("Expected:" + 5 + " Actual:" + gold.Gold);
+        gold.RemoveGold(10);
+        Debug.Log("Expected:" + 5 + " Actual:" + gold.Gold);
+    }
+
+    [TearDown]
+    public void Teardown()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        //inventory = null;
     }
 }

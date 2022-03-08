@@ -10,8 +10,8 @@ public class ShopMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hideInterface();
-        Time.timeScale = 1;
+        showInterface();
+        Time.timeScale = 0;
     }
 
     public void showInterface()

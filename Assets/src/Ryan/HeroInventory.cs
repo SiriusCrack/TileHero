@@ -11,6 +11,7 @@ public class HeroInventory : MonoBehaviour
     {
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+        //inventory.AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
     }
 
     // Start is called before the first frame update
