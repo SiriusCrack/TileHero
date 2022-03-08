@@ -97,7 +97,7 @@ public class Hero : NPC
             if(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(.05f,0,0*Time.deltaTime);
+                transform.Translate(.05f,0,0);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 //Debug.Log(transform.position);
             }
