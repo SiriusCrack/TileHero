@@ -29,6 +29,15 @@ public class Enemy : NPC
     {
         attackTimer += 1;
     }
+    public void takeDamage(int dmg)
+    {
+        if(dmg > health)
+        {
+            health = 0;
+            return;
+        }
+        health -= dmg;
+    }
 
 }
 
