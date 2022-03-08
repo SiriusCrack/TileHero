@@ -14,19 +14,26 @@ public class MB_BoundaryTests
         tile1 = new GameObject();
         tile2 = new GameObject();
         Tile1 = tile1.AddComponent<tileType1>();
+        
         Tile2 = tile2.AddComponent<tileType2>();
     }
 
     [Test]
-    public void NoDuplicates()
+    public void CheckValidCreation()
     {
+        Debug.Log("Created GameObject Tile.");
         Assert.IsNotNull(Tile1,"Tile exists");
+        Debug.Log("Tile exists.");
     }
 
     [Test]
-    public void TileExists()
+    public void CheckUniqueness()
     {
-        Assert.AreNotEqual(Tile1, Tile2, "Tiles are unique");
+        Debug.Log("Creating all tile types...");
+        Debug.Log("Created " + Tile1);
+        Debug.Log("Created " + Tile2);
+        Assert.AreNotEqual(Tile1, Tile2, "Tiles are unique.");
+        Debug.Log("Tiles are unique.");
     }
     
     [TearDown]
