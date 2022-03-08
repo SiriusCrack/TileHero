@@ -42,5 +42,13 @@ public class Weapon : MonoBehaviour
         
     }
 
+    public void weaponSpeed(int speed)
+    {
+        if(speed <= 0){
+            speed = 5;
+            return;
+        }
+        atk_speed = speed;
+    }
 
 }
