@@ -39,5 +39,17 @@ public class Enemy : NPC
         health -= dmg;
     }
 
+    
+
+   /* public int getAtk()
+    {
+        return base_atk;
+    }
+
+    public void setAtk(int atk)
+    {
+        base_atk = atk;
+    }*/
+
 }
 

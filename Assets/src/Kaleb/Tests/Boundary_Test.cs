@@ -34,6 +34,23 @@ public class BoundaryTest
         Assert.AreEqual(0,enemy.health);
     }
 
+    [Test]
+    public void Damage_Boundary()
+    {
+
+        enemy.setAtk(10);
+        enemy.debuff("atk", .5f);
+        Debug.Log("Expected:" + 9.5f + " Actual:" + enemy.getAtk());
+        Assert.AreEqual(9.5f, enemy.getAtk());
+        enemy.debuff("atk", 9f);
+        Debug.Log("Expected:" + 0.5f + " Actual:" + enemy.getAtk());
+        Assert.AreEqual(.5f, enemy.getAtk());
+        enemy.debuff("atk", 1f);
+        Debug.Log("Expected:" + 1f + " Actual:" + enemy.getAtk());
+        Assert.AreEqual(1, enemy.getAtk());
+        
+    }
+
     [TearDown]
     public void Teardown()
     {
