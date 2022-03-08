@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 7
-  height: 5
+  height: -1
   tileSize: 1.075
   emptyTile: {fileID: 8759506458992526174, guid: 17b47fb005709404da77332021b1b03c, type: 3}
   startTile: {fileID: 8759506458992526174, guid: 17b47fb005709404da77332021b1b03c, type: 3}
