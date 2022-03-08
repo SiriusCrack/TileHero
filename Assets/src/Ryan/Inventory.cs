@@ -27,7 +27,10 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });   
+        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
     }
 
     public void AddItem(Item item)

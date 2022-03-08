@@ -19,6 +19,7 @@ public class GoldManager
         else
         {
             Gold = Gold - amount;
+            Debug.Log("Removing " + amount + " Gold");
             //return true;
         }
     }
