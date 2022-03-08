@@ -23,15 +23,19 @@ public class Boundary_Test
     [Test]
     public void WeaponSpeed()
     {
-        weapon.weaponSpeed(10);   
-        Debug.Log("Expected:" + 10 + " Actual:" + weapon.atk_speed);
-        Assert.AreEqual(10,weapon.atk_speed);
+        weapon.weaponSpeed(100);   
+        Debug.Log("Expected:" + 100 + " Actual:" + weapon.atk_speed);
+        Assert.AreEqual(100,weapon.atk_speed);
+
+        weapon.weaponSpeed(50);    
+        Debug.Log("Expected:" + 50 + " Actual:" + weapon.atk_speed);
+        Assert.AreEqual(50,weapon.atk_speed);
 
         weapon.weaponSpeed(5);    
         Debug.Log("Expected:" + 5 + " Actual:" + weapon.atk_speed);
         Assert.AreEqual(5,weapon.atk_speed);
 
-        weapon.weaponSpeed(0);    
+        weapon.weaponSpeed(-1);    
         Debug.Log("Expected:" + 5 + " Actual:" + weapon.atk_speed);
         Assert.AreEqual(5,weapon.atk_speed);
         
@@ -46,9 +50,17 @@ public class Boundary_Test
         Debug.Log("Expected:" + 50 + " Actual:" + enemy.health);
         Assert.AreEqual(50,enemy.health);
 
-        enemy.takeDamage(49);
-        Debug.Log("Expected:" + 1 + " Actual:" + enemy.health);
-        Assert.AreEqual(1,enemy.health);      
+        enemy.takeDamage(10);
+        Debug.Log("Expected:" + 40 + " Actual:" + enemy.health);
+        Assert.AreEqual(40,enemy.health);      
+
+        enemy.takeDamage(20);
+        Debug.Log("Expected:" + 20 + " Actual:" + enemy.health);
+        Assert.AreEqual(20,enemy.health);
+
+        enemy.takeDamage(15);
+        Debug.Log("Expected:" + 5 + " Actual:" + enemy.health);
+        Assert.AreEqual(5,enemy.health);
 
         enemy.takeDamage(100);
         Debug.Log("Expected:" + 0 + " Actual:" + enemy.health);
