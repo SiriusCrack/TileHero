@@ -732,6 +732,10 @@ PrefabInstance:
       value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 5173338949327389595, guid: b37d1850f1a5e394b95679c755fb019a, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173338949327389595, guid: b37d1850f1a5e394b95679c755fb019a, type: 3}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 937331103461091627}

@@ -35,9 +35,11 @@ public class StressCombatManager : MonoBehaviour
         //attack = new AttackCommand(enemies[0], enemies[1], enemies[0].weapon.atk_damage);
         //enemies[1].receiveAttack(attack);
         //Destroy(attack);
-        for (i = 0; i < 49; i++)
+
+        //enemy count
+        for (i = 0; i < 199; i++)
         {
-            for (j = 0; j < 49; j++)
+            for (j = 0; j < 199; j++)
             {
                 Debug.Log("enemy attack");
                 enemies[i].attackTimer = 0;

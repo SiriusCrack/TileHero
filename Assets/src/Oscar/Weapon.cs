@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     public Effect effect = null;
 
     // Start is called before the first frame update
+
     void Start()
     {
         
@@ -28,19 +29,19 @@ public class Weapon : MonoBehaviour
         
     }
 
-    public void Useweapon(NPC target)
-    {
+    //public void Useweapon(npc target)
+    //{
     //    target.health -= damage;
     //    if(effect != null)
     //    {
     //        applyEffect(target)
     //    }
-    }
+    //}
 
-    public void applyEffect(Effect effectType, NPC target)
-    {
+    //public void applyEffect(Effect effectType, Enemy target)
+    //{
         
-    }
+    //}
 
     public void weaponSpeed(int speed)
     {
