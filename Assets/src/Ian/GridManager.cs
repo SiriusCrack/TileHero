@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour {
 
-    [SerializeField] private int width, height;
-    [SerializeField] private float tileSize;
+    [SerializeField] public int width, height;
+    [SerializeField] public float tileSize;
     [SerializeField] private TileSlot emptyTile, startTile, endTile;
     [SerializeField] private Transform mainCamera;
 

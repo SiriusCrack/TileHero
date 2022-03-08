@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory 
+public class InventoryTest
 {
     public event EventHandler OnItemListChanged;
 
     public List<Item> itemList;
 
-    public Inventory()
+    public InventoryTest()
     {
         itemList = new List<Item>();
         Debug.Log("inventory add");
@@ -22,7 +22,6 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
@@ -32,9 +31,10 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
         Debug.Log("inventory add");
-    
+
     }
 
     public void AddItem(Item item)
@@ -55,5 +55,7 @@ public class Inventory
     {
         return itemList;
     }
-    
 }
+
+
+
