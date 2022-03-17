@@ -9,6 +9,8 @@ TagManager:
   - MenuEntity
   - EmptyTile
   - tileThumb
+  - Start
+  - End
   layers:
   - Default
   - TransparentFX
