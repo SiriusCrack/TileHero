@@ -5,14 +5,24 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
     public Hero hero;
+
+    //enemies array stores all the enemies the hero encounters
     public Enemy[] enemies;
+    //the inactiveEnemy is a dummy enemy for when the enemies array is empty to avoid null reference errors
     public Enemy inactiveEnemy;
+    //currentEnemy moves whenever an enemy dies, and if there are no enemies in the
+    //array it will update when an enemy is encountered, newEnemy is used when adding
+    //new enemies encountered by the hero
+    int currentEnemy = 0;
+    int newEnemy = 1;
+
+    //used to judge when combat starts
     float heroPos;
     float enemyPos;
-    bool messagePrinted;
+
+    //tells if the hero is currently in combat
     bool inCombat;
-    int currentEnemy = 0;
-    int nextEnemy = 1;
+
     AttackCommand attack;
 
     // Start is called before the first frame update
@@ -21,75 +31,124 @@ public class CombatManager : MonoBehaviour
         inactiveEnemy.gameObject.SetActive(false);
         enemies[0] = inactiveEnemy;
         heroPos = hero.transform.localPosition.y;
-        messagePrinted = false;
         inCombat = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(heroPos);
+        //Gets hero's and current enemy's position every frame
         heroPos = hero.transform.localPosition.x;
-        if (enemies[currentEnemy])
-        {
-            enemyPos = enemies[currentEnemy].transform.localPosition.x;
-        }
+        enemyPos = enemies[currentEnemy].transform.localPosition.x;
+
+        //This code will run when the hero encounters an enemy
         if (hero.collectEnemy == true)
         {
-            enemies[nextEnemy] = hero.currentEnemy;
-            nextEnemy++;
-            hero.collectEnemy = false;
-            if (currentEnemy == 0)
-            {
-                currentEnemy++;
-            }
-            Debug.Log("collection");
-            Debug.Log(enemies[currentEnemy]);
+            collectEnemy();
         }
 
+        //Combat code
         if (inCombat == true)
         {
+            //If an enemy's healh drops to zero, remove them from the game
             if (enemies[currentEnemy].health == 0)
             {
-                Debug.Log("death", enemies[currentEnemy]);
-                Debug.Log(enemies);
-                enemies[currentEnemy].transform.Translate(1000, 1000, 0);
-                enemies[currentEnemy].gameObject.SetActive(false);
-                currentEnemy++;
-                hero.endCombat();
-                inCombat = false;
-                messagePrinted = false;
-                enemyPos = 1000;
+                enemyDeath();
             }
+            //if the hero's health drops to zero, remove them from the game
             if (hero.health == 0)
             {
                 hero.gameObject.SetActive(false);
             }
+            //If the enemy's attack timer reaches their weaponspeed, have them attack the hero
             if (enemies[currentEnemy].attackTimer >= enemies[currentEnemy].weapon.atk_speed)
             {
-                Debug.Log("enemy attack");
-                enemies[currentEnemy].attackTimer = 0;
-                attack = new AttackCommand(enemies[currentEnemy], hero, enemies[currentEnemy].weapon.atk_damage);
-                hero.receiveAttack(attack);
-                Destroy(attack);    
+                sendAttack(enemies[currentEnemy], hero);
             }
+            //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
             if (hero.attackTimer >= hero.weapon.atk_speed)
             {
-                Debug.Log("hero attack");
-                hero.attackTimer = 0;
-                attack = new AttackCommand(hero, enemies[currentEnemy], hero.weapon.atk_damage);
-                enemies[currentEnemy].receiveAttack(attack);
-                Destroy(attack);
+                sendAttack(hero, enemies[currentEnemy]);
             }
         }
-        if ((Mathf.Abs(heroPos - enemyPos) < 0.5) && (messagePrinted == false))
+
+        //If combat has not been engaged and the hero encounters an enemy, start combat
+        if ((Mathf.Abs(heroPos - enemyPos) < 0.5) && (inCombat == false))
         {
-            hero.startCombat();
-            Debug.Log("Combat would begin here");
-            inCombat = true;
-            messagePrinted = true;
-            hero.attackTimer = 0;
-            enemies[currentEnemy].attackTimer = 0;
+            enterCombat();
         }
+    }
+
+    //Handles removing an enemy
+    void enemyDeath()
+    {
+        //Prints that an enemy has died for debugging purposes
+        //Debug.Log("death", enemies[currentEnemy]);
+        //Debug.Log(enemies);
+
+        //moves the enemy out of the game so the hero doesn't get stuck on them and sets them inactive
+        enemies[currentEnemy].transform.Translate(1000, 1000, 0);
+        enemies[currentEnemy].gameObject.SetActive(false);
+
+        //if there is an enemy queued, make them the next enemy, otherwise, the current enemy
+        //is set to the inactiveEnemy to avoid null references and the hero is taken out of combat
+        if (enemies[currentEnemy + 1])
+        {
+            currentEnemy++;
+        }
+        else
+        {
+            enemies[currentEnemy] = inactiveEnemy;
+            inCombat = false;
+            hero.endCombat();
+        }
+    }
+
+    //Creates and sends attacks to NPCs
+    void sendAttack(NPC sender, NPC reciever)
+    {
+        //resets the attack timer
+        sender.attackTimer = 0;
+        //creates an attack command object based on the sender/reciever
+        attack = new AttackCommand(sender, reciever, sender.weapon.atk_damage);
+        //sends that to the target
+        reciever.receiveAttack(attack);
+        //destroys the object
+        Destroy(attack);
+    }
+
+    //sets necessary values for variables upon combat start. kinda like the unity start() for combat
+    void enterCombat()
+    {
+        //debugging message
+        //Debug.Log("Combat begins");
+
+        //set hero and combat manager variables to in combat
+        hero.startCombat();
+        inCombat = true;
+
+        //reset hero an enemy attack timers
+        hero.attackTimer = 0;
+        enemies[currentEnemy].attackTimer = 0;
+    }
+
+    //Used to add enemies to the enemies array when a hero encounters them
+    void collectEnemy()
+    {
+        //fills the earliest empty slot (newEnemy) with the enemy the hero encountered
+        enemies[newEnemy] = hero.currentEnemy;
+        //update newEnemy to the next empty slot
+        newEnemy++;
+        //reset the collection flag on the hero
+        hero.collectEnemy = false;
+        //if there is no enemy, have the hero begin fighting this enemy
+        if (enemies[currentEnemy] == inactiveEnemy)
+        {
+            currentEnemy++;
+        }
+
+        //debug printouts
+        //Debug.Log("collection");
+        //Debug.Log(enemies[currentEnemy]);
     }
 }
