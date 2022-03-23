@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class tileInventory : MonoBehaviour
 {
-    public GameObject SelectedTile;
+    public levelTile SelectedTile;
+    [SerializeField] levelTile TileType1, TileType2;
+    [SerializeField] GameObject thumb1, thumb2;
 
-    void Start()
-        {
-            //Start the coroutine we define below named ExampleCoroutine.
-            //StartCoroutine(ExampleCoroutine());
-        }
-
-        IEnumerator ExampleCoroutine()
-        {
-            //Print the time of when the function is first called.
-            Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-            WaitForSeconds wait = new WaitForSeconds(2f);
-
-            while(true) {
-                Debug.Log(SelectedTile);
-                yield return wait;
+    void PickTile(GameObject selectedThumb) {
+            if (selectedThumb == thumb1) {
+                SelectedTile = TileType1;
             }
+            if (selectedThumb == thumb2) {
+                SelectedTile = TileType2;
+            }
+
+            
         }
 }

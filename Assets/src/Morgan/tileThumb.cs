@@ -12,7 +12,6 @@ public class tileThumb : MonoBehaviour {
 
     void OnMouseDown() {
         tileInventory = GetComponentInParent<tileInventory>();
-        tileInventory.SelectedTile = this.gameObject;
-        Debug.Log(tileInventory.SelectedTile);
+        tileInventory.SendMessage("PickTile", this.gameObject);
     }
 }
