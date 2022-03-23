@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class StressTest : MonoBehaviour
 {
-    [SerializeField] tileFactory tileFactory;
+    /*[SerializeField] tileFactory tileFactory;
     private float x = -1.5f;
     private float y = 4.7f;
     private float width = 8f;
     private float height = -0.03f;
     private int tile;
-    private int tileCount = 0;
+    private int tileCount = 0;*/
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         var spawnedTile1 = tileFactory.GetNewTile(tile);
         tileCount++;
@@ -60,5 +60,5 @@ public class StressTest : MonoBehaviour
         tile = tile%3;
         x += 0.05f;
         y -= 0.0001f;
-    }
+    }*/
 }
