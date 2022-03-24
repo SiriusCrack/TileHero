@@ -9,6 +9,8 @@ public class GridManager : MonoBehaviour {
     [SerializeField] public GameObject sTile; // Start Tile
     [SerializeField] public GameObject eTile; // End Tile
     [SerializeField] public Transform mainCamera;
+    [SerializeField] public GameObject tileInventory;
+    [SerializeField] public GameObject tileFactory;
 
     public Dictionary<(int, int), GameObject> GridStorage;
 
@@ -57,6 +59,7 @@ public class GridManager : MonoBehaviour {
     public void SetTile(GameObject Tile) {
         var x = Tile.GetComponent<Tile>().indX;
         var y = Tile.GetComponent<Tile>().indY;
+
         Destroy(GridStorage[(x,y)]);
     }
 }
