@@ -14,8 +14,6 @@ public class GridManager : MonoBehaviour {
 
     public Dictionary<(int, int), GameObject> GridStorage;
 
-    public int globalSel = 0;
-
     void Start() {
         initGrid();
     }
@@ -59,7 +57,12 @@ public class GridManager : MonoBehaviour {
     public void SetTile(GameObject Tile) {
         var x = Tile.GetComponent<Tile>().indX;
         var y = Tile.GetComponent<Tile>().indY;
-
+        var temp = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
+        var levelTile = GridStorage[(x,y)];
+        temp.transform.parent = GameObject.Find("GridManager").transform;
+        temp.name = $"LT[{x}][{y}]";
+        temp.transform.position = levelTile.transform.position;
         Destroy(GridStorage[(x,y)]);
+        GridStorage[(x,y)] = temp;
     }
 }

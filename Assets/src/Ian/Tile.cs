@@ -13,8 +13,6 @@ public class Tile : MonoBehaviour {
 
     [SerializeField] public GameObject highlight;
     [SerializeField] public GameObject select;
-
-    int localSel = 0;
     
     public virtual void OnMouseEnter() {
         highlight.SetActive(true);

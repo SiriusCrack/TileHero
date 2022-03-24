@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class tileFactory : MonoBehaviour
 {
-    [SerializeField] levelTile TileType1, TileType2;
+    [SerializeField] GameObject TileType1, TileType2;
     
-    public levelTile GetNewTile(levelTile Tile) {
-        return Instantiate(Tile);
+    public GameObject GetNewTile(GameObject Tile) {
+        return Instantiate(Tile, new Vector3(0,0), Quaternion.identity);
     }
 }

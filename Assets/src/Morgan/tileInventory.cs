@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class tileInventory : MonoBehaviour
 {
-    public levelTile SelectedTile;
-    [SerializeField] levelTile TileType1, TileType2;
-    [SerializeField] GameObject thumb1, thumb2;
+    public GameObject SelectedTile;
+    [SerializeField] private GameObject TileType1, TileType2;
+    [SerializeField] private GameObject thumb1, thumb2;
+    public bool globalSelect = false;
 
     void PickTile(GameObject selectedThumb) {
             if (selectedThumb == thumb1) {
@@ -15,7 +16,5 @@ public class tileInventory : MonoBehaviour
             if (selectedThumb == thumb2) {
                 SelectedTile = TileType2;
             }
-
-            
         }
 }
