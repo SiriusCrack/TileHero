@@ -42,13 +42,21 @@ public class GridManager : MonoBehaviour {
                 else {
                     var defaultTile = Instantiate(dTile, new Vector3(x,y), Quaternion.identity);
                     defaultTile.transform.parent = GameObject.Find("GridManager").transform;
+                    defaultTile.GetComponent<Tile>().indX = x;
+                    defaultTile.GetComponent<Tile>().indY = y;                 
                     defaultTile.name = $"T[{x}][{y}]";
                     defaultTile.transform.position = new Vector2(x*tileSize,y*tileSize);
 
-                    GridStorage[(x,y)] = defaultTile;                    
+                    GridStorage[(x,y)] = defaultTile;   
                 }
             }
         }
         mainCamera.transform.position = new Vector3(((float)width*tileSize)/2 - 0.5f, ((float)height*tileSize)/2 - 0.5f, -10);
+    }
+
+    public void SetTile(GameObject Tile) {
+        var x = Tile.GetComponent<Tile>().indX;
+        var y = Tile.GetComponent<Tile>().indY;
+        Destroy(GridStorage[(x,y)]);
     }
 }
