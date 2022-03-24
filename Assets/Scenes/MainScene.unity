@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 7
   height: 6
-  tileSize: 1.1
+  tileSize: 1
   dTile: {fileID: 8317786647484967768, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
   sTile: {fileID: 8017520656865270889, guid: 0972d6b3b66998e4aaf8f4290897fe84, type: 3}
   eTile: {fileID: 4014744108690255410, guid: 119fdcc15830c0d48b277438f6e7627e, type: 3}
