@@ -469,8 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad67c7b8142a5334c82cb20af2ff46ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 7
-  height: 6
+  width: 4
+  height: 4
   tileSize: 1
   dTile: {fileID: 8317786647484967768, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
   sTile: {fileID: 8017520656865270889, guid: 0972d6b3b66998e4aaf8f4290897fe84, type: 3}
@@ -1213,7 +1213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764784623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 2.19, z: 0}
+  m_LocalPosition: {x: 5, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1699957809}
@@ -2359,7 +2359,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
