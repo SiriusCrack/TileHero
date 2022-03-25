@@ -42,8 +42,8 @@ public class GridManager : MonoBehaviour {
                 else {
                     var defaultTile = Instantiate(dTile, new Vector3(x,y), Quaternion.identity);
                     defaultTile.transform.parent = GameObject.Find("GridManager").transform;
-                    defaultTile.GetComponent<Tile>().indX = x;
-                    defaultTile.GetComponent<Tile>().indY = y;                 
+                    defaultTile.GetComponent<EmptyTile>().indX = x;
+                    defaultTile.GetComponent<EmptyTile>().indY = y;                 
                     defaultTile.name = $"T[{x}][{y}]";
                     defaultTile.transform.position = new Vector2(x*tileSize,y*tileSize);
 
@@ -55,8 +55,8 @@ public class GridManager : MonoBehaviour {
     }
 
     public void SetTile(GameObject Tile) {
-        var x = Tile.GetComponent<Tile>().indX;
-        var y = Tile.GetComponent<Tile>().indY;
+        var x = Tile.GetComponent<EmptyTile>().indX;
+        var y = Tile.GetComponent<EmptyTile>().indY;
         var temp = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
         var levelTile = GridStorage[(x,y)];
         temp.transform.parent = GameObject.Find("GridManager").transform;

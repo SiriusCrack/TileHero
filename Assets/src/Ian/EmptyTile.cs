@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour {
+public class EmptyTile : MonoBehaviour {
 
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;

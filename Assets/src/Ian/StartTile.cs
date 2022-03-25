@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartTile : Tile
+public class StartTile : EmptyTile
 {
     public override void OnMouseEnter() {
         highlight.SetActive(false);
