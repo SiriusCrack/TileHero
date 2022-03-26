@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class levelTile : MonoBehaviour {
-   float data;
+   public int exit;
    void Start() {
       Debug.Log("Tile Created");
-      data = Random.value;
+      
    }
 
    void FixedUpdate() {
-      data = data * Random.value;
    }
 }
