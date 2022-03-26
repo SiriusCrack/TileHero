@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class levelTile : MonoBehaviour {
    public int exit;
+   public int indX, indY;
    void Start() {
       Debug.Log("Tile Created");
    }

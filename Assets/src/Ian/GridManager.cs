@@ -57,12 +57,15 @@ public class GridManager : MonoBehaviour {
     public void SetTile(GameObject Tile) {
         var x = Tile.GetComponent<EmptyTile>().indX;
         var y = Tile.GetComponent<EmptyTile>().indY;
-        var temp = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
-        var levelTile = GridStorage[(x,y)];
-        temp.transform.parent = GameObject.Find("GridManager").transform;
-        temp.name = $"LT[{x}][{y}]";
-        temp.transform.position = levelTile.transform.position;
+        var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
+        var prevTileSlot = GridStorage[(x,y)];
+        levelTile.transform.parent = GameObject.Find("GridManager").transform;
+        levelTile.GetComponent<levelTile>().indX = x;
+        levelTile.GetComponent<levelTile>().indY = y;
+        levelTile.name = $"LT[{x}][{y}]";
+        levelTile.transform.position = prevTileSlot.transform.position;
         Destroy(GridStorage[(x,y)]);
-        GridStorage[(x,y)] = temp;
+        GridStorage[(x,y)] = levelTile;
+
     }
 }
