@@ -6,9 +6,9 @@ public class levelTile : MonoBehaviour {
    public int exit;
    void Start() {
       Debug.Log("Tile Created");
-      
    }
 
-   void FixedUpdate() {
+   void SetExit(int arg) {
+      exit = arg;
    }
 }
