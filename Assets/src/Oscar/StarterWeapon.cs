@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Weapon;
 
-
 /*
  * Summary: Updates the stats for the StarterWeapon
  * Member Variables:
@@ -20,9 +19,9 @@ public class StarterWeapon : Weapon
     // Start is called before the first frame update
     void Start()
     {
-        updateSpeed(10);
-        updateDamage(5);
-        updateRange(5);
+        UpdateSpeed(10);
+        UpdateDamage(5);
+        UpdateRange(5);
     }
 
     // Update is called once per frame
