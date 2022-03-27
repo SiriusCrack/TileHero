@@ -24,20 +24,20 @@ public class Boundary_Test
     public void WeaponSpeed()
     {
         weapon.weaponSpeed(100);   
-        Debug.Log("Expected:" + 100 + " Actual:" + weapon.atk_speed);
-        Assert.AreEqual(100,weapon.atk_speed);
+        Debug.Log("Expected:" + 100 + " Actual:" + weapon.atkSpeed);
+        Assert.AreEqual(100,weapon.atkSpeed);
 
         weapon.weaponSpeed(50);    
-        Debug.Log("Expected:" + 50 + " Actual:" + weapon.atk_speed);
-        Assert.AreEqual(50,weapon.atk_speed);
+        Debug.Log("Expected:" + 50 + " Actual:" + weapon.atkSpeed);
+        Assert.AreEqual(50,weapon.atkSpeed);
 
         weapon.weaponSpeed(5);    
-        Debug.Log("Expected:" + 5 + " Actual:" + weapon.atk_speed);
-        Assert.AreEqual(5,weapon.atk_speed);
+        Debug.Log("Expected:" + 5 + " Actual:" + weapon.atkSpeed);
+        Assert.AreEqual(5,weapon.atkSpeed);
 
         weapon.weaponSpeed(-1);    
-        Debug.Log("Expected:" + 5 + " Actual:" + weapon.atk_speed);
-        Assert.AreEqual(5,weapon.atk_speed);
+        Debug.Log("Expected:" + 5 + " Actual:" + weapon.atkSpeed);
+        Assert.AreEqual(5,weapon.atkSpeed);
         
     }
 
