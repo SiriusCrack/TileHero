@@ -43,7 +43,7 @@ public class StressCombatManager : MonoBehaviour
             {
                 Debug.Log("enemy attack");
                 enemies[i].attackTimer = 0;
-                attack = new AttackCommand(enemies[i], enemies[i+1], enemies[i].weapon.atk_damage);
+                attack = new AttackCommand(enemies[i], enemies[i+1], enemies[i].weapon.atkDamage);
                 enemies[i].receiveAttack(attack);
                 Destroy(attack);
                 //if (enemies[i].attackTimer >= enemies[i].weapon.atk_speed)
@@ -65,11 +65,11 @@ public class StressCombatManager : MonoBehaviour
         {
             for (j = 0; j < 50; j++)
             {
-                if (enemies[i].attackTimer >= enemies[i].weapon.atk_speed)
+                if (enemies[i].attackTimer >= enemies[i].weapon.atkSpeed)
                 {
                     Debug.Log("enemy attack");
                     enemies[i].attackTimer = 0;
-                    attack = new AttackCommand(enemies[i], enemies[j], enemies[i].weapon.atk_damage);
+                    attack = new AttackCommand(enemies[i], enemies[j], enemies[i].weapon.atkDamage);
                     enemies[j].receiveAttack(attack);
                     Destroy(attack);
                 }

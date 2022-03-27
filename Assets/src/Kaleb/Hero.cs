@@ -72,7 +72,7 @@ public class Hero : NPC
 
     public void Attack(Weapon weapon)
     {
-        print("Attack: " + weapon.atk_damage);
+        print("Attack: " + weapon.atkDamage);
     }
 
     void OnTriggerEnter2D(Collider2D other)

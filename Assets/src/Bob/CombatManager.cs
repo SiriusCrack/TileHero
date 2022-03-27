@@ -61,12 +61,12 @@ public class CombatManager : MonoBehaviour
                 hero.gameObject.SetActive(false);
             }
             //If the enemy's attack timer reaches their weaponspeed, have them attack the hero
-            if (enemies[currentEnemy].attackTimer >= enemies[currentEnemy].weapon.atk_speed)
+            if (enemies[currentEnemy].attackTimer >= enemies[currentEnemy].weapon.atkSpeed)
             {
                 sendAttack(enemies[currentEnemy], hero);
             }
             //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
-            if (hero.attackTimer >= hero.weapon.atk_speed)
+            if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
                 sendAttack(hero, enemies[currentEnemy]);
             }
@@ -110,7 +110,7 @@ public class CombatManager : MonoBehaviour
         //resets the attack timer
         sender.attackTimer = 0;
         //creates an attack command object based on the sender/reciever
-        attack = new AttackCommand(sender, reciever, sender.weapon.atk_damage);
+        attack = new AttackCommand(sender, reciever, sender.weapon.atkDamage);
         //sends that to the target
         reciever.receiveAttack(attack);
         //destroys the object

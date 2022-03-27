@@ -6,7 +6,7 @@ public class AttackCommand : MonoBehaviour
 {
     public NPC sender;
     public NPC receiver;
-    public int damage;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class AttackCommand : MonoBehaviour
         
     }
 
-    public AttackCommand(NPC issuer, NPC target, int power)
+    public AttackCommand(NPC issuer, NPC target, float power)
     {
         sender = issuer;
         receiver = target;
