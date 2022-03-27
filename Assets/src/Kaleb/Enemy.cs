@@ -1,7 +1,8 @@
+using static NPC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static NPC;
+
 
 public class Enemy : NPC
 {

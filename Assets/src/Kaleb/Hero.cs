@@ -1,12 +1,13 @@
+using static NPC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static NPC;
+
 
 public class Hero : NPC
 {
     public ShopMenu inventory;
-    private bool incombat = false;
+    private bool inCombat = false;
     private float distTraveled = 0f;
     private float finalCoordinates;
     public Enemy currentEnemy;
@@ -25,7 +26,7 @@ public class Hero : NPC
     {
         if(Input.GetKeyDown("p"))
         {
-            setTime();
+            SetTime();
         }
     }
     void FixedUpdate()
@@ -37,7 +38,7 @@ public class Hero : NPC
             //inventory.showInterface();
             
         }
-        else if(!incombat)
+        else if(!inCombat)
         {
             Move(1);
         }
@@ -48,7 +49,7 @@ public class Hero : NPC
 
     }
 
-    public void setTime()
+    public void SetTime()
     {
         if(Time.timeScale == 0)
         {
@@ -60,13 +61,13 @@ public class Hero : NPC
         }
     }
 
-    public void startCombat()
+    public void StartCombat()
     {
-        incombat = true;
+        inCombat = true;
     }
-    public void endCombat()
+    public void EndCombat()
     {
-        incombat = false;
+        inCombat = false;
     }
 
     public void Attack(Weapon weapon)

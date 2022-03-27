@@ -100,7 +100,7 @@ public class CombatManager : MonoBehaviour
         {
             enemies[currentEnemy] = inactiveEnemy;
             inCombat = false;
-            hero.endCombat();
+            hero.EndCombat();
         }
     }
 
@@ -124,7 +124,7 @@ public class CombatManager : MonoBehaviour
         //Debug.Log("Combat begins");
 
         //set hero and combat manager variables to in combat
-        hero.startCombat();
+        hero.StartCombat();
         inCombat = true;
 
         //reset hero an enemy attack timers
