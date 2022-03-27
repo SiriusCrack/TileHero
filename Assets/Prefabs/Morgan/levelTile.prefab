@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.14999999, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 374887483766168067}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &501354259306439247
 SpriteRenderer:
@@ -193,7 +193,7 @@ Transform:
   m_LocalScale: {x: 0.14999999, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 374887483766168067}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1950698098223338191
 SpriteRenderer:
@@ -275,10 +275,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1934542451016380965}
-  - {fileID: 9218749558165681741}
-  - {fileID: 7548132849486354712}
   - {fileID: 6643149127429879689}
+  - {fileID: 9218749558165681741}
+  - {fileID: 1934542451016380965}
+  - {fileID: 7548132849486354712}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -348,6 +348,7 @@ MonoBehaviour:
   exit: 0
   indX: 0
   indY: 0
+  DoorReminder: {fileID: 0}
   enemy: []
   doors: []
 --- !u!1 &6844505441666383358
@@ -379,7 +380,7 @@ Transform:
   m_LocalScale: {x: 0.14999999, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 374887483766168067}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &48112721815248101
 SpriteRenderer:

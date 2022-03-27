@@ -5,6 +5,8 @@ using UnityEngine;
 public class levelTile : MonoBehaviour {
    public int exit;
    public int indX, indY;
+   public GameObject DoorReminder;
+   public GridManager GridManager;
    public List<GameObject> enemy;
    public List<GameObject> doors;
    void Start() {
@@ -17,7 +19,31 @@ public class levelTile : MonoBehaviour {
          if (this.gameObject.transform.GetChild(i).gameObject.tag == "door")
             doors.Add(this.gameObject.transform.GetChild(i).gameObject);
       }
-      SetExit(1);
+      GridManager = this.transform.parent.GetComponent<GridManager>();
+      //DoorReminder = GameObject.Find("DoorReminder").gameObject;
+      //DoorReminder.SetActive(true);
+      
+   }
+
+   void Update() {
+      //if (DoorReminder.active) {
+         if (Input.GetKeyDown("left")) {
+            SetExit(0);
+            //DoorReminder.SetActive(false);
+         }
+         if (Input.GetKeyDown("right")) {
+            SetExit(1);
+            //DoorReminder.SetActive(false);
+         }
+         if (Input.GetKeyDown("up")) {
+            SetExit(2);
+            //DoorReminder.SetActive(false);
+         }
+         if (Input.GetKeyDown("down")) {
+            SetExit(3);
+            //DoorReminder.SetActive(false);
+         }
+      //}
    }
 
    void SetExit(int arg) {
