@@ -9,8 +9,13 @@ public class Enemy : NPC
     // Start is called before the first frame update
     private bool messagePrinted;
     public Enemy thisEnemy;
+    private enum enemyType {Goblin, Skeleton, Cultist};
+    [SerializeField]
+    private enemyType type;
+
     void Start()
     {
+        SetStats(type);
         thisEnemy = this;
         //messagePrinted = false;
     }
@@ -40,17 +45,36 @@ public class Enemy : NPC
         health -= dmg;
     }
 
+    private void SetStats(enemyType localType)
+    {
+        switch(localType)
+        {
+            case enemyType.Goblin:
+                setAtk(.5f);
+                health = 5f;
+                break;
+            case enemyType.Skeleton:
+                setAtk(1f);
+                health = 15f;
+                break;
+            case enemyType.Cultist:
+                setAtk(.75f);
+                health = 13f;
+                break;
+            default:
+                setAtk(1f);
+                health = 10f;
+                break;
+        }
+    }
+
     
 
    /* public int getAtk()
     {
         return base_atk;
-    }
-
-    public void setAtk(int atk)
-    {
-        base_atk = atk;
     }*/
+
 
 }
 
