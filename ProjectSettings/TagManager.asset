@@ -12,6 +12,7 @@ TagManager:
   - Start
   - End
   - door
+  - DoorReminder
   layers:
   - Default
   - TransparentFX

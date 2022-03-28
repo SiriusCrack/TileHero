@@ -7,10 +7,12 @@ public class levelTile : MonoBehaviour {
    public int indX, indY;
    public GameObject DoorReminder;
    public GridManager GridManager;
+   public GameObject thisTile;
    public List<GameObject> enemy;
    public List<GameObject> doors;
    void Start() {
       Debug.Log("Tile Created");
+      exit = 5;
       enemy = new List<GameObject>();
       doors = new List<GameObject>();
       for (int i = 0; i < this.gameObject.transform.childCount; i++) {
@@ -22,31 +24,32 @@ public class levelTile : MonoBehaviour {
       GridManager = this.transform.parent.GetComponent<GridManager>();
       //DoorReminder = GameObject.Find("DoorReminder").gameObject;
       //DoorReminder.SetActive(true);
-      
+      thisTile = this.gameObject;
    }
 
    void Update() {
-      //if (DoorReminder.active) {
+      if (exit == 5) {
          if (Input.GetKeyDown("left")) {
-            SetExit(0);
+            Debug.Log(indX);
+            GridManager.SetDirection(indX, indY, 1, thisTile);
             //DoorReminder.SetActive(false);
          }
          if (Input.GetKeyDown("right")) {
-            SetExit(1);
+            GridManager.SetDirection(indX, indY, 0, thisTile);
             //DoorReminder.SetActive(false);
          }
          if (Input.GetKeyDown("up")) {
-            SetExit(2);
+            GridManager.SetDirection(indX, indY, 3, thisTile);
             //DoorReminder.SetActive(false);
          }
          if (Input.GetKeyDown("down")) {
-            SetExit(3);
+            GridManager.SetDirection(indX, indY, 2, thisTile);
             //DoorReminder.SetActive(false);
          }
-      //}
+      }
    }
 
-   void SetExit(int arg) {
+   public void SetExit(int arg) {
       exit = arg;
       switch(arg) {
             case 0:
