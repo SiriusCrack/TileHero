@@ -19,9 +19,9 @@ public class StarterWeapon : Weapon
     // Start is called before the first frame update
     void Start()
     {
-        UpdateSpeed(10);
-        UpdateDamage(5);
-        UpdateRange(5);
+        UpdateSpeed(10f);
+        UpdateDamage(5f);
+        UpdateRange(5f);
     }
 
     // Update is called once per frame

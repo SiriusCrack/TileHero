@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//slow effect doesnt drop to negative speed
-//
-//stress test, hit very fast but weak weapon
+using System.Threading;
 
 public class Effect : MonoBehaviour
 {
@@ -35,6 +33,11 @@ public class Effect : MonoBehaviour
     {
         
     }
-
+//length ends up being in seconds
+    public void EffectTime(int length)
+    {
+        length = length * 1000;
+        Thread.Sleep(length);
+    }
 
 }

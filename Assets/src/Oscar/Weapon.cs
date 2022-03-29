@@ -108,4 +108,9 @@ public class Weapon : MonoBehaviour
         atkSpeed = speed;
     }
 
+    public void CriticalHit(int chance)
+    {
+        // random %(chance) * damage amount
+    }
+ 
 }
