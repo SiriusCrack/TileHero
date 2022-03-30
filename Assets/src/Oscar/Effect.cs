@@ -11,6 +11,14 @@ public class Effect : MonoBehaviour
     int damage_scalar;
     int damage_multiplier;
     float effectTime;
+    public float strength;
+
+
+    public void EffectFunction()
+    {
+        
+    }
+
 
     // Start is called before the first frame update
     void Start()
