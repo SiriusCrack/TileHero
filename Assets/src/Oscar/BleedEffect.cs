@@ -2,44 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Effect;
+using static NPC;
 
 public class BleedEffect : Effect
 {
-    public Effect effect;
-    public NPC npc;
+    NPC npc;
+    Hero hero;
+    Weapon weapon;
+
     
     // Start is called before the first frame update    
-    void Start()
+    void Update()
     {
-        BleedEffectFunction(1.2f);
+        CountAttacks();
+        //BleedEffectFunction();//1.2f);
     }
 
 //only 1.05 - 1.2 for strength (5% health to 20% health taken away every 5 seconds)
 //will change in the future, will be based on # of hits instead of time
-    public void BleedEffectFunction(float strength)
+    public void BleedEffectFunction()//float strength)
     {
-        float health;
-        
-        while(npc.health > 0f)
-        {
-            Debug.Log("In 5: ");           
-            effect.EffectTime(1);
-            Debug.Log("In 4: ");           
-            effect.EffectTime(1);
-            Debug.Log("In 3: ");           
-            effect.EffectTime(1);
-            Debug.Log("In 2: ");           
-            effect.EffectTime(1);
-            Debug.Log("In 1: ");           
-            effect.EffectTime(1);
-            Debug.Log("Enemy Health = " + npc.health);
-            health = npc.health;
-            npc.health = health / strength;
-            Debug.Log("New Enemy Health = " + npc.health);
+        //float health;
+        //health = npc.health;
+            Debug.Log("EffectTime 3: ");   
+            //EffectTime(1);
+            Debug.Log("EffectTime 2: ");     
+            //EffectTime(1);
+            Debug.Log("EffectTime 1: ");    
+            //EffectTime(1);
+            //Debug.Log("Enemy Health = " + npc.health);
+            //health = npc.health;
+            //npc.health = health / strength;
+            //Debug.Log("New Enemy Health = " + npc.health);
             Debug.Log("Again: ");  
-        }
-
-
     }
+
+
+
+
+    public void CountAttacks()
+    {
+        int counter = 0;
+        if (weapon.attackTimer >= weapon.atkSpeed)
+        {
+            counter = counter + 1;
+            if(counter == 5)
+            {
+                counter = 0;
+                BleedEffectFunction();
+            }
+        }
+    }
+
 
 }

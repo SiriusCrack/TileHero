@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 647679640204617791}
   - component: {fileID: -8646093418106966801}
-  - component: {fileID: -8286040932431502340}
+  - component: {fileID: 3284106922198749491}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8286040932431502340
+--- !u!114 &3284106922198749491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291447435528383079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de50112cd933314390da0ab9b1fab1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 68acd683332d7994abcbd92cfdd2969b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk_speed: 0
-  atk_damage: 0
-  range: 0
+  atkSpeed: 0
+  atkDamage: 0
+  atkRange: 0
   effect: {fileID: 0}
