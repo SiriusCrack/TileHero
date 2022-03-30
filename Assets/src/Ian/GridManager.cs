@@ -80,15 +80,16 @@ public class GridManager : MonoBehaviour {
 
     }
 
-    public void SetDirection(int nextX, int nextY, int exit, GameObject nextTile) {
-        var lastList = Path.Last();
-        GameObject prevTile = lastList.Item2;
+    public void SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
+        //var lastList = Path.Last();
+        //GameObject prevTile = lastList.Item2;
+        nextTile.GetComponent<levelTile>().SetExit(dir);
         Path.Add(((nextX, nextY), nextTile));
-        prevTile.GetComponent<levelTile>().SetExit(exit);
         Debug.Log($"Added {nextTile}: {nextX}, {nextY}");
     }
 
     public void Update() {
+        /*
         if(Input.GetKeyDown("space")) {
             int lasX = Path.Last().Item1.Item1;
             int lasY = Path.Last().Item1.Item2;
@@ -99,5 +100,6 @@ public class GridManager : MonoBehaviour {
                 SetDirection(finX, finY, 2, endTile);
             }
         }
+        */
     }
 }

@@ -11,8 +11,9 @@ TagManager:
   - tileThumb
   - Start
   - End
-  - door
   - DoorReminder
+  - Door
+  - door
   layers:
   - Default
   - TransparentFX
