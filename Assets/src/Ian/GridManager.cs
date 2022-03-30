@@ -9,14 +9,16 @@ public class GridManager : MonoBehaviour {
     [SerializeField] public GameObject dTile; // Default Tile
     [SerializeField] public GameObject sTile; // Start Tile
     [SerializeField] public GameObject eTile; // End Tile
-    private GameObject startTile;
-    private GameObject endTile;
-    private int finX, finY;
     [SerializeField] public Transform mainCamera;
     [SerializeField] public GameObject tileInventory;
     [SerializeField] public GameObject tileFactory;
-    public Dictionary<(int, int), GameObject> GridStorage;
+
     [SerializeField] public List<((int, int), GameObject)> Path;
+    public Dictionary<(int, int), GameObject> GridStorage;
+
+    private GameObject startTile;
+    private GameObject endTile;
+    private int finX, finY;
 
 
     void Start() {
@@ -37,7 +39,6 @@ public class GridManager : MonoBehaviour {
 
                     GridStorage[(x, y)] = startTile;
                     Path.Add(((0, 0), startTile));
-                    Debug.Log(Path[0]);
                 }
                 else if ( x == width-1 && y == height-1 ) {
                     endTile = Instantiate(eTile, new Vector3(x,y), Quaternion.identity);
