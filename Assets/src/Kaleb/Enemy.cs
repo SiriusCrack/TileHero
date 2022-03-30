@@ -9,7 +9,7 @@ public class Enemy : NPC
     // Start is called before the first frame update
     private bool messagePrinted;
     public Enemy thisEnemy;
-    private enum enemyType {Goblin, Skeleton, Cultist};
+    private enum enemyType {Goblin, Skeleton, Cultist, Dummy};
     [SerializeField]
     private enemyType type;
 
@@ -61,6 +61,10 @@ public class Enemy : NPC
                 setAtk(.75f);
                 health = 13f;
                 break;
+            case enemyType.Dummy:
+                setAtk(0f);
+                health = 100f;
+                break;                
             default:
                 setAtk(1f);
                 health = 10f;

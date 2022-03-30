@@ -26,6 +26,8 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     public float atkRange;
+    
+    public int attackTimer = 0;
 
     public Effect effect = null;
 
