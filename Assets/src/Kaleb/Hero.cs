@@ -19,7 +19,7 @@ public class Hero : NPC
 
     public Enemy currentEnemy;
     public bool collectEnemy = false;
-    int left = 0;
+    //int left = 0;
 
     // Start is called before the first frame update
     void Start()

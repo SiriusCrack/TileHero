@@ -94,7 +94,7 @@ public class GridManager : MonoBehaviour {
                 }
             }
         }
-        if ( prevTile.tag == "Start" && Path.Count() == 1 ) {
+        else if ( prevTile.tag == "Start" && Path.Count() == 1 && tileInventory.GetComponent<tileInventory>().SelectedTile != null ) {
             var exit = prevTile.GetComponent<StartTile>().exit;
             int prevX = Path.Last().Item1.Item1;
             int prevY = Path.Last().Item1.Item2;
@@ -116,6 +116,7 @@ public class GridManager : MonoBehaviour {
         }
         if(tileInventory.GetComponent<tileInventory>().SelectedTile == null) {
             Debug.Log("Tile not selected.");
+            return;
         }
         else {
             var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
@@ -132,7 +133,6 @@ public class GridManager : MonoBehaviour {
 
     public bool SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
         GameObject prevTile = Path.Last().Item2;
-
         if ( prevTile.tag == "Start" ) {
             Transform child;
             if( nextX == 1 && nextY == 0) {

@@ -9,8 +9,8 @@ public class StressCombatManager : MonoBehaviour
     public Enemy inactiveEnemy;
     float heroPos;
     float enemyPos;
-    bool messagePrinted;
-    bool inCombat;
+    //bool messagePrinted;
+    //bool inCombat;
     //int currentEnemy = 0;
     //int nextEnemy = 1;
     AttackCommand attack;
@@ -23,8 +23,8 @@ public class StressCombatManager : MonoBehaviour
         //inactiveEnemy.gameObject.SetActive(false);
         //enemies[0] = inactiveEnemy;
         heroPos = hero.transform.localPosition.y;
-        messagePrinted = false;
-        inCombat = false;
+        //messagePrinted = false;
+        //inCombat = false;
     }
 
 
