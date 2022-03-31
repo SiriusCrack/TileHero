@@ -44,7 +44,7 @@ public class GridManager : MonoBehaviour {
                     endTile = Instantiate(eTile, new Vector3(x,y), Quaternion.identity);
                     endTile.transform.parent = GameObject.Find("GridManager").transform;
                     endTile.name = $"ET[{x}][{y}]";
-                    endTile.transform.position = new Vector2(x*tileSize,y*tileSize);
+                    endTile.transform.position = new Vector3(x*tileSize,y*tileSize, 1);
 
                     GridStorage[(x, y)] = endTile;                    
                     finX = x;
@@ -77,29 +77,101 @@ public class GridManager : MonoBehaviour {
         levelTile.transform.position = prevTileSlot.transform.position;
         Destroy(GridStorage[(x,y)]);
         GridStorage[(x,y)] = levelTile;
-
     }
 
     public void SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
-        //var lastList = Path.Last();
-        //GameObject prevTile = lastList.Item2;
+        GameObject prevTile = Path.Last().Item2;
+
+        if ( prevTile.tag == "Start" ) {
+            Transform child;
+            if( nextX == 1 && nextY == 0) {
+                if (dir == 3) {
+                    Debug.Log("An east door from this tile should not be placed.");
+                }
+                child = prevTile.gameObject.transform.Find("EastDoor");
+                child.gameObject.SetActive(true);
+            }
+            else if ( nextX == 0 && nextY == 1) {
+                if (dir == 0) {
+                    Debug.Log("A south door from this tile should not be placed.");
+                }
+                child = prevTile.gameObject.transform.Find("NorthDoor");
+                child.gameObject.SetActive(true);
+            }
+        }
+        if ( prevTile.tag == "LevelTile") {
+            Transform child;
+            int badX = prevTile.GetComponent<levelTile>().indX;
+            int badY = prevTile.GetComponent<levelTile>().indY;
+
+            // For previous Tiles above and below this Tile
+            if( badX == nextX ) {
+                // If previous Tile is above to this Tile
+                if( badY == (nextY + 1) ) {
+                    Debug.Log("The previous tile is above this tile.");
+                    if( dir == 3 ) {
+                        child = prevTile.gameObject.transform.Find("SouthDoor");
+                        if( child.gameObject.activeSelf ) {
+                            Debug.Log("A north door from this tile should not be placed.");
+                        }
+                    }
+                }
+                // If previous Tile is below to this Tile
+                else if( badY == (nextY - 1) ) {
+                    Debug.Log("The previous tile is below this tile.");
+                    if( dir == 2 ) {
+                        child = prevTile.gameObject.transform.Find("NorthDoor");
+                        if( child.gameObject.activeSelf ) {
+                            Debug.Log("A south door from this tile should not be placed.");
+                        }
+                    }
+                }
+            }
+            // For previous Tiles to the right and left of this Tile
+            else if ( badY == nextY ) {
+                // If previous Tile is right to this Tile
+                if( badX == (nextX + 1) ) {
+                    Debug.Log("The previous tile is to the right of this tile.");
+                    if( dir == 1 ) {
+                        child = prevTile.gameObject.transform.Find("WestDoor");
+                        if( child.gameObject.activeSelf ) {
+                            Debug.Log("An east door from this tile should not be placed.");
+                        }
+                    }
+                }
+                // If previous Tile is left to this Tile
+                else if( badX == (nextX - 1) ) {
+                    Debug.Log("The previous tile is to the left of this tile.");
+                    if( dir == 3 ) {
+                        child = prevTile.gameObject.transform.Find("EastDoor");
+                        if( child.gameObject.activeSelf ) {
+                            Debug.Log("A west door from this tile should not be placed.");
+                        }
+                    }
+                }
+            }
+        }
+
         nextTile.GetComponent<levelTile>().SetExit(dir);
         Path.Add(((nextX, nextY), nextTile));
         Debug.Log($"Added {nextTile}: {nextX}, {nextY}");
     }
 
-    public void Update() {
-        /*
-        if(Input.GetKeyDown("space")) {
-            int lasX = Path.Last().Item1.Item1;
-            int lasY = Path.Last().Item1.Item2;
-            if(lasX == finX-1) {
-                SetDirection(finX, finY, 1, endTile);
-            }
-            if(lasY == finY-1) {
-                SetDirection(finX, finY, 2, endTile);
-            }
+    public int checkSameXAxis(int badX, int x) {
+        if( badX == 0 && x == 0 ) {
+            return 0;
         }
-        */
+        else {
+            return x;
+        }
+    }
+
+    public int checkSameYAxis(int badY, int y) {
+        if( badY == 0 && y == 0 ) {
+            return 0;
+        }
+        else {
+            return y;
+        }
     }
 }

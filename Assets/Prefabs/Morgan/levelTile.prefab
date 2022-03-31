@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: -2669491368434995827}
   m_Layer: 0
   m_Name: levelTile
-  m_TagString: Untagged
+  m_TagString: LevelTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,12 +345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e778f44a01d79f52a9c1312f07d7cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exit: 0
+  connected: 0
   indX: 0
   indY: 0
   DoorReminder: {fileID: 0}
   GridManager: {fileID: 0}
-  thisTile: {fileID: 0}
   enemy: []
   doors: []
 --- !u!1 &5087059536211607240

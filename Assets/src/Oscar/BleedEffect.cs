@@ -36,7 +36,7 @@ public class BleedEffect : Effect
             if(counter == 5)
             {
                 counter = 0;
-                BleedEffectFunction();
+                //BleedEffectFunction();
             }
         }
     }

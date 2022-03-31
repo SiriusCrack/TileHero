@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 374887483766168067, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 374887483766168067, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_LocalRotation.w
@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: levelTile-Type1
       objectReference: {fileID: 0}
+    - target: {fileID: 4490643629825170147, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
+      propertyPath: m_TagString
+      value: LevelTile
+      objectReference: {fileID: 0}
     - target: {fileID: 5087059536211607240, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -159,12 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4e298b5a82a63c6b89218cd61bbfc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exit: 0
+  connected: 0
   indX: 0
   indY: 0
   DoorReminder: {fileID: 0}
   GridManager: {fileID: 0}
-  thisTile: {fileID: 0}
   enemy: []
   doors: []
 --- !u!1001 &4625445234496781545

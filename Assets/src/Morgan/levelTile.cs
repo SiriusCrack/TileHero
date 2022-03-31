@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class levelTile : MonoBehaviour {
-   public bool connected = false;
+public class levelTile : MonoBehaviour { 
+   [SerializeField] private bool connected;
    public int indX, indY;
    public GameObject DoorReminder;
    public GridManager GridManager;
@@ -11,6 +11,7 @@ public class levelTile : MonoBehaviour {
    public List<GameObject> doors;
 
    void Start() {
+      connected = false;
       Debug.Log("Custom Tile Type Initialized (" + this.gameObject.name + ")");
       
       enemy = new List<GameObject>();
@@ -28,7 +29,6 @@ public class levelTile : MonoBehaviour {
    }
 
    void Update() {
-
       if( connected == false ) {
          connected = getDoorInput(indX, indY, this.gameObject);
       }
