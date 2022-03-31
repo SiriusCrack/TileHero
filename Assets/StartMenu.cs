@@ -8,6 +8,7 @@ public class StartMenu : MonoBehaviour
 
     public void SwitchScene()
     {
+         SceneManager.LoadScene(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

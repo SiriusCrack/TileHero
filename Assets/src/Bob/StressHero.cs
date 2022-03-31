@@ -86,7 +86,7 @@ public class StressHero : NPC
     //takes in the direction of the next tile
     //moves hero by a set distance in direction specified
 
-    public override void Move(int nextDirection)
+    public override IEnumerator Move(int nextDirection)
     {
         distTraveled = 0f;
         //move right one tile
@@ -98,6 +98,7 @@ public class StressHero : NPC
                 transform.Translate(.05f, 0, 0 * Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 //Debug.Log(transform.position);
+                yield return new WaitForSeconds(1f);
             }
         }
 
@@ -110,6 +111,7 @@ public class StressHero : NPC
                 transform.Translate(-.05f, 0, 0 * Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
+                yield return new WaitForSeconds(1f);
             }
         }
 
@@ -122,6 +124,7 @@ public class StressHero : NPC
                 transform.Translate(0, 0.05f, 0 * Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
+                yield return new WaitForSeconds(1f);
             }
         }
 
@@ -134,6 +137,7 @@ public class StressHero : NPC
                 transform.Translate(0, .05f, 0 * Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
+                yield return new WaitForSeconds(1f);
             }
         }
     }

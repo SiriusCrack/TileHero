@@ -8,8 +8,13 @@ public class Hero : NPC
 {
     public ShopMenu inventory;
     private bool inCombat = false;
+
     private float distTraveled = 0f;
+    private int nextDirection;
+    private bool hasDirection;
     private float finalCoordinates;
+    private bool isMoving;
+
     public Enemy currentEnemy;
     public bool collectEnemy = false;
     int left = 0;
@@ -17,8 +22,9 @@ public class Hero : NPC
     // Start is called before the first frame update
     void Start()
     {
-        //finalCoordinates = GameObject.FindGameObjectWithTag("EndTile").transform.localPosition.x;
-        //print(finalCoordinates);
+        nextDirection = 1;
+        hasDirection = true;
+        isMoving = false;
     }
 
     // Update is called once per frame
@@ -32,23 +38,24 @@ public class Hero : NPC
     void FixedUpdate()
     {
         //やった! ゴールゲット
-        if(transform.position.x > 1.8)
+        if(!inCombat)
         {
-            Time.timeScale = 0;
-            //inventory.showInterface();
-            
-        }
-        else if(!inCombat)
-        {
-            Move(1);
-        }
-        else
-        {
-            attackTimer += 1;
+            if(hasDirection && !isMoving)
+            {
+                StartCoroutine(Move(nextDirection));
+            }
+            if(!hasDirection && !isMoving)
+            {
+                GetNextDirection();
+            }
         }
 
     }
 
+    void GetNextDirection()
+    {
+        print("Waiting for next Direction");
+    }
     public void SetTime()
     {
         if(Time.timeScale == 0)
@@ -89,55 +96,65 @@ public class Hero : NPC
     //takes in the direction of the next tile
     //moves hero by a set distance in direction specified
 
-    public override void Move(int nextDirection)
+    public override IEnumerator Move(int nextDirection)
     {
         distTraveled = 0f;
+        hasDirection = false;
+        isMoving = true;
         //move right one tile
         if(nextDirection == 1)
         {
-            if(distTraveled < 1.15f)
+            while(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(.05f,0,0);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 //Debug.Log(transform.position);
+                yield return new WaitForSeconds(.05f);
             }
+            isMoving = false;
         }
 
         //move left one tile
-        if(nextDirection == 2)
+        if(nextDirection == 3)
         {
-             if(distTraveled < 1.15f)
+             while(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(-.05f,0,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
+                yield return new WaitForSeconds(.05f);
             }
+            isMoving = false;
         }
 
         //move up one tile
-        if(nextDirection == 3)
+        if(nextDirection == 0)
         {
-             if(distTraveled < 1.15f)
+             while(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(0,0.05f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
+                yield return new WaitForSeconds(.05f);
             }
+            isMoving = false;
         }
 
         //move down one tile
-        if(nextDirection == 4)
+        if(nextDirection == 2)
         {
-             if(distTraveled < 1.15f)
+             while(distTraveled < 1.15f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(0,.05f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
+                yield return new WaitForSeconds(.05f);
             }
+            isMoving = false;
         }
     }
 }
