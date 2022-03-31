@@ -10,9 +10,11 @@ public class Hero : NPC
     private bool inCombat = false;
 
     private float distTraveled = 0f;
+    [SerializeField]
     private int nextDirection;
+
     private bool hasDirection;
-    private float finalCoordinates;
+    private GameObject currentTile;
     private bool isMoving;
 
     public Enemy currentEnemy;
@@ -22,14 +24,15 @@ public class Hero : NPC
     // Start is called before the first frame update
     void Start()
     {
-        nextDirection = 1;
-        hasDirection = true;
-        isMoving = false;
+    
     }
     void Awake()
     {
+        currentTile = GameObject.FindWithTag("Start");
+        nextDirection = currentTile.GetComponent<StartTile>().exit;
         print("Enabled the Hero");
-        nextDirection = 1;
+        print("Current Direction: " + nextDirection);
+        //nextDirection = 1;
         hasDirection = true;
         isMoving = false;
     }
@@ -60,7 +63,7 @@ public class Hero : NPC
 
     void GetNextDirection()
     {
-        print("Waiting for next Direction");
+        
     }
     public void SetTime()
     {
@@ -88,15 +91,22 @@ public class Hero : NPC
         print("Attack: " + weapon.atkDamage);
     }
 
-    /*void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "enemy")
+        print("Collision here");
+        if (other.tag == "LevelTile")
         {
-            currentEnemy = other.GetComponent<Enemy>().thisEnemy;
-            collectEnemy = true;
-            Debug.Log(currentEnemy);
+            nextDirection = other.GetComponent<levelTile>().exit;
+            print("Next Direction: " + nextDirection);
+            hasDirection = true;
         }
-    }*/
+        if (other.tag == "StartTile")
+        {
+            nextDirection = other.GetComponent<levelTile>().exit;
+            print("Next Direction: " + nextDirection);
+            hasDirection = true;
+        }
+    }
 
     //move hero automatically between tiles
     //takes in the direction of the next tile

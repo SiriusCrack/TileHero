@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3198062686072722932}
   - component: {fileID: 6960573136598168317}
   - component: {fileID: 4761299609847670832}
+  - component: {fileID: 4686044112341243466}
   m_Layer: 0
   m_Name: Hero
   m_TagString: hero
@@ -97,9 +98,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  base_atk: 0
+  baseAtk: 0
+  attackTimer: 0
   weapon: {fileID: 8861393206462885043, guid: b4b7893d1baf2184ca7bcffa31e1ce84, type: 3}
   inventory: {fileID: 0}
+  nextDirection: 0
+  currentEnemy: {fileID: 0}
+  collectEnemy: 0
 --- !u!114 &4761299609847670832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,4 +117,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a8ccc0016a32b4199f874490fddc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiInventory: {fileID: 0}
+--- !u!61 &4686044112341243466
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216617092144729942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
