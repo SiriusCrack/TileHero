@@ -101,6 +101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin1
       objectReference: {fileID: 0}
+    - target: {fileID: 3479133843326469579, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1833928514616326164}
     - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -147,6 +151,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+--- !u!4 &6856460480804116850 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+  m_PrefabInstance: {fileID: 3725247507012657842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4277307233762989791
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2656839624965427053}
+    m_Modifications:
+    - target: {fileID: 5210899225285708230, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_Name
+      value: GoblinWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+--- !u!114 &5725060537292252237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8372064703174652562, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+  m_PrefabInstance: {fileID: 4277307233762989791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68acd683332d7994abcbd92cfdd2969b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5209340045429601453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin0
       objectReference: {fileID: 0}
+    - target: {fileID: 3479133843326469579, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 5725060537292252237}
     - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -204,3 +285,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+--- !u!4 &2656839624965427053 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+  m_PrefabInstance: {fileID: 5209340045429601453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7880419987509594758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6856460480804116850}
+    m_Modifications:
+    - target: {fileID: 5210899225285708230, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_Name
+      value: GoblinWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10002.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855229917954263966, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+--- !u!114 &1833928514616326164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8372064703174652562, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+  m_PrefabInstance: {fileID: 7880419987509594758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68acd683332d7994abcbd92cfdd2969b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

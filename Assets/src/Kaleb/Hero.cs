@@ -7,7 +7,8 @@ using UnityEngine;
 public class Hero : NPC
 {
     public ShopMenu inventory;
-    private bool inCombat = false;
+    
+    private bool inCombat = false; //Bob Variable
 
     private float distTraveled = 0f;
     [SerializeField]
@@ -17,8 +18,10 @@ public class Hero : NPC
     private GameObject currentTile;
     private bool isMoving;
 
-    public Enemy currentEnemy;
-    public bool collectEnemy = false;
+    public Enemy currentEnemy; //Bob Variable
+    [SerializeField]
+    public bool collectEnemy = false; //Bob Variable
+    public List<GameObject> enemies; //Bob Variable
     int left = 0;
 
     // Start is called before the first frame update
@@ -58,6 +61,10 @@ public class Hero : NPC
                 GetNextDirection();
             }
         }
+        else
+        {
+            attackTimer += 1;
+        }
 
     }
 
@@ -96,6 +103,14 @@ public class Hero : NPC
         print("Collision here");
         if (other.tag == "LevelTile")
         {
+            Debug.Log("Real tile collided");
+            /*Bob: start combat should prevent movement, enemies = ... will store
+            the enemies from the tile in the hero, then collectEnemy being set to
+            true will tell the combat manager to pick them up off the hero*/ 
+            StartCombat();
+            enemies = other.GetComponent<levelTile>().enemy;
+            collectEnemy = true;
+
             nextDirection = other.GetComponent<levelTile>().exit;
             print("Next Direction: " + nextDirection);
             hasDirection = true;
