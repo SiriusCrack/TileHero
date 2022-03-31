@@ -26,9 +26,9 @@ public class Enemy : NPC
         
     }
 
-    public override void Move(int heroLocation)
+    public override IEnumerator Move(int heroLocation)
     {
-        
+        yield return new WaitForSeconds(1f);
     }
 
     void FixedUpdate()

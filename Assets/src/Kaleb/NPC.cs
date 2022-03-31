@@ -53,7 +53,7 @@ public abstract class NPC : MonoBehaviour
         }
     }
 
-    public abstract void Move(int goalCoords);
+    public abstract IEnumerator Move(int goalCoords);
     public float getAtk()
     {
         return baseAtk;
