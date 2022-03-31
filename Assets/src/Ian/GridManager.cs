@@ -20,6 +20,8 @@ public class GridManager : MonoBehaviour {
     private GameObject endTile;
     private int finX, finY;
 
+    
+
 
     void Start() {
         initGrid();
@@ -35,8 +37,8 @@ public class GridManager : MonoBehaviour {
                     startTile = Instantiate(sTile, new Vector3(x,y), Quaternion.identity);
                     startTile.transform.parent = GameObject.Find("GridManager").transform;
                     startTile.name = $"ST[{x}][{y}]";
-                    startTile.transform.position = new Vector3(x*tileSize,y*tileSize,-1);
-
+                    startTile.transform.position = new Vector3(x*tileSize,y*tileSize,0);
+            
                     GridStorage[(x, y)] = startTile;
                     Path.Add(((0, 0), startTile));
                 }
@@ -44,7 +46,7 @@ public class GridManager : MonoBehaviour {
                     endTile = Instantiate(eTile, new Vector3(x,y), Quaternion.identity);
                     endTile.transform.parent = GameObject.Find("GridManager").transform;
                     endTile.name = $"ET[{x}][{y}]";
-                    endTile.transform.position = new Vector3(x*tileSize,y*tileSize,1);
+                    endTile.transform.position = new Vector3(x*tileSize,y*tileSize,0);
 
                     GridStorage[(x, y)] = endTile;                    
                     finX = x;
@@ -63,6 +65,16 @@ public class GridManager : MonoBehaviour {
             }
         }
         mainCamera.transform.position = new Vector3(((float)width*tileSize)/2 - 0.5f, ((float)height*tileSize)/2 - 0.5f, -10);
+        if( width > 5 || height > 5)
+        {
+            mainCamera.gameObject.GetComponent<Camera>().orthographicSize = 3.5f;
+        }
+        else {
+            mainCamera.gameObject.GetComponent<Camera>().orthographicSize = 3;
+        }
+        
+
+
     }
 
     public void SetTile(GameObject Tile) {
