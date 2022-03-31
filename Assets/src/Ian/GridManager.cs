@@ -35,7 +35,7 @@ public class GridManager : MonoBehaviour {
                     startTile = Instantiate(sTile, new Vector3(x,y), Quaternion.identity);
                     startTile.transform.parent = GameObject.Find("GridManager").transform;
                     startTile.name = $"ST[{x}][{y}]";
-                    startTile.transform.position = new Vector2(x*tileSize,y*tileSize);
+                    startTile.transform.position = new Vector3(x*tileSize,y*tileSize,1);
 
                     GridStorage[(x, y)] = startTile;
                     Path.Add(((0, 0), startTile));
