@@ -44,7 +44,7 @@ public class GridManager : MonoBehaviour {
                     endTile = Instantiate(eTile, new Vector3(x,y), Quaternion.identity);
                     endTile.transform.parent = GameObject.Find("GridManager").transform;
                     endTile.name = $"ET[{x}][{y}]";
-                    endTile.transform.position = new Vector3(x*tileSize,y*tileSize, 1);
+                    endTile.transform.position = new Vector3(x*tileSize,y*tileSize,1);
 
                     GridStorage[(x, y)] = endTile;                    
                     finX = x;
@@ -68,6 +68,32 @@ public class GridManager : MonoBehaviour {
     public void SetTile(GameObject Tile) {
         var x = Tile.GetComponent<EmptyTile>().indX;
         var y = Tile.GetComponent<EmptyTile>().indY;
+        GameObject prevTile = Path.Last().Item2;
+        if ( prevTile.tag != "Start" ) {
+            var exit = prevTile.GetComponent<levelTile>().exit;
+            int prevX = Path.Last().Item1.Item1;
+            int prevY = Path.Last().Item1.Item2;
+            if(exit == 0) {
+                if (x != prevX || y != prevY+1) {
+                    return;
+                }
+            }
+            if(exit == 1) {
+                if (y != prevY || x != prevX+1) {
+                    return;
+                }
+            }
+            if(exit == 2) {
+                if (x != prevX || y != prevY-1) {
+                    return;
+                }
+            }
+            if(exit == 3) {
+                if (y != prevY || x != prevX-1) {
+                    return;
+                }
+            }
+        }
         var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
         var prevTileSlot = GridStorage[(x,y)];
         levelTile.transform.parent = GameObject.Find("GridManager").transform;
@@ -79,7 +105,7 @@ public class GridManager : MonoBehaviour {
         GridStorage[(x,y)] = levelTile;
     }
 
-    public void SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
+    public bool SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
         GameObject prevTile = Path.Last().Item2;
 
         if ( prevTile.tag == "Start" ) {
@@ -109,10 +135,11 @@ public class GridManager : MonoBehaviour {
                 // If previous Tile is above to this Tile
                 if( badY == (nextY + 1) ) {
                     Debug.Log("The previous tile is above this tile.");
-                    if( dir == 3 ) {
+                    if( dir == 0 ) {
                         child = prevTile.gameObject.transform.Find("SouthDoor");
                         if( child.gameObject.activeSelf ) {
                             Debug.Log("A north door from this tile should not be placed.");
+                            return false;
                         }
                     }
                 }
@@ -123,6 +150,7 @@ public class GridManager : MonoBehaviour {
                         child = prevTile.gameObject.transform.Find("NorthDoor");
                         if( child.gameObject.activeSelf ) {
                             Debug.Log("A south door from this tile should not be placed.");
+                            return false;
                         }
                     }
                 }
@@ -136,6 +164,7 @@ public class GridManager : MonoBehaviour {
                         child = prevTile.gameObject.transform.Find("WestDoor");
                         if( child.gameObject.activeSelf ) {
                             Debug.Log("An east door from this tile should not be placed.");
+                            return false;
                         }
                     }
                 }
@@ -146,6 +175,7 @@ public class GridManager : MonoBehaviour {
                         child = prevTile.gameObject.transform.Find("EastDoor");
                         if( child.gameObject.activeSelf ) {
                             Debug.Log("A west door from this tile should not be placed.");
+                            return false;
                         }
                     }
                 }
@@ -155,23 +185,6 @@ public class GridManager : MonoBehaviour {
         nextTile.GetComponent<levelTile>().SetExit(dir);
         Path.Add(((nextX, nextY), nextTile));
         Debug.Log($"Added {nextTile}: {nextX}, {nextY}");
-    }
-
-    public int checkSameXAxis(int badX, int x) {
-        if( badX == 0 && x == 0 ) {
-            return 0;
-        }
-        else {
-            return x;
-        }
-    }
-
-    public int checkSameYAxis(int badY, int y) {
-        if( badY == 0 && y == 0 ) {
-            return 0;
-        }
-        else {
-            return y;
-        }
+        return true;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class levelTile : MonoBehaviour { 
    [SerializeField] private bool connected;
+   public int exit;
    public int indX, indY;
    public GameObject DoorReminder;
    public GridManager GridManager;
@@ -37,20 +38,16 @@ public class levelTile : MonoBehaviour {
    public bool getDoorInput(int x, int y, GameObject tile) {
 
       if( Input.GetKeyDown("up") ) {
-         GridManager.SetDirection(x, y, 0, tile);
-         return true;
+         return GridManager.SetDirection(x, y, 0, tile);
       }
       if( Input.GetKeyDown("right") ) {
-         GridManager.SetDirection(x, y, 1, tile);
-         return true;
+         return GridManager.SetDirection(x, y, 1, tile);
       }
       if( Input.GetKeyDown("down") ) {
-         GridManager.SetDirection(x, y, 2, tile);
-         return true;
+         return GridManager.SetDirection(x, y, 2, tile);
       }
       if( Input.GetKeyDown("left") ) {
-         GridManager.SetDirection(x, y, 3, tile);
-         return true;
+         return GridManager.SetDirection(x, y, 3, tile);
       }
       else {
          return false;
@@ -58,6 +55,7 @@ public class levelTile : MonoBehaviour {
    }
 
    public void SetExit(int dir) {
+      exit = dir;
       switch (dir)
       {
          case 0:

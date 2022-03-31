@@ -127,7 +127,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: a25962dacbb872345b780e7a4c738ead, type: 3}
   cursorMode: 0
-  select: {fileID: 1010872867271547511}
   highlight: {fileID: 9108486620518327807}
+  select: {fileID: 1010872867271547511}
 --- !u!1 &9108486620518327807
 GameObject:
   m_ObjectHideFlags: 0
