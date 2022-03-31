@@ -7,7 +7,7 @@ public class StartTile : EmptyTile
     public int exit;
 
     void Start() {
-        exit = 5;
+        exit = -1;
     }
     public override void OnMouseEnter() {
         highlight.SetActive(false);

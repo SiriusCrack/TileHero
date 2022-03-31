@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2669491368434995827, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
+      propertyPath: indX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 63509408911565641, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -25,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 374887483766168067, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 374887483766168067, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 374887483766168067, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 374887483766168067, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_LocalRotation.w
@@ -77,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490643629825170147, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_Name
-      value: levelTile-Type2
+      value: LT[1][0]
       objectReference: {fileID: 0}
     - target: {fileID: 5087059536211607240, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_IsActive

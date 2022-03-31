@@ -13,8 +13,8 @@ public class levelTile : MonoBehaviour {
    public List<GameObject> doors;
 
    void Start() {
+
       connected = false;
-      exit = 5;
       Debug.Log("Custom Tile Type Initialized (" + this.gameObject.name + ")");
       
       enemy = new List<GameObject>();
@@ -30,28 +30,32 @@ public class levelTile : MonoBehaviour {
       GridManager = this.transform.parent.GetComponent<GridManager>();
    }
 
-   void Update() {
-      //if(this.gameObject != null) {
-         if( connected == false ) {
-            connected = getDoorInput(indX, indY, this.gameObject);
-      }
-      //}
-      
+   void Awake() {
+
+      thisTile = this.gameObject;
    }
 
-   public bool getDoorInput(int x, int y, GameObject tile) {
+   void Update() {
+
+      thisTile = this.gameObject;
+      if ( connected == false ) {
+         connected = getDoorInput(indX, indY, thisTile);
+      }
+   }
+
+   public bool getDoorInput(int x, int y, GameObject Tile) {
 
       if( Input.GetKeyDown("up") ) {
-         return GridManager.SetDirection(x, y, 0, tile);
+         return GridManager.SetDirection(x, y, 0, Tile);
       }
-      if( Input.GetKeyDown("right") ) {
-         return GridManager.SetDirection(x, y, 1, tile);
+      else if( Input.GetKeyDown("right") ) {
+         return GridManager.SetDirection(x, y, 1, Tile);
       }
-      if( Input.GetKeyDown("down") ) {
-         return GridManager.SetDirection(x, y, 2, tile);
+      else if( Input.GetKeyDown("down") ) {
+         return GridManager.SetDirection(x, y, 2, Tile);
       }
-      if( Input.GetKeyDown("left") ) {
-         return GridManager.SetDirection(x, y, 3, tile);
+      else if( Input.GetKeyDown("left") ) {
+         return GridManager.SetDirection(x, y, 3, Tile);
       }
       else {
          return false;
@@ -59,6 +63,7 @@ public class levelTile : MonoBehaviour {
    }
 
    public void SetExit(int dir) {
+      
       exit = dir;
       switch (dir)
       {

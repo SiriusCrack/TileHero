@@ -13,7 +13,6 @@ TagManager:
   - End
   - DoorReminder
   - Door
-  - door
   - LevelTile
   layers:
   - Default

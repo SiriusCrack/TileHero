@@ -20,9 +20,6 @@ public class GridManager : MonoBehaviour {
     private GameObject endTile;
     private int finX, finY;
 
-    
-
-
     void Start() {
         initGrid();
     }
@@ -78,152 +75,263 @@ public class GridManager : MonoBehaviour {
     }
 
     public void SetTile(GameObject Tile) {
+        // Current index of selected tile.
         var x = Tile.GetComponent<EmptyTile>().indX;
         var y = Tile.GetComponent<EmptyTile>().indY;
-        GameObject prevTile = Path.Last().Item2;
-        if ( prevTile.tag != "Start" ) {
-            var exit = prevTile.GetComponent<levelTile>().exit;
-            int prevX = Path.Last().Item1.Item1;
-            int prevY = Path.Last().Item1.Item2;
-            if(exit == 0) {
-                if (x != prevX || y != prevY+1) {
-                    return;
-                }
-            }
-            if(exit == 1) {
-                if (y != prevY || x != prevX+1) {
-                    return;
-                }
-            }
-            if(exit == 2) {
-                if (x != prevX || y != prevY-1) {
-                    return;
-                }
-            }
-            if(exit == 3) {
-                if (y != prevY || x != prevX-1) {
-                    return;
-                }
-            }
+        
+        // Stores the selected tile type.
+        var TileTypeCheck = tileInventory.GetComponent<tileInventory>().SelectedTile;
+
+        // Check if no tile type has been selected.
+        if( TileTypeCheck == null ) {
+            Debug.Log("SetTile() :: ERROR! No tile type selected!");
+            return;
         }
-        if ( prevTile.tag == "Start" && Path.Count() == 1 ) {
-            var exit = prevTile.GetComponent<StartTile>().exit;
-            int prevX = Path.Last().Item1.Item1;
-            int prevY = Path.Last().Item1.Item2;
-            Transform child;
-            if ( x == 1 && y == 0) {
-                child = prevTile.gameObject.transform.Find("EastDoor");
-                child.gameObject.SetActive(true);
-                prevTile.GetComponent<StartTile>().exit = 1;
+        // If there is a valid tile type.
+        else if ( TileTypeCheck != null ) {
+
+            var prevTile = Path.Last().Item2;
+            int prevTileX = Path.Last().Item1.Item1;
+            int prevTileY = Path.Last().Item1.Item2;
+            Debug.Log($"SetTile() :: Selected Tile: \"{Tile.name}\", Index: [{x}][{y}]");
+            Debug.Log($"SetTile() :: Previous Tile: \"{prevTile.name}\", Index: [{prevTileX}][{prevTileY}]");
+
+            // Check if previous tile is the "Start".
+            if( prevTile.tag == "Start" )
+            {
+                Transform child; 
+                int exitStart = prevTile.GetComponent<StartTile>().exit; // Get exit direction of "Start".
+                // If the previous x equals the current x.
+                if ( prevTileX == x ) {
+                    // If current tile is above the "Start".
+                    if ( prevTileY == y - 1 ) {
+                        Debug.Log("Selected Tile is above \"Start\"");
+                        if( exitStart == -1 ) {
+                            initTile(Tile);
+                            prevTile.GetComponent<StartTile>().exit = 0;    // Set exit variable to direction.
+                            child = prevTile.gameObject.transform.Find("NorthDoor"); // Get the door child object.
+                            child.gameObject.SetActive(true); // Activate child object.
+                        }
+                    }
+                    // If current tile is below the "Start".
+                    else if ( prevTileY == y + 1) {
+                        Debug.Log("Selected Tile is below \"Start\"");
+                        if( exitStart == -1 ) {
+                            initTile(Tile);
+                            prevTile.GetComponent<StartTile>().exit = 2;
+                            child = prevTile.gameObject.transform.Find("SouthDoor");
+                            child.gameObject.SetActive(true);
+                        }
+                    }
+                }
+                // If the previous y equals the current y.
+                else if ( prevTileY == y ) {
+                    // If current tile is right of the "Start".
+                    if ( prevTileX == x - 1 ) {
+                        Debug.Log("Selected Tile is right of \"Start\"");
+                        if( exitStart == -1 ) {
+                            initTile(Tile);
+                            prevTile.GetComponent<StartTile>().exit = 1;
+                            child = prevTile.gameObject.transform.Find("EastDoor");
+                            child.gameObject.SetActive(true);
+                        }
+                    }
+                    // If current tile is left of the "Start".
+                    else if ( prevTileX == x + 1 ) {
+                        Debug.Log("Selected Tile is left of \"Start\"");
+                        if( exitStart == -1 ) {
+                            initTile(Tile);
+                            prevTile.GetComponent<StartTile>().exit = 3;
+                            child = prevTile.gameObject.transform.Find("WestDoor");
+                            child.gameObject.SetActive(true);
+                        }
+                    }
+                }
             }
-            else if ( x == 0 && y == 1) {
-                child = prevTile.gameObject.transform.Find("NorthDoor");
-                child.gameObject.SetActive(true);
-                prevTile.GetComponent<StartTile>().exit = 0;
+            // Check if previous tile is a "LevelTile".
+            else if( prevTile.tag == "LevelTile" )
+            {
+                Transform child;
+                // If the previous x equals the current x.
+                if ( prevTileX == x ) {
+                    // If current tile is above a "LevelTile".
+                    if ( prevTileY == y - 1 ) {
+                        Debug.Log("Selected Tile is above \"LevelTile\"");
+                        child = prevTile.gameObject.transform.Find("NorthDoor");
+                        if( !(child.gameObject.activeSelf) ) {
+                            Debug.Log("Invalid placement.");
+                        }
+                        else {
+                            initTile(Tile);
+                        }
+                    }
+                    // If current tile is below a "LevelTile".
+                    else if ( prevTileY == y + 1) {
+                        Debug.Log("Selected Tile is below \"LevelTile\"");
+                        child = prevTile.gameObject.transform.Find("SouthDoor");
+                        if( !(child.gameObject.activeSelf) ) {
+                            Debug.Log("Invalid placement.");
+                        }
+                        else {
+                            initTile(Tile);
+                        }
+                    }
+                }
+                // If the previous y equals the current y.
+                else if ( prevTileY == y ) {
+                    // If current tile is right of a "LevelTile".
+                    if ( prevTileX == x - 1 ) {
+                        Debug.Log("Selected Tile is right of \"LevelTile\"");
+                        child = prevTile.gameObject.transform.Find("EastDoor");
+                        if( !(child.gameObject.activeSelf) ) {
+                            Debug.Log("Invalid placement.");
+                        }
+                        else {
+                            initTile(Tile);
+                        }
+                    }
+                    // If current tile is left of a "LevelTile".
+                    else if ( prevTileX == x + 1 ) {
+                        Debug.Log("Selected Tile is left of \"LevelTile\"");
+                        child = prevTile.gameObject.transform.Find("WestDoor");
+                        if( !(child.gameObject.activeSelf) ) {
+                            Debug.Log("Invalid placement.");
+                        }
+                        else {
+                            initTile(Tile);
+                        }
+                    }
+                }
             }
-            else if (x >= prevX+1 || y >= prevY+1) {
-                Debug.Log("Invalid tile placement.");
-                return;
+            else {
+                Debug.Log("Invalid placement.");
             }
-        }
-        if(tileInventory.GetComponent<tileInventory>().SelectedTile == null) {
-            Debug.Log("Tile not selected.");
-        }
-        else {
-            var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
-            var prevTileSlot = GridStorage[(x,y)];
-            levelTile.transform.parent = GameObject.Find("GridManager").transform;
-            levelTile.GetComponent<levelTile>().indX = x;
-            levelTile.GetComponent<levelTile>().indY = y;
-            levelTile.name = $"LT[{x}][{y}]";
-            levelTile.transform.position = prevTileSlot.transform.position;
-            Destroy(GridStorage[(x,y)]);
-            GridStorage[(x,y)] = levelTile;
         }
     }
 
-    public bool SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
+    public void initTile(GameObject Tile) {
+        // CREATES THE LEVEL TILE AND ADD TO GRID STORAGE (INITIALIZES TILE PLACEMENT)
+        // Current index of selected tile.
+        var x = Tile.GetComponent<EmptyTile>().indX;
+        var y = Tile.GetComponent<EmptyTile>().indY;
+        var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile); // Get the particular tile type for the designated location.
+        var prevTileSlot = GridStorage[(x,y)]; // Return the current tile game object from Grid Storage.
+        levelTile.transform.parent = GameObject.Find("GridManager").transform; // Designate this new level as a child to Grid Manager.
+        levelTile.GetComponent<levelTile>().indX = x; // Set the index, x.
+        levelTile.GetComponent<levelTile>().indY = y; // Set the index, y.
+        levelTile.name = $"LT[{x}][{y}]"; // Name accordingly.
+        levelTile.transform.position = prevTileSlot.transform.position; // Set the position of the tile to the previous.
+        Destroy(GridStorage[(x,y)]); // Destroy the old tile object.
+        GridStorage[(x,y)] = levelTile; // Store the level tile object in Grid Storage.
+    }
+
+
+    public bool SetDirection(int x, int y, int dir, GameObject nextTile) {
         GameObject prevTile = Path.Last().Item2;
 
-        if ( prevTile.tag == "Start" ) {
-            Transform child;
-            if( nextX == 1 && nextY == 0) {
-                if (dir == 3) {
-                    Debug.Log("An east door from this tile should not be placed.");
-                }
-                child = prevTile.gameObject.transform.Find("EastDoor");
-                child.gameObject.SetActive(true);
-                prevTile.GetComponent<StartTile>().exit = 1;
-            }
-            else if ( nextX == 0 && nextY == 1) {
-                if (dir == 0) {
-                    Debug.Log("A south door from this tile should not be placed.");
-                }
-                child = prevTile.gameObject.transform.Find("NorthDoor");
-                child.gameObject.SetActive(true);
-                prevTile.GetComponent<StartTile>().exit = 0;
+        // Check if door placement is out of bounds.
+        if ( dir == 0 ) {
+            if ( y + 1 >= height ) {
+                Debug.Log("Cannot place a door out of bounds!");
+                return false;
             }
         }
-        if ( prevTile.tag == "LevelTile") {
-            Transform child;
-            int badX = prevTile.GetComponent<levelTile>().indX;
-            int badY = prevTile.GetComponent<levelTile>().indY;
+        if ( dir == 1 ) {
+            if( x + 1 >= width ) {
+                Debug.Log("Cannot place a door out of bounds!");
+                return false;
+            }
+        }
+        if ( dir == 2 ) {
+            if ( y - 1 < 0 ) {
+                Debug.Log("Cannot place a door out of bounds!");
+                return false;
+            }
+        }
+        if ( dir == 3)  {
+            if ( x - 1 < 0 ) {
+                Debug.Log("Cannot place a door out of bounds!");
+                return false;
+            }
+        }
 
-            // For previous Tiles above and below this Tile
-            if( badX == nextX ) {
-                // If previous Tile is above to this Tile
-                if( badY == (nextY + 1) ) {
-                    Debug.Log("The previous tile is above this tile.");
-                    if( dir == 0 ) {
-                        child = prevTile.gameObject.transform.Find("SouthDoor");
-                        if( child.gameObject.activeSelf ) {
-                            Debug.Log("A north door from this tile should not be placed.");
-                            return false;
-                        }
-                    }
+        // Check if current tile's door direction collides with its previous adjacent tile's.
+        if ( prevTile.tag == "Start" ) {
+            if( x == 1 && y == 0) {
+                if (dir == 3) {
+                    Debug.Log("An east door from this tile should not be placed.");
+                    return false;
                 }
-                // If previous Tile is below to this Tile
-                else if( badY == (nextY - 1) ) {
-                    Debug.Log("The previous tile is below this tile.");
+            }
+            else if ( x == 0 && y == 1) {
+                if (dir == 0) {
+                    Debug.Log("A south door from this tile should not be placed.");
+                    return false;
+                }
+            }
+        }
+        else if ( prevTile.tag == "LevelTile") {
+            Transform child;
+            int prevTileX = prevTile.GetComponent<levelTile>().indX;
+            int prevTileY = prevTile.GetComponent<levelTile>().indY;
+
+            if ( prevTileX == x ) {
+                // If current tile is above a "LevelTile".
+                if ( prevTileY == y - 1 ) {
+                    //Debug.Log("Selected Tile is above \"LevelTile\"");
                     if( dir == 2 ) {
                         child = prevTile.gameObject.transform.Find("NorthDoor");
                         if( child.gameObject.activeSelf ) {
-                            Debug.Log("A south door from this tile should not be placed.");
+                            Debug.Log("Invalid door placement.");
+                            return false;
+                        }
+                    }
+                }
+                // If current tile is below a "LevelTile".
+                else if ( prevTileY == y + 1) {
+                    //Debug.Log("Selected Tile is below \"LevelTile\"");
+                    if( dir == 0 ) {
+                        child = prevTile.gameObject.transform.Find("SouthDoor");
+                        if( child.gameObject.activeSelf ) {
+                            Debug.Log("Invalid door placement.");
                             return false;
                         }
                     }
                 }
             }
-            // For previous Tiles to the right and left of this Tile
-            else if ( badY == nextY ) {
-                // If previous Tile is right to this Tile
-                if( badX == (nextX + 1) ) {
-                    Debug.Log("The previous tile is to the right of this tile.");
-                    if( dir == 1 ) {
-                        child = prevTile.gameObject.transform.Find("WestDoor");
+            // If the previous y equals the current y.
+            else if ( prevTileY == y ) {
+                // If current tile is right of a "LevelTile".
+                if ( prevTileX == x - 1 ) {
+                    //Debug.Log("Selected Tile is right of \"LevelTile\"");
+                    if( dir == 3 ) {
+                        child = prevTile.gameObject.transform.Find("EastDoor");
                         if( child.gameObject.activeSelf ) {
-                            Debug.Log("An east door from this tile should not be placed.");
+                            Debug.Log("Invalid door placement.");
                             return false;
                         }
                     }
                 }
-                // If previous Tile is left to this Tile
-                else if( badX == (nextX - 1) ) {
-                    Debug.Log("The previous tile is to the left of this tile.");
-                    if( dir == 3 ) {
-                        child = prevTile.gameObject.transform.Find("EastDoor");
+                // If current tile is left of a "LevelTile".
+                else if ( prevTileX == x + 1 ) {
+                    //Debug.Log("Selected Tile is left of \"LevelTile\"");
+                    if( dir == 1 ) {
+                        child = prevTile.gameObject.transform.Find("WestDoor");
                         if( child.gameObject.activeSelf ) {
-                            Debug.Log("A west door from this tile should not be placed.");
+                            Debug.Log("Invalid door placement.");
                             return false;
                         }
                     }
                 }
             }
         }
-
         nextTile.GetComponent<levelTile>().SetExit(dir);
-        Path.Add(((nextX, nextY), nextTile));
-        Debug.Log($"Added {nextTile}: {nextX}, {nextY}");
+        Path.Add(((x, y), nextTile));
+        Debug.Log($"Added \"{nextTile.name}\" to the Path List.");
         return true;
+    }
+
+    public void ResetGrid() {
+
     }
 }
