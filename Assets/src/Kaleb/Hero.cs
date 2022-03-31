@@ -26,14 +26,20 @@ public class Hero : NPC
         hasDirection = true;
         isMoving = false;
     }
-
+    void Awake()
+    {
+        print("Enabled the Hero");
+        nextDirection = 1;
+        hasDirection = true;
+        isMoving = false;
+    }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("p"))
-        {
-            SetTime();
-        }
+        //if(Input.GetKeyDown("p"))
+       // {
+       //     SetTime();
+       // }
     }
     void FixedUpdate()
     {
@@ -82,7 +88,7 @@ public class Hero : NPC
         print("Attack: " + weapon.atkDamage);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "enemy")
         {
@@ -90,7 +96,7 @@ public class Hero : NPC
             collectEnemy = true;
             Debug.Log(currentEnemy);
         }
-    }
+    }*/
 
     //move hero automatically between tiles
     //takes in the direction of the next tile
@@ -104,7 +110,7 @@ public class Hero : NPC
         //move right one tile
         if(nextDirection == 1)
         {
-            while(distTraveled < 1.15f)
+            while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(.05f,0,0);
@@ -118,7 +124,7 @@ public class Hero : NPC
         //move left one tile
         if(nextDirection == 3)
         {
-             while(distTraveled < 1.15f)
+             while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(-.05f,0,0*Time.deltaTime);
@@ -132,7 +138,7 @@ public class Hero : NPC
         //move up one tile
         if(nextDirection == 0)
         {
-             while(distTraveled < 1.15f)
+             while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(0,0.05f,0*Time.deltaTime);
@@ -146,7 +152,7 @@ public class Hero : NPC
         //move down one tile
         if(nextDirection == 2)
         {
-             while(distTraveled < 1.15f)
+             while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
                 transform.Translate(0,.05f,0*Time.deltaTime);
