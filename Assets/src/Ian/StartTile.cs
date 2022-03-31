@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class StartTile : EmptyTile
 {
+    public int exit;
+
+    void Start() {
+        exit = 5;
+    }
     public override void OnMouseEnter() {
         highlight.SetActive(false);
         select.SetActive(false);

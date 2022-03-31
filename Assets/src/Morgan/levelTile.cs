@@ -6,6 +6,7 @@ public class levelTile : MonoBehaviour {
    [SerializeField] private bool connected;
    public int exit;
    public int indX, indY;
+   public GameObject thisTile;
    public GameObject DoorReminder;
    public GridManager GridManager;
    public List<GameObject> enemy;
@@ -13,6 +14,7 @@ public class levelTile : MonoBehaviour {
 
    void Start() {
       connected = false;
+      exit = 5;
       Debug.Log("Custom Tile Type Initialized (" + this.gameObject.name + ")");
       
       enemy = new List<GameObject>();
@@ -26,13 +28,15 @@ public class levelTile : MonoBehaviour {
       }
 
       GridManager = this.transform.parent.GetComponent<GridManager>();
-
    }
 
    void Update() {
-      if( connected == false ) {
-         connected = getDoorInput(indX, indY, this.gameObject);
+      //if(this.gameObject != null) {
+         if( connected == false ) {
+            connected = getDoorInput(indX, indY, this.gameObject);
       }
+      //}
+      
    }
 
    public bool getDoorInput(int x, int y, GameObject tile) {

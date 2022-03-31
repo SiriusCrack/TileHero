@@ -94,15 +94,40 @@ public class GridManager : MonoBehaviour {
                 }
             }
         }
-        var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
-        var prevTileSlot = GridStorage[(x,y)];
-        levelTile.transform.parent = GameObject.Find("GridManager").transform;
-        levelTile.GetComponent<levelTile>().indX = x;
-        levelTile.GetComponent<levelTile>().indY = y;
-        levelTile.name = $"LT[{x}][{y}]";
-        levelTile.transform.position = prevTileSlot.transform.position;
-        Destroy(GridStorage[(x,y)]);
-        GridStorage[(x,y)] = levelTile;
+        if ( prevTile.tag == "Start" && Path.Count() == 1 ) {
+            var exit = prevTile.GetComponent<StartTile>().exit;
+            int prevX = Path.Last().Item1.Item1;
+            int prevY = Path.Last().Item1.Item2;
+            Transform child;
+            if ( x == 1 && y == 0) {
+                child = prevTile.gameObject.transform.Find("EastDoor");
+                child.gameObject.SetActive(true);
+                prevTile.GetComponent<StartTile>().exit = 1;
+            }
+            else if ( x == 0 && y == 1) {
+                child = prevTile.gameObject.transform.Find("NorthDoor");
+                child.gameObject.SetActive(true);
+                prevTile.GetComponent<StartTile>().exit = 0;
+            }
+            else if (x >= prevX+1 || y >= prevY+1) {
+                Debug.Log("Invalid tile placement.");
+                return;
+            }
+        }
+        if(tileInventory.GetComponent<tileInventory>().SelectedTile == null) {
+            Debug.Log("Tile not selected.");
+        }
+        else {
+            var levelTile = tileFactory.GetComponent<tileFactory>().GetNewTile (tileInventory.GetComponent<tileInventory>().SelectedTile);
+            var prevTileSlot = GridStorage[(x,y)];
+            levelTile.transform.parent = GameObject.Find("GridManager").transform;
+            levelTile.GetComponent<levelTile>().indX = x;
+            levelTile.GetComponent<levelTile>().indY = y;
+            levelTile.name = $"LT[{x}][{y}]";
+            levelTile.transform.position = prevTileSlot.transform.position;
+            Destroy(GridStorage[(x,y)]);
+            GridStorage[(x,y)] = levelTile;
+        }
     }
 
     public bool SetDirection(int nextX, int nextY, int dir, GameObject nextTile) {
@@ -116,6 +141,7 @@ public class GridManager : MonoBehaviour {
                 }
                 child = prevTile.gameObject.transform.Find("EastDoor");
                 child.gameObject.SetActive(true);
+                prevTile.GetComponent<StartTile>().exit = 1;
             }
             else if ( nextX == 0 && nextY == 1) {
                 if (dir == 0) {
@@ -123,6 +149,7 @@ public class GridManager : MonoBehaviour {
                 }
                 child = prevTile.gameObject.transform.Find("NorthDoor");
                 child.gameObject.SetActive(true);
+                prevTile.GetComponent<StartTile>().exit = 0;
             }
         }
         if ( prevTile.tag == "LevelTile") {
