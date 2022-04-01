@@ -147,21 +147,29 @@ public class CombatManager : MonoBehaviour
     void collectEnemy()
     {
         //Gets the length of the list of enemies in the room
-        listLength = hero.enemies.Count;
-        //Adds the enemies into the enemies array on combat manager
-        for (i = 0; i < listLength; i++)
+        if (hero.enemies.Count != 0)
         {
-            if (hero.enemies[i])
+            listLength = hero.enemies.Count;
+            //Adds the enemies into the enemies array on combat manager
+            for (i = 0; i < listLength; i++)
             {
-                enemies[i] = hero.enemies[i];
+                if (hero.enemies[i])
+                {
+                    enemies[i] = hero.enemies[i];
+                }
             }
+
+            //sets the current enemy to the first one
+            currentEnemy = 0;
+            //resets the collectionflag
+            hero.collectEnemy = false;
+            //begins combat
+            enterCombat();
         }
-        
-        //sets the current enemy to the first one
-        currentEnemy = 0;
-        //resets the collectionflag
-        hero.collectEnemy = false;
-        //begins combat
-        enterCombat();
+        else
+        {
+            hero.EndCombat();
+            hero.collectEnemy = false;
+        }
     }
 }
