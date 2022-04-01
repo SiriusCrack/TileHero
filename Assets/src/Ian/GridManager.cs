@@ -69,9 +69,6 @@ public class GridManager : MonoBehaviour {
         else {
             mainCamera.gameObject.GetComponent<Camera>().orthographicSize = 3;
         }
-        
-
-
     }
 
     public void SetTile(GameObject Tile) {
