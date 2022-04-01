@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class StartButton : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ResetGrid() {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void StartGame()
