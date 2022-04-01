@@ -180,7 +180,7 @@ public class Hero : NPC
              while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(0,.05f,0*Time.deltaTime);
+                transform.Translate(0,-0.05f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
                 Debug.Log(transform.position);
                 yield return new WaitForSeconds(.05f);
