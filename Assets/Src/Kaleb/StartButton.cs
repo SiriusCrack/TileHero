@@ -22,7 +22,7 @@ public class StartButton : MonoBehaviour
     }
 
     public void ResetGrid() {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Main");
     }
 
     public void StartGame()
