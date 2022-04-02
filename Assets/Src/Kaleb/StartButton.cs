@@ -30,8 +30,8 @@ public class StartButton : MonoBehaviour
         EndTile = GameObject.FindWithTag("End");
         var gridW = gridManager.GetComponent<GridManager>().width;
         var gridH = gridManager.GetComponent<GridManager>().height;
-        gridManager.GetComponent<GridManager>().validPath.Add(((gridW-1, gridH-1), EndTile));
-        Debug.Log(gridManager.GetComponent<GridManager>().validPath.Last());
+        gridManager.GetComponent<GridManager>().path.Add(((gridW-1, gridH-1), EndTile));
+        Debug.Log(gridManager.GetComponent<GridManager>().path.Last());
 
         hero.SetActive(true);
         Time.timeScale = 1;

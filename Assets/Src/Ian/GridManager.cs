@@ -1,79 +1,36 @@
-/*
- * Filename: GridManager.cs
- * Developer: Ian Fleming
- * Purpose: This script creates the interactive tile grid.
- */
-
-using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-/*
- * Summary: GridManager class contains all code implementations to initialize the grid system.
- * 
- * Member Variables:
- * width - Width of the grid
- * height - Height of the grid
- * tileSize - Value to add tile padding/separation
- * dTile - Game object placeholder for the default tile
- * sTile - Game object placeholder for the start tile
- * eTile - Game object placeholder for the end tile
- * mainCamera - Game object for the camera of the scene
- * tileInventory - Game object for the tile inventory system
- * tileFactory - Game object for the tile factory system
- * validPath - List of the tiles that create a valid path from start to end
- * gridStorage - Dictionary of all the tiles initialized into the game 
- * startTile - Game object placeholder of the start tile
- * endTile - Game object placeholder of the end tile
- * finX - X index of the end tile
- * finY - Y index of the end tile
- */
 public class GridManager : MonoBehaviour {
     [SerializeField] public int width, height;
     [SerializeField] public float tileSize;
-    [SerializeField] public GameObject dTile; 
-    [SerializeField] public GameObject sTile; 
-    [SerializeField] public GameObject eTile;
+    [SerializeField] public GameObject dTile; // Default Tile
+    [SerializeField] public GameObject sTile; // Start Tile
+    [SerializeField] public GameObject eTile; // End Tile
     [SerializeField] public Transform mainCamera;
     [SerializeField] public GameObject tileInventory;
     [SerializeField] public GameObject tileFactory;
 
-    public List<((int, int), GameObject)> validPath;
+    [SerializeField] public List<((int, int), GameObject)> path;
     public Dictionary<(int, int), GameObject> gridStorage;
 
     private GameObject startTile;
     private GameObject endTile;
     private int finX, finY;
 
-
-    /*
-     * Summary: Function call at object creation/game start. Calls the InitGrid().
-     *
-     * Parameters: None
-     *
-     * Returns: None
-    */
-    void Start() 
+    void Start()
     {
-        InitGrid();
+        initGrid();
     }
 
-
-    /*
-     * Summary: Initializes the grid system.
-     *
-     * Parameters: None
-     *
-     * Returns: None
-    */
-    public void InitGrid() 
+    public void initGrid()
     {
         gridStorage = new Dictionary<(int, int), GameObject>();
-        validPath = new List<((int, int), GameObject)>();
-        for ( int x = 0; x < width; x++ ) {
-            for ( int y = 0; y < height; y++ ) {
+        path = new List<((int, int), GameObject)>();
+        for( int x = 0; x < width; x++) {
+            for( int y = 0; y < height; y++) {
 
                 if ( x == 0 && y == 0 ) {
                     startTile = Instantiate(sTile, new Vector3(x,y), Quaternion.identity);
@@ -82,7 +39,7 @@ public class GridManager : MonoBehaviour {
                     startTile.transform.position = new Vector3(x*tileSize,y*tileSize,0);
             
                     gridStorage[(x, y)] = startTile;
-                    validPath.Add(((0, 0), startTile));
+                    path.Add(((0, 0), startTile));
                 }
                 else if ( x == width-1 && y == height-1 ) {
                     endTile = Instantiate(eTile, new Vector3(x,y), Quaternion.identity);
@@ -107,7 +64,7 @@ public class GridManager : MonoBehaviour {
             }
         }
         mainCamera.transform.position = new Vector3(((float)width*tileSize)/2 - 0.5f, ((float)height*tileSize)/2 - 0.5f, -10);
-        if ( width > 5 || height > 5 )
+        if( width > 5 || height > 5)
         {
             mainCamera.gameObject.GetComponent<Camera>().orthographicSize = 3.5f;
         }
@@ -116,40 +73,31 @@ public class GridManager : MonoBehaviour {
         }
     }
 
-
-    /*
-     * Summary: Checks if the tile placement is valid at the designated location.
-     *
-     * Parameters:
-     * Tile - The tile type game object to be placed 
-     *
-     * Returns: None
-    */
-    public void SetTile(GameObject Tile) 
+    public void SetTile(GameObject tile)
     {
         // Current index of selected tile.
-        var x = Tile.GetComponent<EmptyTile>().indX;
-        var y = Tile.GetComponent<EmptyTile>().indY;
+        var x = tile.GetComponent<EmptyTile>().indX;
+        var y = tile.GetComponent<EmptyTile>().indY;
         
         // Stores the selected tile type.
-        var TileTypeCheck = tileInventory.GetComponent<TileInventory>().selectedTile;
+        var tileTypeCheck = tileInventory.GetComponent<TileInventory>().selectedTile;
 
         // Check if no tile type has been selected.
-        if ( TileTypeCheck == null ) {
+        if( tileTypeCheck == null ) {
             Debug.Log("SetTile() :: ERROR! No tile type selected!");
             return;
         }
         // If there is a valid tile type.
-        else if ( TileTypeCheck != null ) {
+        else if ( tileTypeCheck != null ) {
 
-            var prevTile = validPath.Last().Item2;
-            int prevTileX = validPath.Last().Item1.Item1;
-            int prevTileY = validPath.Last().Item1.Item2;
-            Debug.Log($"SetTile() :: Selected Tile: \"{Tile.name}\", Index: [{x}][{y}]");
+            var prevTile = path.Last().Item2;
+            int prevTileX = path.Last().Item1.Item1;
+            int prevTileY = path.Last().Item1.Item2;
+            Debug.Log($"SetTile() :: Selected Tile: \"{tile.name}\", Index: [{x}][{y}]");
             Debug.Log($"SetTile() :: Previous Tile: \"{prevTile.name}\", Index: [{prevTileX}][{prevTileY}]");
 
             // Check if previous tile is the "Start".
-            if ( prevTile.tag == "Start" )
+            if( prevTile.tag == "Start" )
             {
                 Transform child; 
                 int exitStart = prevTile.GetComponent<StartTile>().exit; // Get exit direction of "Start".
@@ -159,7 +107,7 @@ public class GridManager : MonoBehaviour {
                     if ( prevTileY == y - 1 ) {
                         Debug.Log("Selected Tile is above \"Start\"");
                         if( exitStart == -1 ) {
-                            InitTile(Tile);
+                            InitTile(tile);
                             prevTile.GetComponent<StartTile>().exit = 0;    // Set exit variable to direction.
                             child = prevTile.gameObject.transform.Find("NorthDoor"); // Get the door child object.
                             child.gameObject.SetActive(true); // Activate child object.
@@ -168,8 +116,8 @@ public class GridManager : MonoBehaviour {
                     // If current tile is below the "Start".
                     else if ( prevTileY == y + 1) {
                         Debug.Log("Selected Tile is below \"Start\"");
-                        if ( exitStart == -1 ) {
-                            InitTile(Tile);
+                        if( exitStart == -1 ) {
+                            InitTile(tile);
                             prevTile.GetComponent<StartTile>().exit = 2;
                             child = prevTile.gameObject.transform.Find("SouthDoor");
                             child.gameObject.SetActive(true);
@@ -181,8 +129,8 @@ public class GridManager : MonoBehaviour {
                     // If current tile is right of the "Start".
                     if ( prevTileX == x - 1 ) {
                         Debug.Log("Selected Tile is right of \"Start\"");
-                        if ( exitStart == -1 ) {
-                            InitTile(Tile);
+                        if( exitStart == -1 ) {
+                            InitTile(tile);
                             prevTile.GetComponent<StartTile>().exit = 1;
                             child = prevTile.gameObject.transform.Find("EastDoor");
                             child.gameObject.SetActive(true);
@@ -191,8 +139,8 @@ public class GridManager : MonoBehaviour {
                     // If current tile is left of the "Start".
                     else if ( prevTileX == x + 1 ) {
                         Debug.Log("Selected Tile is left of \"Start\"");
-                        if ( exitStart == -1 ) {
-                            InitTile(Tile);
+                        if( exitStart == -1 ) {
+                            InitTile(tile);
                             prevTile.GetComponent<StartTile>().exit = 3;
                             child = prevTile.gameObject.transform.Find("WestDoor");
                             child.gameObject.SetActive(true);
@@ -201,7 +149,7 @@ public class GridManager : MonoBehaviour {
                 }
             }
             // Check if previous tile is a "LevelTile".
-            else if ( prevTile.tag == "LevelTile" )
+            else if( prevTile.tag == "LevelTile" )
             {
                 Transform child;
                 // If the previous x equals the current x.
@@ -210,22 +158,22 @@ public class GridManager : MonoBehaviour {
                     if ( prevTileY == y - 1 ) {
                         Debug.Log("Selected Tile is above \"LevelTile\"");
                         child = prevTile.gameObject.transform.Find("NorthDoor");
-                        if ( !(child.gameObject.activeSelf) ) {
+                        if( !(child.gameObject.activeSelf) ) {
                             Debug.Log("Invalid placement.");
                         }
                         else {
-                            InitTile(Tile);
+                            InitTile(tile);
                         }
                     }
                     // If current tile is below a "LevelTile".
                     else if ( prevTileY == y + 1) {
                         Debug.Log("Selected Tile is below \"LevelTile\"");
                         child = prevTile.gameObject.transform.Find("SouthDoor");
-                        if ( !(child.gameObject.activeSelf) ) {
+                        if( !(child.gameObject.activeSelf) ) {
                             Debug.Log("Invalid placement.");
                         }
                         else {
-                            InitTile(Tile);
+                            InitTile(tile);
                         }
                     }
                 }
@@ -235,11 +183,11 @@ public class GridManager : MonoBehaviour {
                     if ( prevTileX == x - 1 ) {
                         Debug.Log("Selected Tile is right of \"LevelTile\"");
                         child = prevTile.gameObject.transform.Find("EastDoor");
-                        if ( !(child.gameObject.activeSelf) ) {
+                        if( !(child.gameObject.activeSelf) ) {
                             Debug.Log("Invalid placement.");
                         }
                         else {
-                            InitTile(Tile);
+                            InitTile(tile);
                         }
                     }
                     // If current tile is left of a "LevelTile".
@@ -250,7 +198,7 @@ public class GridManager : MonoBehaviour {
                             Debug.Log("Invalid placement.");
                         }
                         else {
-                            InitTile(Tile);
+                            InitTile(tile);
                         }
                     }
                 }
@@ -261,56 +209,27 @@ public class GridManager : MonoBehaviour {
         }
     }
 
-
-    /*
-     * Summary: Creates the level tile and adds it to the grid storage.
-     *
-     * Parameters:
-     * Tile - The tile type game object to be placed 
-     *
-     * Returns: None
-    */
-    public void InitTile(GameObject Tile) 
+    public void InitTile(GameObject tile)
     {
+        // CREATES THE LEVEL TILE AND ADD TO GRID STORAGE (INITIALIZES TILE PLACEMENT)
         // Current index of selected tile.
-        var x = Tile.GetComponent<EmptyTile>().indX;
-        var y = Tile.GetComponent<EmptyTile>().indY;
-        // Get the particular tile type for the designated location.
-        var levelTile = tileFactory.GetComponent<TileFactory>().GetNewTile (tileInventory.GetComponent<TileInventory>().selectedTile); 
-        // Return the current tile game object from Grid Storage.
-        var prevTileSlot = gridStorage[(x,y)]; 
-        // Designate this new level as a child to Grid Manager.
-        levelTile.transform.parent = GameObject.Find("GridManager").transform; 
-        // Set the index, x.
-        levelTile.GetComponent<LevelTile>().indX = x;
-        // Set the index, y.
-        levelTile.GetComponent<LevelTile>().indY = y; 
-        // Name accordingly.
-        levelTile.name = $"LT[{x}][{y}]";
-        // Set the position of the tile to the previous.
-        levelTile.transform.position = prevTileSlot.transform.position;
-        // Destroy the old tile object.
-        Destroy(gridStorage[(x,y)]); 
-        // Store the level tile object in Grid Storage.
-        gridStorage[(x,y)] = levelTile; 
+        var x = tile.GetComponent<EmptyTile>().indX;
+        var y = tile.GetComponent<EmptyTile>().indY;
+        var levelTile = tileFactory.GetComponent<TileFactory>().GetNewTile (tileInventory.GetComponent<TileInventory>().selectedTile); // Get the particular tile type for the designated location.
+        var prevTileSlot = gridStorage[(x,y)]; // Return the current tile game object from Grid Storage.
+        levelTile.transform.parent = GameObject.Find("GridManager").transform; // Designate this new level as a child to Grid Manager.
+        levelTile.GetComponent<LevelTile>().indX = x; // Set the index, x.
+        levelTile.GetComponent<LevelTile>().indY = y; // Set the index, y.
+        levelTile.name = $"LT[{x}][{y}]"; // Name accordingly.
+        levelTile.transform.position = prevTileSlot.transform.position; // Set the position of the tile to the previous.
+        Destroy(gridStorage[(x,y)]); // Destroy the old tile object.
+        gridStorage[(x,y)] = levelTile; // Store the level tile object in Grid Storage.
     }
 
 
-     /*
-     * Summary: Determines if the door placement of the tile is valid.
-     *
-     * Parameters:
-     * x - X index of the placed tile
-     * y - Y index of the place tile
-     * dir - integer value of the door direction
-     * nextTile - Game object place holder of the tile that will have its door placed
-     *
-     * Returns:
-     * Boolian - Returns true is the direction of the door is valid, returns false if not valid
-    */
-    public bool SetDirection(int x, int y, int dir, GameObject nextTile) 
+    public bool SetDirection(int x, int y, int dir, GameObject nextTile)
     {
-        GameObject prevTile = validPath.Last().Item2;
+        GameObject prevTile = path.Last().Item2;
 
         // Check if door placement is out of bounds.
         if ( dir == 0 ) {
@@ -342,13 +261,13 @@ public class GridManager : MonoBehaviour {
         if ( prevTile.tag == "Start" ) {
             if( x == 1 && y == 0) {
                 if (dir == 3) {
-                    Debug.Log("Cannot place a door in this direction.");
+                    Debug.Log("An east door from this tile should not be placed.");
                     return false;
                 }
             }
             else if ( x == 0 && y == 1) {
                 if (dir == 0) {
-                    Debug.Log("Cannot place a door in this direction.");
+                    Debug.Log("A south door from this tile should not be placed.");
                     return false;
                 }
             }
@@ -361,9 +280,10 @@ public class GridManager : MonoBehaviour {
             if ( prevTileX == x ) {
                 // If current tile is above a "LevelTile".
                 if ( prevTileY == y - 1 ) {
-                    if ( dir == 2 ) {
+                    //Debug.Log("Selected Tile is above \"LevelTile\"");
+                    if( dir == 2 ) {
                         child = prevTile.gameObject.transform.Find("NorthDoor");
-                        if ( child.gameObject.activeSelf ) {
+                        if( child.gameObject.activeSelf ) {
                             Debug.Log("Invalid door placement.");
                             return false;
                         }
@@ -371,9 +291,10 @@ public class GridManager : MonoBehaviour {
                 }
                 // If current tile is below a "LevelTile".
                 else if ( prevTileY == y + 1) {
-                    if ( dir == 0 ) {
+                    //Debug.Log("Selected Tile is below \"LevelTile\"");
+                    if( dir == 0 ) {
                         child = prevTile.gameObject.transform.Find("SouthDoor");
-                        if ( child.gameObject.activeSelf ) {
+                        if( child.gameObject.activeSelf ) {
                             Debug.Log("Invalid door placement.");
                             return false;
                         }
@@ -384,9 +305,10 @@ public class GridManager : MonoBehaviour {
             else if ( prevTileY == y ) {
                 // If current tile is right of a "LevelTile".
                 if ( prevTileX == x - 1 ) {
-                    if ( dir == 3 ) {
+                    //Debug.Log("Selected Tile is right of \"LevelTile\"");
+                    if( dir == 3 ) {
                         child = prevTile.gameObject.transform.Find("EastDoor");
-                        if ( child.gameObject.activeSelf ) {
+                        if( child.gameObject.activeSelf ) {
                             Debug.Log("Invalid door placement.");
                             return false;
                         }
@@ -394,9 +316,10 @@ public class GridManager : MonoBehaviour {
                 }
                 // If current tile is left of a "LevelTile".
                 else if ( prevTileX == x + 1 ) {
-                    if ( dir == 1 ) {
+                    //Debug.Log("Selected Tile is left of \"LevelTile\"");
+                    if( dir == 1 ) {
                         child = prevTile.gameObject.transform.Find("WestDoor");
-                        if ( child.gameObject.activeSelf ) {
+                        if( child.gameObject.activeSelf ) {
                             Debug.Log("Invalid door placement.");
                             return false;
                         }
@@ -405,8 +328,8 @@ public class GridManager : MonoBehaviour {
             }
         }
         nextTile.GetComponent<LevelTile>().SetExit(dir);
-        validPath.Add(((x, y), nextTile));
-        Debug.Log($"Added \"{nextTile.name}\" to the Path List.");
+        path.Add(((x, y), nextTile));
+        Debug.Log($"Added \"{nextTile.name}\" to the path List.");
         return true;
     }
 }
