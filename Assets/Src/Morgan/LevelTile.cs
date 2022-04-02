@@ -44,7 +44,9 @@ public class LevelTile : MonoBehaviour
    {
       thisTile = this.gameObject;
       if ( connected == false ) {
-         connected = GetDoorInput(indX, indY, thisTile);
+         //if (thisTile != null) {
+            connected = GetDoorInput(indX, indY, thisTile);
+         //}
       }
    }
 
