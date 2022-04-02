@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class levelTile : MonoBehaviour { 
+public class LevelTile : MonoBehaviour
+{ 
    [SerializeField] private bool connected;
    public int exit;
    public int indX, indY;
    public GameObject thisTile;
-   public GameObject DoorReminder;
-   public GridManager GridManager;
+   public GameObject doorReminder;
+   public GridManager gridManager;
    public List<GameObject> enemy;
    public List<GameObject> doors;
 
-   void Start() {
+
+   void Start()
+   {
 
       connected = false;
       Debug.Log("Custom Tile Type Initialized (" + this.gameObject.name + ")");
@@ -27,43 +30,48 @@ public class levelTile : MonoBehaviour {
             doors.Add(this.gameObject.transform.GetChild(i).gameObject);
       }
 
-      GridManager = this.transform.parent.GetComponent<GridManager>();
+      gridManager = this.transform.parent.GetComponent<GridManager>();
    }
 
-   void Awake() {
 
+   void Awake()
+   {
       thisTile = this.gameObject;
    }
 
-   void Update() {
 
+   void Update()
+   {
       thisTile = this.gameObject;
       if ( connected == false ) {
-         connected = getDoorInput(indX, indY, thisTile);
+         connected = GetDoorInput(indX, indY, thisTile);
       }
    }
 
-   public bool getDoorInput(int x, int y, GameObject Tile) {
+
+   public bool GetDoorInput(int x, int y, GameObject tile)
+   {
 
       if( Input.GetKeyDown("up") ) {
-         return GridManager.SetDirection(x, y, 0, Tile);
+         return gridManager.SetDirection(x, y, 0, tile);
       }
       else if( Input.GetKeyDown("right") ) {
-         return GridManager.SetDirection(x, y, 1, Tile);
+         return gridManager.SetDirection(x, y, 1, tile);
       }
       else if( Input.GetKeyDown("down") ) {
-         return GridManager.SetDirection(x, y, 2, Tile);
+         return gridManager.SetDirection(x, y, 2, tile);
       }
       else if( Input.GetKeyDown("left") ) {
-         return GridManager.SetDirection(x, y, 3, Tile);
+         return gridManager.SetDirection(x, y, 3, tile);
       }
       else {
          return false;
       }
    }
 
-   public void SetExit(int dir) {
-      
+
+   public void SetExit(int dir)
+   {
       exit = dir;
       switch (dir)
       {

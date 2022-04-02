@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: -2669491368434995827}
   - component: {fileID: 420921206455055572}
   m_Layer: 0
-  m_Name: levelTile
+  m_Name: LevelTile
   m_TagString: LevelTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

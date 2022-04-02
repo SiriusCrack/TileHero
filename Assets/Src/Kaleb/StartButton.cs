@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class StartButton : MonoBehaviour
 {
     [SerializeField] GameObject hero;
-    [SerializeField] GameObject GridManager;
+    [SerializeField] GameObject gridManager;
     private GameObject EndTile;
     // Start is called before the first frame update
     void Start()
@@ -28,10 +28,10 @@ public class StartButton : MonoBehaviour
     public void StartGame()
     {
         EndTile = GameObject.FindWithTag("End");
-        var gridw = GridManager.GetComponent<GridManager>().width;
-        var gridh = GridManager.GetComponent<GridManager>().height;
-        GridManager.GetComponent<GridManager>().Path.Add(((gridw-1, gridh-1), EndTile));
-        Debug.Log(GridManager.GetComponent<GridManager>().Path.Last());
+        var gridW = gridManager.GetComponent<GridManager>().width;
+        var gridH = gridManager.GetComponent<GridManager>().height;
+        gridManager.GetComponent<GridManager>().path.Add(((gridW-1, gridH-1), EndTile));
+        Debug.Log(gridManager.GetComponent<GridManager>().path.Last());
 
         hero.SetActive(true);
         Time.timeScale = 1;

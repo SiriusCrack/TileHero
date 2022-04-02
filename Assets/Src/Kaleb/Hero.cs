@@ -108,16 +108,16 @@ public class Hero : NPC
             the enemies from the tile in the hero, then collectEnemy being set to
             true will tell the combat manager to pick them up off the hero*/ 
             StartCombat();
-            enemies = other.GetComponent<levelTile>().enemy;
+            enemies = other.GetComponent<LevelTile>().enemy;
             collectEnemy = true;
 
-            nextDirection = other.GetComponent<levelTile>().exit;
+            nextDirection = other.GetComponent<LevelTile>().exit;
             print("Next Direction: " + nextDirection);
             hasDirection = true;
         }
         if (other.tag == "StartTile")
         {
-            nextDirection = other.GetComponent<levelTile>().exit;
+            nextDirection = other.GetComponent<LevelTile>().exit;
             print("Next Direction: " + nextDirection);
             hasDirection = true;
         }

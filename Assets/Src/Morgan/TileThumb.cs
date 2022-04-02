@@ -4,33 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class tileThumb : MonoBehaviour, IPointerEnterHandler {
-    tileInventory tileInventory;
+public class TileThumb : MonoBehaviour, IPointerEnterHandler
+{
+    TileInventory tileInventory;
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     private Vector2 hotSpot = Vector2.zero;
-    bool localSelect = false;
+    private bool localSelect = false;
 
-    void Start() {
-        tileInventory = GetComponentInParent<tileInventory>();
 
-        // Button tileButton = this.gameObject.GetComponent<Button>();
-        // tileButton.onClick.AddListener(TaskOnClick);
+    void Start()
+    {
+        tileInventory = GetComponentInParent<TileInventory>();
     }
 
-    void Update() {
-    }
 
-    public void OnPointerEnter(PointerEventData eventData) {
+    public void OnPointerEnter(PointerEventData eventData)
+    {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
-    public void OnPointerExit(PointerEventData eventData) {
+
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
         Cursor.SetCursor(null, Vector2.zero, cursorMode);
     }
 
 
-    public void SelectTile() {
-        tileInventory = GetComponentInParent<tileInventory>();
+    public void SelectTile()
+    {
+        tileInventory = GetComponentInParent<TileInventory>();
 
         Debug.Log("Tile selected");
 
