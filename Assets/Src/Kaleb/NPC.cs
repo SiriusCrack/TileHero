@@ -76,4 +76,14 @@ public abstract class NPC : MonoBehaviour
             }
         }
     }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+    
+    public void UpdateHealth(float newHealth)
+    {
+        health = newHealth;
+    }
 }
