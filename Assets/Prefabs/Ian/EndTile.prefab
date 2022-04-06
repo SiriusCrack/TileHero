@@ -91,6 +91,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6457992407667531908, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457992407667531908, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 6802473676257407754, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -127,11 +135,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8317786647484967768, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
   m_PrefabInstance: {fileID: 4961148867250161002}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7612311485510431595 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3278011858228786689, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
-  m_PrefabInstance: {fileID: 4961148867250161002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4391843753393453581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8659151064774213479, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
@@ -154,4 +157,3 @@ MonoBehaviour:
   indX: 0
   indY: 0
   highlight: {fileID: 4391843753393453581}
-  select: {fileID: 7612311485510431595}

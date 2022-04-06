@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490643629825170147, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_Name
-      value: levelTile-Type1
+      value: LTTypeA
       objectReference: {fileID: 0}
     - target: {fileID: 4490643629825170147, guid: 507dbcc4258e7380584d7c9bdf050042, type: 3}
       propertyPath: m_TagString
@@ -168,8 +168,8 @@ MonoBehaviour:
   indX: 0
   indY: 0
   thisTile: {fileID: 0}
-  DoorReminder: {fileID: 0}
-  GridManager: {fileID: 0}
+  doorReminder: {fileID: 0}
+  gridManager: {fileID: 0}
   enemy: []
   doors: []
 --- !u!1001 &5931448087851151981
@@ -200,12 +200,24 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6840317481201532767, guid: 967512f59e678893aad8a45fb7df2c39, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0691236
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840317481201532767, guid: 967512f59e678893aad8a45fb7df2c39, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0683264
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840317481201532767, guid: 967512f59e678893aad8a45fb7df2c39, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.068725005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840317481201532767, guid: 967512f59e678893aad8a45fb7df2c39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.2808
       objectReference: {fileID: 0}
     - target: {fileID: 6840317481201532767, guid: 967512f59e678893aad8a45fb7df2c39, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2737
       objectReference: {fileID: 0}
     - target: {fileID: 6840317481201532767, guid: 967512f59e678893aad8a45fb7df2c39, type: 3}
       propertyPath: m_LocalPosition.z

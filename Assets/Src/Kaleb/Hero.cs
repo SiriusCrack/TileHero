@@ -15,7 +15,7 @@ public class Hero : NPC
     private int nextDirection;
 
     private bool hasDirection;
-    private GameObject currentTile;
+    private GameObject currentTile, AmbientMusic;
     private bool isMoving;
 
     public Enemy currentEnemy; //Bob Variable
@@ -31,6 +31,8 @@ public class Hero : NPC
     }
     void Awake()
     {
+        AmbientMusic= GameObject.FindWithTag("Music");
+        AmbientMusic.SetActive(false);
         currentTile = GameObject.FindWithTag("Start");
         nextDirection = currentTile.GetComponent<StartTile>().exit;
         print("Enabled the Hero");
@@ -42,10 +44,6 @@ public class Hero : NPC
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown("p"))
-       // {
-       //     SetTime();
-       // }
     }
     void FixedUpdate()
     {
@@ -121,6 +119,10 @@ public class Hero : NPC
             print("Next Direction: " + nextDirection);
             hasDirection = true;
         }
+        if(other.tag == "End")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     //move hero automatically between tiles
@@ -138,10 +140,10 @@ public class Hero : NPC
             while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(.05f,0,0);
+                transform.Translate(.01f,0,0);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
-                Debug.Log(transform.position);
-                yield return new WaitForSeconds(.05f);
+                //Debug.Log(transform.position);
+                yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
         }
@@ -152,10 +154,10 @@ public class Hero : NPC
              while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(-.05f,0,0*Time.deltaTime);
+                transform.Translate(-.01f,0,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
-                Debug.Log(transform.position);
-                yield return new WaitForSeconds(.05f);
+                //Debug.Log(transform.position);
+                yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
         }
@@ -166,10 +168,10 @@ public class Hero : NPC
              while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(0,0.05f,0*Time.deltaTime);
+                transform.Translate(0,0.01f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
-                Debug.Log(transform.position);
-                yield return new WaitForSeconds(.05f);
+               // Debug.Log(transform.position);
+                yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
         }
@@ -180,10 +182,10 @@ public class Hero : NPC
              while(distTraveled < 1.0f)
             {
                 Vector3 oldPosition = transform.position;
-                transform.Translate(0,-0.05f,0*Time.deltaTime);
+                transform.Translate(0,-0.01f,0*Time.deltaTime);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
-                Debug.Log(transform.position);
-                yield return new WaitForSeconds(.05f);
+                //Debug.Log(transform.position);
+                yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
         }
