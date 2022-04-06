@@ -10,17 +10,19 @@ public class ShopMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        showInterface();
+        StartCoroutine(ShowShopForSeconds());
         Time.timeScale = 0;
     }
 
     public void showInterface()
     {
         total.SetActive(true);
+        Time.timeScale = 0;
     }
     void hideInterface() 
     {
         total.SetActive(false);
+        Time.timeScale = 1;
     }
 
     
@@ -34,15 +36,20 @@ public class ShopMenu : MonoBehaviour
             if (Time.timeScale == 1)
             {
                 showInterface();
-                Time.timeScale = 0;
             }
             else if (Time.timeScale == 0)
             {
                 hideInterface();
-                Time.timeScale = 1;
             }
 
         }
+    }
+
+    private IEnumerator ShowShopForSeconds()
+    {
+        showInterface();
+        yield return new WaitForSecondsRealtime(3);
+        hideInterface();
     }
 }
     
