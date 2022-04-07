@@ -918,8 +918,31 @@ PrefabInstance:
       propertyPath: atkDamage
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3284106922198749491, guid: 5c3bbea7fe4be2043ab67539bc197c86, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5c3bbea7fe4be2043ab67539bc197c86, type: 3}
+--- !u!1 &271103322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1291447435528383079, guid: 5c3bbea7fe4be2043ab67539bc197c86, type: 3}
+  m_PrefabInstance: {fileID: 271103321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &271103323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271103322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e135015a42ef13c45991582db9360a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkSpeed: 35
+  atkDamage: 1
+  atkRange: 0
+  attackTimer: 0
+  effect: {fileID: 0}
 --- !u!1 &375269681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,8 +5103,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8372064703174652562, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+--- !u!1 &5313886138609598397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5210899225285708230, guid: db5354bdd3e09064b805dd147c261b39, type: 3}
+  m_PrefabInstance: {fileID: 5313886138609598396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5313886138609598398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313886138609598397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab65f6e03afad5e479d45220c151bab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkSpeed: 30
+  atkDamage: 1
+  atkRange: 0
+  attackTimer: 0
+  effect: {fileID: 0}
 --- !u!1001 &8863405695629089365
 PrefabInstance:
   m_ObjectHideFlags: 0

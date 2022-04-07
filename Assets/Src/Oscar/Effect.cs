@@ -14,7 +14,7 @@ public class Effect : MonoBehaviour
     public float strength;
 
 
-    public void EffectFunction()
+    public virtual void EffectFunction()
     {
         
     }

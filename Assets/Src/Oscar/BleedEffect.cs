@@ -14,7 +14,8 @@ public class BleedEffect : Effect
     // Start is called before the first frame update    
     void Update()
     {
-        EffectFunction(strength);
+        print("test");
+        CountHits(10);
     }
 
 //only 1.05 - 1.2 for strength (5% health to 20% health taken away every 5 seconds)
@@ -22,7 +23,21 @@ public class BleedEffect : Effect
     public void EffectFunction(float strength)
     {
         float health;
-        health = npc.health;
-        npc.health = health / strength;
+        health = npc.GetHealth();
+        npc.UpdateHealth(health / strength);
+        print(health);
+    }
+
+    public void CountHits(float strength)
+    {
+        int count = 0;
+        if(hero.weapon.attackTimer >= weapon.atkSpeed){
+            count = count + 1;
+            print (count);
+            if (count == 3)
+            {
+                EffectFunction(strength);
+            }
+        }
     }
 }
