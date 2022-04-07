@@ -28,7 +28,7 @@ public class StartTile : EmptyTile
      * Returns: None
     */
     void Start() {
-        exit = -1;
+        exit = 1;
     }
 
 
