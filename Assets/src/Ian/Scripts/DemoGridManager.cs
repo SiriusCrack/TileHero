@@ -490,6 +490,7 @@ public class DemoGridManager : MonoBehaviour {
     void DemoPopulateGrid() {
 
         gridStorage[(0,0)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
+        gridStorage[(0,0)].GetComponent<LevelTile>().exit = 1;
 
         var tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
