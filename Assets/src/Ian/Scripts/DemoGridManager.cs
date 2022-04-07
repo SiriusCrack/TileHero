@@ -498,6 +498,7 @@ public class DemoGridManager : MonoBehaviour {
         Destroy(gridStorage[(1,0)]); 
         gridStorage[(1,0)] = tempTile;
         gridStorage[(1,0)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
+        gridStorage[(1,0)].GetComponent<LevelTile>().exit = 1;
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -506,6 +507,7 @@ public class DemoGridManager : MonoBehaviour {
         Destroy(gridStorage[(2,0)]); 
         gridStorage[(2,0)] = tempTile;
         gridStorage[(2,0)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);
+        gridStorage[(2,0)].GetComponent<LevelTile>().exit = 0;
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -513,7 +515,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(2,1)].transform.position;
         Destroy(gridStorage[(2,1)]); 
         gridStorage[(2,1)] = tempTile;
-        gridStorage[(2,1)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true); 
+        gridStorage[(2,1)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
+        gridStorage[(2,1)].GetComponent<LevelTile>().exit = 1; 
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -522,6 +525,7 @@ public class DemoGridManager : MonoBehaviour {
         Destroy(gridStorage[(3,1)]); 
         gridStorage[(3,1)] = tempTile;
         gridStorage[(3,1)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);
+        gridStorage[(3,1)].GetComponent<LevelTile>().exit = 0;
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -529,7 +533,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(3,2)].transform.position;
         Destroy(gridStorage[(3,2)]); 
         gridStorage[(3,2)] = tempTile;
-        gridStorage[(3,2)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true); 
+        gridStorage[(3,2)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);
+        gridStorage[(3,2)].GetComponent<LevelTile>().exit = 0; 
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -537,7 +542,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(3,3)].transform.position;
         Destroy(gridStorage[(3,3)]); 
         gridStorage[(3,3)] = tempTile;
-        gridStorage[(3,3)].gameObject.transform.Find("WestDoor").gameObject.SetActive(true); 
+        gridStorage[(3,3)].gameObject.transform.Find("WestDoor").gameObject.SetActive(true);
+        gridStorage[(3,3)].GetComponent<LevelTile>().exit = 3; 
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -545,7 +551,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(2,3)].transform.position;
         Destroy(gridStorage[(2,3)]); 
         gridStorage[(2,3)] = tempTile;
-        gridStorage[(2,3)].gameObject.transform.Find("WestDoor").gameObject.SetActive(true); 
+        gridStorage[(2,3)].gameObject.transform.Find("WestDoor").gameObject.SetActive(true);
+        gridStorage[(2,3)].GetComponent<LevelTile>().exit = 3; 
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -553,7 +560,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(1,3)].transform.position;
         Destroy(gridStorage[(1,3)]); 
         gridStorage[(1,3)] = tempTile;
-        gridStorage[(1,3)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);   
+        gridStorage[(1,3)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);
+        gridStorage[(1,3)].GetComponent<LevelTile>().exit = 0;   
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -561,7 +569,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(1,4)].transform.position;
         Destroy(gridStorage[(1,4)]); 
         gridStorage[(1,4)] = tempTile;
-        gridStorage[(1,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);   
+        gridStorage[(1,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
+        gridStorage[(1,4)].GetComponent<LevelTile>().exit = 1;   
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -569,7 +578,8 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(2,4)].transform.position;
         Destroy(gridStorage[(2,4)]); 
         gridStorage[(2,4)] = tempTile;
-        gridStorage[(2,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);  
+        gridStorage[(2,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
+        gridStorage[(2,4)].GetComponent<LevelTile>().exit = 1;  
 
         tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
         tempTile.transform.parent = GameObject.Find("GridManager").transform; 
@@ -577,6 +587,7 @@ public class DemoGridManager : MonoBehaviour {
         tempTile.transform.position = gridStorage[(3,4)].transform.position;
         Destroy(gridStorage[(3,4)]); 
         gridStorage[(3,4)] = tempTile;
-        gridStorage[(3,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);  
+        gridStorage[(3,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
+        gridStorage[(3,4)].GetComponent<LevelTile>().exit = 1;  
     }
 }
