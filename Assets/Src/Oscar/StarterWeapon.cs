@@ -1,7 +1,7 @@
 /*
  * Filename: StarterWeapon.cs
  * Developer: Oscar Michua-Zarate
- * Purpose: This file standardizes how this specidic weapon will work.
+ * Purpose: This file standardizes how this specific weapon will work.
  */
 using System.Collections;
 using System.Collections.Generic;
