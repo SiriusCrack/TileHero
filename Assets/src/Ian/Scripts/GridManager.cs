@@ -113,7 +113,7 @@ public class GridManager : MonoBehaviour {
                     defaultTile.GetComponent<EmptyTile>().indX = x;
                     defaultTile.GetComponent<EmptyTile>().indY = y;                 
                     defaultTile.name = $"T[{x}][{y}]";
-                    defaultTile.transform.position = new Vector2(x*tileSize,y*tileSize);
+                    defaultTile.transform.position = new Vector3(x*tileSize,y*tileSize,0);
 
                     gridStorage[(x,y)] = defaultTile;   
                 }
@@ -128,7 +128,6 @@ public class GridManager : MonoBehaviour {
             mainCamera.gameObject.GetComponent<Camera>().orthographicSize = 3;
         }
     }
-
 
     /*
      * Summary: Checks if the tile placement is valid at the designated location.
