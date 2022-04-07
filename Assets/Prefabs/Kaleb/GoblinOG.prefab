@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02193275a5fa0094593cc7ec790f6be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 25
   baseAtk: 0
   attackTimer: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: -2338862930883900022, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
   thisEnemy: {fileID: 0}
   type: 0
 --- !u!212 &-917830363750903611

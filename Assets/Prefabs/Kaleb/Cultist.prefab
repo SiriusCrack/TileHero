@@ -98,6 +98,6 @@ MonoBehaviour:
   health: 0
   baseAtk: 0
   attackTimer: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: -807170638058990434, guid: efdf8834b781fff4a8994a5d180e5f28, type: 3}
   thisEnemy: {fileID: 0}
   type: 2
