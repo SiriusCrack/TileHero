@@ -27,6 +27,7 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
         EquipItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
+        EquipItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
     }
 
 
@@ -153,6 +154,11 @@ public class Inventory
     public Item GetHelmSlot()
     {
         return HelmetSlot;
+    }
+
+    public Item GetChestSlot()
+    {
+        return ChestSlot;
     }
 
     public List<Item> GetInventory()

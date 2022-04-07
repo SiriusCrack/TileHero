@@ -59,7 +59,7 @@ public class UI_Inventory : MonoBehaviour
         float itemSlotCellSize = 110f;
 
         HelmImage.sprite = inventory.GetHelmSlot().GetSprite();
-       
+        ChestImage.sprite = inventory.GetChestSlot().GetSprite();
 
 
 
