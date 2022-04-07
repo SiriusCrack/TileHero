@@ -26,18 +26,7 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        EquipItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
     }
 
 
@@ -140,16 +129,9 @@ public class Inventory
                 return 1;
             }
         }
-
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+        Debug.Log(item.itemType);
         return 0;
-
-
-
-
-
-
-        //OnItemListChanged?.Invoke(this, EventArgs.Empty);
-        //Debug.Log(itemList.Count);
     }
 
 
@@ -166,6 +148,11 @@ public class Inventory
         {
             Debug.Log("inventory full, item not added");
         }
+    }
+
+    public Item GetHelmSlot()
+    {
+        return HelmetSlot;
     }
 
     public List<Item> GetInventory()

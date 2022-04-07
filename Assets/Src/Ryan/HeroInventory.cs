@@ -5,12 +5,12 @@ using UnityEngine;
 public class HeroInventory : MonoBehaviour
 {
 
-    //private Inventory inventory = new Inventory();
-    //[SerializeField] private UI_Inventory uiInventory;
+    private Inventory inventory = new Inventory();
+    [SerializeField] private UI_Inventory uiInventory;
     private void Awake()
     {
-        //inventory = new Inventory();
-        //uiInventory.SetInventory(inventory);
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
         //inventory.AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
     }
 

@@ -9,6 +9,13 @@ public class UI_Inventory : MonoBehaviour
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
+    public Image HelmImage;
+    public Image ChestImage;
+    public Image LegImage;
+    public Image MainHandImage;
+    public Image OffHandImage;
+    public Image BootsImage;
+
 
 
 
@@ -31,10 +38,10 @@ public class UI_Inventory : MonoBehaviour
         RefreshInventoryItems();
     }
 
-    /* private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
+    private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
      {
          RefreshInventoryItems();
-     }*/
+     }
 
     private void HideInventoryItems()
     {
@@ -50,6 +57,12 @@ public class UI_Inventory : MonoBehaviour
         int x = 0;
         int y = 0;
         float itemSlotCellSize = 110f;
+
+        HelmImage.sprite = inventory.GetHelmSlot().GetSprite();
+       
+
+
+
 
         foreach (Item item in inventory.GetItemList())
         {
