@@ -602,6 +602,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba90f98529ebfad43810640596d9f6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HelmImage: {fileID: 0}
+  ChestImage: {fileID: 0}
+  LegImage: {fileID: 0}
+  MainHandImage: {fileID: 0}
+  OffHandImage: {fileID: 0}
+  BootsImage: {fileID: 0}
 --- !u!1 &299850636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,9 +1065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce950f312f1da74b8b8a31e66df208f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridManager: {fileID: 0}
-  tileInventory: {fileID: 320197446}
-  selectedTile: {fileID: 3040328477416080990, guid: 942aacb6fe01f014f9678de4eeb59873, type: 3}
 --- !u!4 &567812963
 Transform:
   m_ObjectHideFlags: 0
@@ -3345,6 +3348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a8ccc0016a32b4199f874490fddc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiInventory: {fileID: 0}
 --- !u!114 &1416433871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4846,7 +4850,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2134029647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad67c7b8142a5334c82cb20af2ff46ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b56199e64782a94bb266c8f5cb33fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 5
@@ -4855,6 +4859,8 @@ MonoBehaviour:
   dTile: {fileID: 8317786647484967768, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
   sTile: {fileID: 8017520656865270889, guid: 0972d6b3b66998e4aaf8f4290897fe84, type: 3}
   eTile: {fileID: 4014744108690255410, guid: 119fdcc15830c0d48b277438f6e7627e, type: 3}
+  oTile: {fileID: 3969528523121517538, guid: c042f78076897ea4498aecabea32da9b, type: 3}
   mainCamera: {fileID: 322248264}
   tileInventory: {fileID: 320197444}
   tileFactory: {fileID: 1295586628}
+  demoTile: {fileID: 3040328477416080990, guid: 942aacb6fe01f014f9678de4eeb59873, type: 3}

@@ -15,6 +15,7 @@ TagManager:
   - Door
   - LevelTile
   - Music
+  - Obstacle
   layers:
   - Default
   - TransparentFX

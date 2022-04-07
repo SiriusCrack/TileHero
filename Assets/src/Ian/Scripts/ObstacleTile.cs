@@ -10,11 +10,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Summary: EndTile class contains all the implementations for the end tile.
+ * Summary: ObstacleTile class contains all the implementations for the obstacle tile.
  * 
  * Member Variables: None
 */
-public class EndTile : EmptyTile
+public class ObstacleTile : EmptyTile
 {
 
     /*

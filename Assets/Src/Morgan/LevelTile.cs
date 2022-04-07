@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelTile : MonoBehaviour
 { 
-   [SerializeField] private bool connected;
+   [SerializeField] public bool connected;
    public int exit;
    public int indX, indY;
    public GameObject thisTile;

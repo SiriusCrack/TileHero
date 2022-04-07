@@ -32,7 +32,7 @@ using UnityEngine;
  * finX - X index of the end tile
  * finY - Y index of the end tile
  */
-public class GridManager : MonoBehaviour {
+public class DemoGridManager : MonoBehaviour {
     [SerializeField] public int width, height;
     [SerializeField] public float tileSize;
     [SerializeField] public GameObject dTile; 
@@ -63,7 +63,7 @@ public class GridManager : MonoBehaviour {
     void Start() 
     {
         InitGrid();
-        //DemoPopulateGrid(); DEMO ONLY
+        DemoPopulateGrid();
     }
 
     /*

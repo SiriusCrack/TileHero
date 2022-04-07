@@ -1217,9 +1217,11 @@ MonoBehaviour:
   dTile: {fileID: 8317786647484967768, guid: 8677951278fc6c247bd1e77394d693bb, type: 3}
   sTile: {fileID: 8017520656865270889, guid: 0972d6b3b66998e4aaf8f4290897fe84, type: 3}
   eTile: {fileID: 4014744108690255410, guid: 119fdcc15830c0d48b277438f6e7627e, type: 3}
+  oTile: {fileID: 3969528523121517538, guid: c042f78076897ea4498aecabea32da9b, type: 3}
   mainCamera: {fileID: 1823112465}
   tileInventory: {fileID: 1615273058}
   tileFactory: {fileID: 1563654900}
+  demoTile: {fileID: 3040328477416080990, guid: 942aacb6fe01f014f9678de4eeb59873, type: 3}
 --- !u!1 &393693023
 GameObject:
   m_ObjectHideFlags: 0
