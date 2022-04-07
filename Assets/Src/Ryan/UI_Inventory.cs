@@ -60,9 +60,10 @@ public class UI_Inventory : MonoBehaviour
 
         HelmImage.sprite = inventory.GetHelmSlot().GetSprite();
         ChestImage.sprite = inventory.GetChestSlot().GetSprite();
-
-
-
+        LegImage.sprite = inventory.GetLegSlot().GetSprite();
+        BootsImage.sprite = inventory.GetBootsSlot().GetSprite();
+        MainHandImage.sprite = inventory.GetMainHandSlot().GetSprite();
+        OffHandImage.sprite = inventory.GetOffHandSlot().GetSprite();
 
         foreach (Item item in inventory.GetItemList())
         {

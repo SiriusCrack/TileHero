@@ -23,7 +23,7 @@ public class Item
         switch (itemType)
         {
             default:
-            case ItemType.Empty:    return ItemAssets.Instance.swordSprite;
+            case ItemType.Empty:    return ItemAssets.Instance.emptySprite;
             case ItemType.Sword:    return ItemAssets.Instance.swordSprite;
             case ItemType.Shield:   return ItemAssets.Instance.shieldSprite;
             case ItemType.Boots:    return ItemAssets.Instance.bootsSprite;

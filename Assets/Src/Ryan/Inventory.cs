@@ -161,6 +161,26 @@ public class Inventory
         return ChestSlot;
     }
 
+    public Item GetLegSlot()
+    {
+        return LegSlot;
+    }
+
+    public Item GetBootsSlot()
+    {
+        return BootsSlot;
+    }
+
+    public Item GetMainHandSlot()
+    {
+        return MainHandSlot;
+    }
+
+    public Item GetOffHandSlot()
+    {
+        return OffHandSlot;
+    }
+
     public List<Item> GetInventory()
     {
         return itemList;
