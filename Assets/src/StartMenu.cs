@@ -6,8 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+
     public void SwitchScene()
     {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void StartBCMode()
+    {
+        MainManager.Instance.drbcEnable = true;
         SceneManager.LoadScene("Main");
     }
 

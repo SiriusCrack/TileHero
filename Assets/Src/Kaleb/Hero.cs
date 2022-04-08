@@ -35,6 +35,8 @@ public class Hero : NPC
     }
     void Awake()
     {
+        health = MainManager.Instance.playerHealth;
+        setAtk(MainManager.Instance.playerAtk);
         AmbientMusic= GameObject.FindWithTag("Music");
         AmbientMusic.SetActive(false);
         currentTile = GameObject.FindWithTag("Start");
