@@ -29,25 +29,29 @@ public class BleedEffect : Effect
 
 //only 1.05 - 1.2 for strength (5% health to 20% health taken away every 5 seconds)
 //will change in the future, will be based on # of hits instead of time
-    public void EffectFunction(float strength)
+    public float EffectFunction(float strength, float npcHealth)
     {
         float health;
-        health = npc.GetHealth();
-        npc.UpdateHealth(health / strength);
+        health = npcHealth;
+        health = (health / strength);
         Debug.Log(health);
+        return health;
     }
 
-    public void CountHits(float strength)
+    public float CountHits(float strength, float npcHealth)
     {
+        float health;
+        health = npcHealth;
         count = count + 1;
         Debug.Log(count);
         if (count >= 3)
         {
             Debug.Log("super WOWWIE!");
-            EffectFunction(strength);
+            health = EffectFunction(strength, npcHealth);
             count = 0;
             //BleedCultistsSpriteChange.ShowBleed();
         }
+        return health;
     }
 
         public void CountHits2()

@@ -51,7 +51,7 @@ public abstract class NPC : MonoBehaviour
         if(attack.effect == 1)
         {
             Debug.Log("wOWWIE!");
-            bleedEffect.CountHits(2);
+            health = bleedEffect.CountHits(2, health);
         }
 
         health -= attack.damage;

@@ -780,72 +780,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208559520}
   m_CullTransparentMesh: 1
---- !u!1001 &213933343
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 641576437601526654, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_Name
-      value: GoblinOG
-      objectReference: {fileID: 0}
-    - target: {fileID: 3479133843326469579, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: bleedEffect
-      value: 
-      objectReference: {fileID: 666393796}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
---- !u!4 &213933344 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7824360744143780800, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
-  m_PrefabInstance: {fileID: 213933343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220245271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1092,7 @@ MonoBehaviour:
   atkDamage: 1
   atkRange: 0
   attackTimer: 0
+  EffectType: 0
   effect: {fileID: 0}
 --- !u!1 &335193981
 GameObject:
@@ -2249,51 +2184,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660701796}
   m_CullTransparentMesh: 1
---- !u!1 &666393795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 666393797}
-  - component: {fileID: 666393796}
-  m_Layer: 0
-  m_Name: BleedEffect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &666393796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666393795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307f51aa2d0e22d47a6067f270f58a54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 0
-  EffectType: 1
---- !u!4 &666393797
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666393795}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.931665, y: -4.3813095, z: -97.97103}
-  m_LocalScale: {x: 13.333332, y: 13.333332, z: 13.333332}
-  m_Children: []
-  m_Father: {fileID: 213933344}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &680107512 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8599187366009506624, guid: 48b2b8ad419b31d4c85f59f26c690278, type: 3}
@@ -6485,6 +6375,7 @@ MonoBehaviour:
   atkDamage: 1
   atkRange: 0
   attackTimer: 0
+  EffectType: 0
   effect: {fileID: 0}
 --- !u!1001 &8863405695629089365
 PrefabInstance:
