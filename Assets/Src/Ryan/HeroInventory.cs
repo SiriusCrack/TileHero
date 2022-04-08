@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeroInventory : MonoBehaviour
 {
 
-    private Inventory inventory = new Inventory();
+    private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
     private void Awake()
     {

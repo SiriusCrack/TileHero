@@ -64,7 +64,15 @@ public class DemoGridManager : MonoBehaviour {
     {
         InitGrid();
         DemoPopulateGrid();
+        StartCoroutine(Wait());
     }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        gridStorage[(0,0)].GetComponent<StartTile>().exit = 1;
+    }
+
 
     /*
      * Summary: Initializes the grid system.

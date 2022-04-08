@@ -2,6 +2,7 @@ using static NPC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Hero : NPC
@@ -24,6 +25,9 @@ public class Hero : NPC
     public List<GameObject> enemies; //Bob Variable
     int left = 0;
 
+    [SerializeField]
+    bool inDemo = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,13 +44,16 @@ public class Hero : NPC
         //nextDirection = 1;
         hasDirection = true;
         isMoving = false;
+        inCombat = false;
     }
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("IsMoving: " + isMoving + " , HasDirection: " + hasDirection);
     }
     void FixedUpdate()
     {
+       // Debug.Log("IsMoving: " + isMoving + " , HasDirection: " + hasDirection);
         //やった! ゴールゲット
         if(!inCombat)
         {
@@ -113,14 +120,20 @@ public class Hero : NPC
             print("Next Direction: " + nextDirection);
             hasDirection = true;
         }
-        if (other.tag == "StartTile")
+        if (other.tag == "Start")
         {
-            nextDirection = other.GetComponent<LevelTile>().exit;
+           nextDirection = other.GetComponent<StartTile>().exit;
             print("Next Direction: " + nextDirection);
             hasDirection = true;
+            isMoving = false;
         }
         if(other.tag == "End")
         {
+            SceneManager.LoadScene("StartMenu");
+            if(inDemo)
+            {
+                SceneManager.LoadScene("StartMenu");
+            }
             gameObject.SetActive(false);
         }
     }
@@ -131,6 +144,7 @@ public class Hero : NPC
 
     public override IEnumerator Move(int nextDirection)
     {
+        print("Moving now");
         distTraveled = 0f;
         hasDirection = false;
         isMoving = true;
