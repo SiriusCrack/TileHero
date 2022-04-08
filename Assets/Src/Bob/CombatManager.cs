@@ -23,6 +23,8 @@ public class CombatManager : MonoBehaviour
     //tells if the hero is currently in combat
     bool inCombat;
 
+    public AttackCommand attackCommand;
+
     //Used to create other attack commands
     AttackCommand attack;
 
@@ -119,7 +121,9 @@ public class CombatManager : MonoBehaviour
         //resets the attack timer
         sender.attackTimer = 0;
         //creates an attack command object based on the sender/reciever
-        attack = new AttackCommand(sender, reciever, sender.weapon.atkDamage);
+        //attack = new (sender, reciever, sender.weapon.atkDamage);
+        attack = Instantiate(attackCommand);
+        attack.setAttributes(sender, reciever, sender.weapon.atkDamage);
         //sends that to the target
         reciever.receiveAttack(attack);
         //destroys the object

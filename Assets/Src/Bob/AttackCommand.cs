@@ -19,7 +19,7 @@ public class AttackCommand : MonoBehaviour
         
     }
 
-    public AttackCommand(NPC issuer, NPC target, float power)
+    public void setAttributes(NPC issuer, NPC target, float power)
     {
         sender = issuer;
         receiver = target;

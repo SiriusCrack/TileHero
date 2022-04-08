@@ -35,7 +35,7 @@ public class StressCombatManager : MonoBehaviour
         //attack = new AttackCommand(enemies[0], enemies[1], enemies[0].weapon.atk_damage);
         //enemies[1].receiveAttack(attack);
         //Destroy(attack);
-
+        /*
         //enemy count
         for (i = 0; i < 199; i++)
         {
@@ -56,11 +56,12 @@ public class StressCombatManager : MonoBehaviour
                 //}
             }
         }
+        */
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { /*
         for (i = 0; i < 50; i++)
         {
             for (j = 0; j < 50; j++)
@@ -74,7 +75,7 @@ public class StressCombatManager : MonoBehaviour
                     Destroy(attack);
                 }
             }
-        }
+        } */
         /*
         //Debug.Log(heroPos);
         heroPos = hero.transform.localPosition.x;
