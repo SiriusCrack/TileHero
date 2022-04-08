@@ -13,7 +13,6 @@ public class Effect : MonoBehaviour
     float effectTime;
     public float strength;
 
-
     public virtual void EffectFunction()
     {
         
@@ -47,5 +46,4 @@ public class Effect : MonoBehaviour
         length = length * 1000;
         Thread.Sleep(length);
     }
-
 }

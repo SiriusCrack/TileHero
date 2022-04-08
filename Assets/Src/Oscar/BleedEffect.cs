@@ -7,15 +7,19 @@ using static NPC;
 
 public class BleedEffect : Effect
 {
+    public int EffectType = 1;
     NPC npc;
     Hero hero;
     Weapon weapon;
+    BleedCultistsSpriteChange BleedCultistsSpriteChange;
 
     // Start is called before the first frame update    
     void Update()
-    {
+    {   
+
         print("test");
-        CountHits(10);
+        //CountHits(10);
+        //CountHits2();
     }
 
 //only 1.05 - 1.2 for strength (5% health to 20% health taken away every 5 seconds)
@@ -37,7 +41,13 @@ public class BleedEffect : Effect
             if (count == 3)
             {
                 EffectFunction(strength);
+                //BleedCultistsSpriteChange.ShowBleed();
             }
         }
+    }
+
+        public void CountHits2()
+    {
+        BleedCultistsSpriteChange.ShowBleed();
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6840317481201532767}
   - component: {fileID: 9151307302107621365}
   - component: {fileID: 4448796756176495522}
+  - component: {fileID: -5212690554580798109}
   m_Layer: 0
   m_Name: Cultist
   m_TagString: enemy
@@ -101,3 +102,16 @@ MonoBehaviour:
   weapon: {fileID: -807170638058990434, guid: efdf8834b781fff4a8994a5d180e5f28, type: 3}
   thisEnemy: {fileID: 0}
   type: 2
+--- !u!114 &-5212690554580798109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000506367850744737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ae0a299d7cf3f4fbeea87ce53b5d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CultistsBleed: {fileID: 21300000, guid: efa2b4acea74ace448c4e88a68b9bec3, type: 3}
