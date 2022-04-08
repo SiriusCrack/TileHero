@@ -28,10 +28,13 @@ public class CombatManager : MonoBehaviour
     //Used to create other attack commands
     AttackCommand attack;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         inCombat = false;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -69,9 +72,11 @@ public class CombatManager : MonoBehaviour
             {
                 if (enemies[i].activeSelf)
                 {
-                    Debug.Log(enemies[i].GetComponent<Enemy>().attackTimer);
+                    //Debug.Log(enemies[i].GetComponent<Enemy>().attackTimer);
                     if (enemies[i].GetComponent<Enemy>().attackTimer >= enemies[i].GetComponent<Enemy>().weapon.atkSpeed)
                     {
+                        //Debug.Log("Wawaweewa");
+                        audioSource.Play();
                         sendAttack(enemies[i].GetComponent<Enemy>(), hero);
                     }
                 }
@@ -79,6 +84,9 @@ public class CombatManager : MonoBehaviour
             //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
             if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
+                //Debug.Log("Attack Speed");
+                //Debug.Log(hero.weapon.atkSpeed);
+                audioSource.Play();
                 sendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
                 hero.attackTimer = 0;
             }
@@ -123,7 +131,7 @@ public class CombatManager : MonoBehaviour
         //creates an attack command object based on the sender/reciever
         //attack = new (sender, reciever, sender.weapon.atkDamage);
         attack = Instantiate(attackCommand);
-        attack.setAttributes(sender, reciever, sender.weapon.atkDamage);
+        attack.setAttributes(sender, reciever, sender.weapon.atkDamage, sender.weapon.EffectType);
         //sends that to the target
         reciever.receiveAttack(attack);
         //destroys the object

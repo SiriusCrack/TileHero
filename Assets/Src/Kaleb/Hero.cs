@@ -71,6 +71,8 @@ public class Hero : NPC
         }
         else
         {
+            //Debug.Log("Attack Timer");
+            //Debug.Log(attackTimer);
             attackTimer += 1;
         }
 

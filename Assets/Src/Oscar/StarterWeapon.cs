@@ -15,11 +15,17 @@ using static Weapon;
  */
 public class StarterWeapon : Weapon
 {
+    //public int EffectType;
     // Start is called before the first frame update
     void Start()
     {
         UpdateSpeed(100f);
         UpdateDamage(10f);
         UpdateRange(5f);
+    }
+
+    public void ChangeEffectType(int change)
+    {
+        EffectType = change;
     }
 }

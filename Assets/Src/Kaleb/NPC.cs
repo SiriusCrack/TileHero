@@ -31,6 +31,8 @@ public abstract class NPC : MonoBehaviour
     public int attackTimer = 0;
     public Weapon weapon;
 
+    public BleedEffect bleedEffect;
+
     Vector2 position; 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,12 @@ public abstract class NPC : MonoBehaviour
 
     public void receiveAttack(AttackCommand attack)
     {
+        if(attack.effect == 1)
+        {
+            Debug.Log("wOWWIE!");
+            bleedEffect.CountHits(2);
+        }
+
         health -= attack.damage;
         if (health < 0)
         {

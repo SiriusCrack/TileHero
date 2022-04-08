@@ -12,8 +12,13 @@ public class BleedEffect : Effect
     Hero hero;
     Weapon weapon;
     BleedCultistsSpriteChange BleedCultistsSpriteChange;
+    int count;
 
     // Start is called before the first frame update    
+    void Start()
+    {
+        count = 0;
+    }
     void Update()
     {   
 
@@ -29,20 +34,19 @@ public class BleedEffect : Effect
         float health;
         health = npc.GetHealth();
         npc.UpdateHealth(health / strength);
-        print(health);
+        Debug.Log(health);
     }
 
     public void CountHits(float strength)
     {
-        int count = 0;
-        if(hero.weapon.attackTimer >= weapon.atkSpeed){
-            count = count + 1;
-            print (count);
-            if (count == 3)
-            {
-                EffectFunction(strength);
-                //BleedCultistsSpriteChange.ShowBleed();
-            }
+        count = count + 1;
+        Debug.Log(count);
+        if (count >= 3)
+        {
+            Debug.Log("super WOWWIE!");
+            EffectFunction(strength);
+            count = 0;
+            //BleedCultistsSpriteChange.ShowBleed();
         }
     }
 

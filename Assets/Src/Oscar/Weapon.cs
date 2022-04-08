@@ -29,6 +29,8 @@ public class Weapon : MonoBehaviour
     
     public int attackTimer = 0;
 
+    public int EffectType;
+
     public Effect effect = null;
 
     // Start is called before the first frame update

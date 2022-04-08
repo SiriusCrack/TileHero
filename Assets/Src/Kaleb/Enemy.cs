@@ -51,7 +51,7 @@ public class Enemy : NPC
         {
             case enemyType.Goblin:
                 setAtk(.5f);
-                health = 5f;
+                health = 50f;
                 break;
             case enemyType.Skeleton:
                 setAtk(1f);
