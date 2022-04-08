@@ -166,3 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f521c6f5b5a7244bb244ca17f649ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drbcEnable: 0
+  playerHealth: 0
+  playerAtk: 0
+  gold: 0
+  playerWeapon: {fileID: -4768212811423302047, guid: f1e52910097c9df4c8c3d871ef5ded92, type: 3}

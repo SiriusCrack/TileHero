@@ -35,6 +35,7 @@ public class Hero : NPC
     }
     void Awake()
     {
+        weapon = MainManager.Instance.playerWeapon;
         health = MainManager.Instance.playerHealth;
         setAtk(MainManager.Instance.playerAtk);
         AmbientMusic= GameObject.FindWithTag("Music");

@@ -11,6 +11,8 @@ public class MainManager : MonoBehaviour
     public float playerHealth = 120;
     public float playerAtk = 0;
     public int gold = 0;
+    public Weapon playerWeapon;
+    //public inventory
     
     private void Awake()
     {

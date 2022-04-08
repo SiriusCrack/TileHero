@@ -17,7 +17,7 @@ public class BleedEffect : Effect
     void Update()
     {   
 
-        print("test");
+       // print("test");
         //CountHits(10);
         //CountHits2();
     }
