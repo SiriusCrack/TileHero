@@ -33,8 +33,14 @@ using UnityEngine;
  * finY - Y index of the end tile
  */
 public class GridManager : MonoBehaviour {
-    [SerializeField] public int width, height;
+    
+    [Header("Grid Settings")]
+    [SerializeField] public int width;
+    [SerializeField] public int height;
     [SerializeField] public float tileSize;
+    [SerializeField] public int level; 
+
+    [Header("Grid Parameters")]
     [SerializeField] public GameObject dTile; 
     [SerializeField] public GameObject sTile; 
     [SerializeField] public GameObject eTile;
@@ -63,7 +69,6 @@ public class GridManager : MonoBehaviour {
     void Start() 
     {
         InitGrid();
-        //DemoPopulateGrid(); DEMO ONLY
     }
 
     /*
@@ -75,6 +80,7 @@ public class GridManager : MonoBehaviour {
     */
     public void InitGrid() 
     {
+        int level = this.level;
         gridStorage = new Dictionary<(int, int), GameObject>();
         validPath = new List<((int, int), GameObject)>();
         for ( int x = 0; x < width; x++ ) {
@@ -99,14 +105,6 @@ public class GridManager : MonoBehaviour {
                     finX = x;
                     finY = y;
                 }
-                else if ( x == (width-1)/2 && y == (height-1)/2 ) {
-                    obstacleTile = Instantiate(oTile, new Vector3(x,y), Quaternion.identity);
-                    obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
-                    obstacleTile.name = $"OT[{x}{y}]";
-                    obstacleTile.transform.position = new Vector3(x*tileSize,y*tileSize,0);
-
-                    gridStorage[(x, y)] = obstacleTile;
-                }
                 else {
                     var defaultTile = Instantiate(dTile, new Vector3(x,y), Quaternion.identity);
                     defaultTile.transform.parent = GameObject.Find("GridManager").transform;
@@ -126,6 +124,88 @@ public class GridManager : MonoBehaviour {
         }
         else {
             mainCamera.gameObject.GetComponent<Camera>().orthographicSize = 3;
+        }
+
+        if ( level == 0 )
+        {
+            obstacleTile = Instantiate(oTile, new Vector3((width-1)/2,(height-1)/2), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = $"OT[{(width-1)/2}][{(height-1)/2}]";
+            obstacleTile.transform.position = new Vector3(((width-1)/2)*tileSize,((height-1)/2)*tileSize,0);
+
+            Destroy(gridStorage[((width-1)/2,(height-1)/2)]);
+            gridStorage[((width-1)/2,(height-1)/2)] = obstacleTile;
+            Debug.Log("Level 0 Initialized.");
+        }
+        else if ( level == 1 ) 
+        {
+            obstacleTile = Instantiate(oTile, new Vector3((width-1)/2,(height-1)/2), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = $"OT[{(width-1)/2}][{(height-1)/2}]";
+            obstacleTile.transform.position = new Vector3(((width-1)/2)*tileSize,((height-1)/2)*tileSize,0);
+
+            Destroy(gridStorage[((width-1)/2,(height-1)/2)]);
+            gridStorage[((width-1)/2,(height-1)/2)] = obstacleTile;
+
+            obstacleTile = Instantiate(oTile, new Vector3(1,0), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = "OT[1][0]";
+            obstacleTile.transform.position = new Vector3(1*tileSize,0*tileSize,0);
+
+            Destroy(gridStorage[(1,0)]);
+            gridStorage[(1,0)] = obstacleTile;
+
+            obstacleTile = Instantiate(oTile, new Vector3(3,4), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = "OT[3][4]";
+            obstacleTile.transform.position = new Vector3(3*tileSize,4*tileSize,0);
+
+            Destroy(gridStorage[(3,4)]);
+            gridStorage[(3,4)] = obstacleTile;
+            Debug.Log("Level 1 Initialized.");
+        }
+        else if ( level == 2 ) 
+        {
+            obstacleTile = Instantiate(oTile, new Vector3((width-1)/2,(height-1)/2), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = $"OT[{(width-1)/2}][{(height-1)/2}]";
+            obstacleTile.transform.position = new Vector3(((width-1)/2)*tileSize,((height-1)/2)*tileSize,0);
+
+            Destroy(gridStorage[((width-1)/2,(height-1)/2)]);
+            gridStorage[((width-1)/2,(height-1)/2)] = obstacleTile;
+
+            obstacleTile = Instantiate(oTile, new Vector3(1,0), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = "OT[1][0]";
+            obstacleTile.transform.position = new Vector3(1*tileSize,0*tileSize,0);
+
+            Destroy(gridStorage[(1,0)]);
+            gridStorage[(1,0)] = obstacleTile;
+
+            obstacleTile = Instantiate(oTile, new Vector3(3,4), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = "OT[3][4]";
+            obstacleTile.transform.position = new Vector3(3*tileSize,4*tileSize,0);
+
+            Destroy(gridStorage[(3,4)]);
+            gridStorage[(3,4)] = obstacleTile;
+
+            obstacleTile = Instantiate(oTile, new Vector3(4,0), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = "OT[4][0]";
+            obstacleTile.transform.position = new Vector3(4*tileSize,0*tileSize,0);
+
+            Destroy(gridStorage[(4,0)]);
+            gridStorage[(4,0)] = obstacleTile;
+
+            obstacleTile = Instantiate(oTile, new Vector3(0,4), Quaternion.identity);
+            obstacleTile.transform.parent = GameObject.Find("GridManager").transform;
+            obstacleTile.name = "OT[0][4]";
+            obstacleTile.transform.position = new Vector3(0*tileSize,4*tileSize,0);
+
+            Destroy(gridStorage[(0,4)]);
+            gridStorage[(0,4)] = obstacleTile;
+            Debug.Log("Level 2 Initialized.");
         }
     }
 
@@ -484,98 +564,5 @@ public class GridManager : MonoBehaviour {
         validPath.Add(((x, y), nextTile));
         Debug.Log($"Added \"{nextTile.name}\" to the Path List.");
         return true;
-    }
-
-    void DemoPopulateGrid() {
-
-        gridStorage[(0,0)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
-
-        var tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[1][0]";
-        tempTile.transform.position = gridStorage[(1,0)].transform.position;
-        Destroy(gridStorage[(1,0)]); 
-        gridStorage[(1,0)] = tempTile;
-        gridStorage[(1,0)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[2][0]";
-        tempTile.transform.position = gridStorage[(2,0)].transform.position;
-        Destroy(gridStorage[(2,0)]); 
-        gridStorage[(2,0)] = tempTile;
-        gridStorage[(2,0)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[2][1]";
-        tempTile.transform.position = gridStorage[(2,1)].transform.position;
-        Destroy(gridStorage[(2,1)]); 
-        gridStorage[(2,1)] = tempTile;
-        gridStorage[(2,1)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true); 
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[3][1]";
-        tempTile.transform.position = gridStorage[(3,1)].transform.position;
-        Destroy(gridStorage[(3,1)]); 
-        gridStorage[(3,1)] = tempTile;
-        gridStorage[(3,1)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[3][2]";
-        tempTile.transform.position = gridStorage[(3,2)].transform.position;
-        Destroy(gridStorage[(3,2)]); 
-        gridStorage[(3,2)] = tempTile;
-        gridStorage[(3,2)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true); 
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[3][3]";
-        tempTile.transform.position = gridStorage[(3,3)].transform.position;
-        Destroy(gridStorage[(3,3)]); 
-        gridStorage[(3,3)] = tempTile;
-        gridStorage[(3,3)].gameObject.transform.Find("WestDoor").gameObject.SetActive(true); 
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[2][3]";
-        tempTile.transform.position = gridStorage[(2,3)].transform.position;
-        Destroy(gridStorage[(2,3)]); 
-        gridStorage[(2,3)] = tempTile;
-        gridStorage[(2,3)].gameObject.transform.Find("WestDoor").gameObject.SetActive(true); 
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[1][3]";
-        tempTile.transform.position = gridStorage[(1,3)].transform.position;
-        Destroy(gridStorage[(1,3)]); 
-        gridStorage[(1,3)] = tempTile;
-        gridStorage[(1,3)].gameObject.transform.Find("NorthDoor").gameObject.SetActive(true);   
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[1][4]";
-        tempTile.transform.position = gridStorage[(1,4)].transform.position;
-        Destroy(gridStorage[(1,4)]); 
-        gridStorage[(1,4)] = tempTile;
-        gridStorage[(1,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);   
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[2][4]";
-        tempTile.transform.position = gridStorage[(2,4)].transform.position;
-        Destroy(gridStorage[(2,4)]); 
-        gridStorage[(2,4)] = tempTile;
-        gridStorage[(2,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);  
-
-        tempTile = Instantiate(demoTile, Vector3.zero, Quaternion.identity);
-        tempTile.transform.parent = GameObject.Find("GridManager").transform; 
-        tempTile.name = "LT[3][4]";
-        tempTile.transform.position = gridStorage[(3,4)].transform.position;
-        Destroy(gridStorage[(3,4)]); 
-        gridStorage[(3,4)] = tempTile;
-        gridStorage[(3,4)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);  
     }
 }
