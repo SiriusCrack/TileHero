@@ -33,6 +33,8 @@ public abstract class NPC : MonoBehaviour
 
     public BleedEffect bleedEffect;
 
+    public PoisonEffect poisonEffect;
+
     Vector2 position; 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,13 @@ public abstract class NPC : MonoBehaviour
     {
         if(attack.effect == 1)
         {
+            //2 = strength, divides health by 2
             health = bleedEffect.CountHits(2, health);
+        }
+        if(attack.effect == 2)
+        {
+            //5 = strength, subtracts 5 health from npc
+            health = poisonEffect.CountEffect(5, health);
         }
 
         health -= attack.damage;
