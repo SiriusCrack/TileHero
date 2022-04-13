@@ -18,7 +18,7 @@ public class CultistWeapon : Weapon
     // Start is called before the first frame update
     void Start()
     {
-        UpdateSpeed(35f);
+        UpdateSpeed(120f);
         UpdateDamage(1f);
         UpdateRange(0f);
     }

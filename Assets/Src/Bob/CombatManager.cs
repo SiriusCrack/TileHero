@@ -28,13 +28,15 @@ public class CombatManager : MonoBehaviour
     //Used to create other attack commands
     AttackCommand attack;
 
-    private AudioSource audioSource;
+    private AudioSource enemyHit;
+    private AudioSource heroHit;
 
     // Start is called before the first frame update
     void Start()
     {
         inCombat = false;
-        audioSource = gameObject.GetComponent<AudioSource>();
+        enemyHit = gameObject.AddComponent<AudioSource>();
+        heroHit = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,8 +77,7 @@ public class CombatManager : MonoBehaviour
                     //Debug.Log(enemies[i].GetComponent<Enemy>().attackTimer);
                     if (enemies[i].GetComponent<Enemy>().attackTimer >= enemies[i].GetComponent<Enemy>().weapon.atkSpeed)
                     {
-                        //Debug.Log("Wawaweewa");
-                        audioSource.Play();
+                        enemyHit.Play();
                         sendAttack(enemies[i].GetComponent<Enemy>(), hero);
                     }
                 }
@@ -84,9 +85,7 @@ public class CombatManager : MonoBehaviour
             //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
             if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
-                //Debug.Log("Attack Speed");
-                //Debug.Log(hero.weapon.atkSpeed);
-                audioSource.Play();
+                heroHit.Play();
                 sendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
                 hero.attackTimer = 0;
             }
@@ -129,7 +128,6 @@ public class CombatManager : MonoBehaviour
         //resets the attack timer
         sender.attackTimer = 0;
         //creates an attack command object based on the sender/reciever
-        //attack = new (sender, reciever, sender.weapon.atkDamage);
         attack = Instantiate(attackCommand);
         attack.setAttributes(sender, reciever, sender.weapon.atkDamage, sender.weapon.EffectType);
         //sends that to the target
@@ -144,15 +142,17 @@ public class CombatManager : MonoBehaviour
         //allows combat manager to process combat
         inCombat = true;
 
-        //reset hero an enemy attack timers since they run constantly out of combat
+        //reset hero and enemy attack timers since they run constantly out of combat
         hero.attackTimer = 0;
-        for (i = 0; i < enemies.Length; i++)
-        {
-            if (enemies[i].activeSelf)
-            {
-                enemies[i].GetComponent<Enemy>().attackTimer = 0;
-            }
-        }
+        //for (i = 0; i < enemies.Length; i++)
+        //{
+        //    if (enemies[i].activeSelf)
+        //    {
+        //        Debug.Log("Enemies Index:");
+        //        Debug.Log(i);
+        //        enemies[i].GetComponent<Enemy>().attackTimer = 0;
+        //    }
+        //}
     }
 
     //Used to add enemies to the enemies array when a hero encounters them

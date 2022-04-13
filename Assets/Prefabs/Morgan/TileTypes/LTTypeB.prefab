@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinOG
       objectReference: {fileID: 0}
+    - target: {fileID: 2030853948963659986, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
+      propertyPath: atkSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 3479133843326469579, guid: 57a6d06c363784cbd9c9ccd1a3391699, type: 3}
       propertyPath: health
       value: 0

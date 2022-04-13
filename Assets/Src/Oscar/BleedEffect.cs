@@ -43,10 +43,8 @@ public class BleedEffect : Effect
         float health;
         health = npcHealth;
         count = count + 1;
-        Debug.Log(count);
         if (count >= 3)
         {
-            Debug.Log("super WOWWIE!");
             health = EffectFunction(strength, npcHealth);
             count = 0;
             //BleedCultistsSpriteChange.ShowBleed();

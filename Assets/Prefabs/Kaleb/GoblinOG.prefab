@@ -75,6 +75,7 @@ Transform:
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
   m_Children:
   - {fileID: 666393797}
+  - {fileID: 4081561861393901801}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93,7 +94,7 @@ MonoBehaviour:
   health: 25
   baseAtk: 0
   attackTimer: 0
-  weapon: {fileID: -2338862930883900022, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+  weapon: {fileID: 2030853948963659986}
   bleedEffect: {fileID: 666393796}
   thisEnemy: {fileID: 0}
   type: 0
@@ -148,3 +149,84 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &4874507120977620312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7824360744143780800}
+    m_Modifications:
+    - target: {fileID: -2338862930883900022, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: atkSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -2338862930883900022, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: atkDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.785114
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7093886
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.193921
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863405696194037175, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+      propertyPath: m_Name
+      value: GoblinWeapon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+--- !u!4 &4081561861393901801 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8863405696194037169, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+  m_PrefabInstance: {fileID: 4874507120977620312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2030853948963659986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2338862930883900022, guid: 5025f351bc836e44dbc4123933b8e979, type: 3}
+  m_PrefabInstance: {fileID: 4874507120977620312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab65f6e03afad5e479d45220c151bab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

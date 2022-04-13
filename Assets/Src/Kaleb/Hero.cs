@@ -113,7 +113,7 @@ public class Hero : NPC
         print("Collision here");
         if (other.tag == "LevelTile")
         {
-            Debug.Log("Real tile collided");
+            //Debug.Log("Real tile collided");
             /*Bob: start combat should prevent movement, enemies = ... will store
             the enemies from the tile in the hero, then collectEnemy being set to
             true will tell the combat manager to pick them up off the hero*/ 
