@@ -35,11 +35,13 @@ public abstract class NPC : MonoBehaviour
 
     public PoisonEffect poisonEffect;
 
+    public CombatAI combatAI;
+
     Vector2 position; 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -48,9 +50,10 @@ public abstract class NPC : MonoBehaviour
         
     }
 
+
     public void receiveAttack(AttackCommand attack)
     {
-        if(attack.effect == 1)
+        if (attack.effect == 1)
         {
             //2 = strength, divides health by 2
             health = bleedEffect.CountHits(2, health);

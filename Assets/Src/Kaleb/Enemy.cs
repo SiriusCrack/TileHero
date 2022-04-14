@@ -15,6 +15,8 @@ public class Enemy : NPC
 
     void Start()
     {
+        combatAI.setMaxHealth(health);
+        combatAI.updateLocation(transform.position);
         SetStats(type);
         thisEnemy = this;
         //messagePrinted = false;
@@ -33,6 +35,7 @@ public class Enemy : NPC
 
     void FixedUpdate()
     {
+        combatAI.updateLocation(transform.position);
         attackTimer += 1;
     }
     public void takeDamage(int dmg)

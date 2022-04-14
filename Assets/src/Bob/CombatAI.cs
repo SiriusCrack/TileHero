@@ -38,9 +38,9 @@ public class CombatAI : MonoBehaviour
     public void updateLocation(Vector3 npcLocation)
     {
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
-        Debug.Log("npc Location");
-        Debug.Log(npcLocation);
+        //Debug.Log("npc Location");
+        //Debug.Log(npcLocation);
         healthBar.transform.position = new Vector3(npcLocation.x * 68 + 212, npcLocation.y * 69 + 50, npcLocation.z);
-        Debug.Log(healthBar.transform.position);
+        //Debug.Log(healthBar.transform.position);
     }
 }

@@ -28,17 +28,16 @@ public class Hero : NPC
     [SerializeField]
     bool inDemo = false;
 
-    public CombatAI combatAI;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        combatAI.setMaxHealth(health);
-        combatAI.updateLocation(transform.position);
+
     }
     void Awake()
     {
+        combatAI.setMaxHealth(health);
+        combatAI.updateLocation(transform.position);
         weapon = MainManager.Instance.playerWeapon;
         health = MainManager.Instance.playerHealth;
         setAtk(MainManager.Instance.playerAtk);
@@ -60,9 +59,9 @@ public class Hero : NPC
     }
     void FixedUpdate()
     {
+        combatAI.updateLocation(transform.position);
         // Debug.Log("IsMoving: " + isMoving + " , HasDirection: " + hasDirection);
         //やった! ゴールゲット
-        combatAI.updateLocation(transform.position);
         if (!inCombat)
         {
             if (hasDirection && !isMoving)

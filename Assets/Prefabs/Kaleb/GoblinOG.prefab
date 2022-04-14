@@ -96,6 +96,8 @@ MonoBehaviour:
   attackTimer: 0
   weapon: {fileID: 2030853948963659986}
   bleedEffect: {fileID: 666393796}
+  poisonEffect: {fileID: 0}
+  combatAI: {fileID: 0}
   thisEnemy: {fileID: 0}
   type: 0
 --- !u!212 &-917830363750903611
