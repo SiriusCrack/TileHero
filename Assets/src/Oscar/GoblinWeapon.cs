@@ -19,7 +19,7 @@ public class GoblinWeapon : Weapon
     void Start()
     {
         UpdateSpeed(70f);
-        UpdateDamage(5f);
+        UpdateDamage(2f);
         UpdateRange(0f);
     }
 }

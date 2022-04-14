@@ -1431,7 +1431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647679640204617791, guid: 5c3bbea7fe4be2043ab67539bc197c86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 647679640204617791, guid: 5c3bbea7fe4be2043ab67539bc197c86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3952,6 +3952,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7629794982631376043, guid: fd6b8d4d4a0ec434fa0c84dc19e5a861, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 2137892944}
+    - target: {fileID: 7629794982631376043, guid: fd6b8d4d4a0ec434fa0c84dc19e5a861, type: 3}
       propertyPath: healthBarSlider
       value: 
       objectReference: {fileID: 1274699151}
@@ -3978,7 +3982,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8726020261814585268, guid: fd6b8d4d4a0ec434fa0c84dc19e5a861, type: 3}
   m_PrefabInstance: {fileID: 1274699150}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2137892944}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -6434,6 +6438,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137159971}
   m_CullTransparentMesh: 1
+--- !u!1 &2137892944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8726020261814585274, guid: fd6b8d4d4a0ec434fa0c84dc19e5a861, type: 3}
+  m_PrefabInstance: {fileID: 1274699150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5313886138609598396
 PrefabInstance:
   m_ObjectHideFlags: 0

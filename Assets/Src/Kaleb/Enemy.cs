@@ -9,14 +9,14 @@ public class Enemy : NPC
     // Start is called before the first frame update
     private bool messagePrinted;
     public Enemy thisEnemy;
-    int funnyNumber;
+    int maxHealthInitialized;
     private enum enemyType {Goblin, Skeleton, Cultist, Dummy};
     [SerializeField]
     private enemyType type;
 
     void Start()
     {
-        funnyNumber = 0;
+        maxHealthInitialized = 0;
         SetStats(type);
         thisEnemy = this;
         //messagePrinted = false;
