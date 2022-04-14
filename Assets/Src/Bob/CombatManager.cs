@@ -81,7 +81,7 @@ public class CombatManager : MonoBehaviour
                     {
                         //AudioClip.Play(enemyHit, 1f);
                         allAudio[1].Play();
-                        hero.combatAI.updateSlider(enemies[i].GetComponent<Enemy>().weapon.atkDamage);
+                        //hero.combatAI.updateSlider(enemies[i].GetComponent<Enemy>().weapon.atkDamage);
                         sendAttack(enemies[i].GetComponent<Enemy>(), hero);
                     }
                 }
@@ -90,6 +90,7 @@ public class CombatManager : MonoBehaviour
             if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
                 allAudio[0].Play();
+                //enemies[currentEnemy].GetComponent<Enemy>().combatAI.updateSlider(hero.weapon.atkDamage);
                 //AudioClip.Play(heroHit, 1f);
                 sendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
                 hero.attackTimer = 0;

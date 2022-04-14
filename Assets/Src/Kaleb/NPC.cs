@@ -37,11 +37,13 @@ public abstract class NPC : MonoBehaviour
 
     public CombatAI combatAI;
 
+    int funnyNumber;
+
     Vector2 position; 
     // Start is called before the first frame update
     void Start()
     {
-
+        funnyNumber = 0;
     }
 
     // Update is called once per frame
@@ -53,6 +55,11 @@ public abstract class NPC : MonoBehaviour
 
     public void receiveAttack(AttackCommand attack)
     {
+        if (funnyNumber != 1)
+        {
+            combatAI.setMaxHealth(health);
+            funnyNumber = 1;
+        }
         if (attack.effect == 1)
         {
             //2 = strength, divides health by 2
@@ -69,6 +76,7 @@ public abstract class NPC : MonoBehaviour
         {
             health = 0;
         }
+        combatAI.updateSlider(health);
         Destroy(attack);
     }
 
