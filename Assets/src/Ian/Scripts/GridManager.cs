@@ -503,7 +503,7 @@ public class GridManager : MonoBehaviour {
                 }
             }
             else if ( x == 0 && y == 1) {
-                if (dir == 0) {
+                if (dir == 2) {
                     Debug.Log("Cannot place a door in this direction.");
                     return false;
                 }

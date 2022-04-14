@@ -1,7 +1,7 @@
 /*
- * Filename: GridManager.cs
+ * Filename: DemoGridManager.cs
  * Developer: Ian Fleming
- * Purpose: This script creates the interactive tile grid.
+ * Purpose: This script is is a copy of the Grid Manager with implementations to assist in the Demo presentation.
  */
 
 using System;
@@ -10,8 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// USES ABSTRACT FACTORY PATTERN
+
 /*
- * Summary: GridManager class contains all code implementations to initialize the grid system.
+ * Summary: DemoGridManager class contains all code implementations to initialize and populate the grid system.
  * 
  * Member Variables:
  * width - Width of the grid
@@ -495,6 +497,13 @@ public class DemoGridManager : MonoBehaviour {
         return true;
     }
 
+    /*
+     * Summary: Function that populates the grid tiles with tile types into a viable path for the Demo version.
+     *
+     * Parameters: None
+     *
+     * Returns: None
+    */
     void DemoPopulateGrid() {
 
         gridStorage[(0,0)].gameObject.transform.Find("EastDoor").gameObject.SetActive(true);

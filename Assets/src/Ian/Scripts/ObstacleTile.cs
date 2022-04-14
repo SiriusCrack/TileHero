@@ -1,7 +1,7 @@
 /*
- * Filename: EndTile.cs
+ * Filename: ObstacleTile.cs
  * Developer: Ian Fleming
- * Purpose: This script contains implementations for the end tile object.
+ * Purpose: This script contains implementations for the obstacle tile object.
  */
 
 using System;
