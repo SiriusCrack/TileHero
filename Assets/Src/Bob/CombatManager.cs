@@ -81,6 +81,7 @@ public class CombatManager : MonoBehaviour
                     {
                         //AudioClip.Play(enemyHit, 1f);
                         allAudio[1].Play();
+                        hero.combatAI.updateSlider(enemies[i].GetComponent<Enemy>().weapon.atkDamage);
                         sendAttack(enemies[i].GetComponent<Enemy>(), hero);
                     }
                 }

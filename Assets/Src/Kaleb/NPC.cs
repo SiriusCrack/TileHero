@@ -58,6 +58,7 @@ public abstract class NPC : MonoBehaviour
         {
             health = 0;
         }
+        Destroy(attack);
     }
 
     public abstract IEnumerator Move(int goalCoords);

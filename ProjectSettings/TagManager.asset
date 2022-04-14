@@ -16,6 +16,7 @@ TagManager:
   - LevelTile
   - Music
   - Obstacle
+  - HealthBar
   layers:
   - Default
   - TransparentFX

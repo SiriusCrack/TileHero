@@ -28,10 +28,14 @@ public class Hero : NPC
     [SerializeField]
     bool inDemo = false;
 
+    public CombatAI combatAI;
+
+
     // Start is called before the first frame update
     void Start()
     {
-    
+        combatAI.setMaxHealth(health);
+        combatAI.updateLocation(transform.position);
     }
     void Awake()
     {
@@ -56,11 +60,12 @@ public class Hero : NPC
     }
     void FixedUpdate()
     {
-       // Debug.Log("IsMoving: " + isMoving + " , HasDirection: " + hasDirection);
+        // Debug.Log("IsMoving: " + isMoving + " , HasDirection: " + hasDirection);
         //やった! ゴールゲット
-        if(!inCombat)
+        combatAI.updateLocation(transform.position);
+        if (!inCombat)
         {
-            if(hasDirection && !isMoving)
+            if (hasDirection && !isMoving)
             {
                 StartCoroutine(Move(nextDirection));
             }
