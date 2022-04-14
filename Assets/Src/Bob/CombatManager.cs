@@ -28,15 +28,17 @@ public class CombatManager : MonoBehaviour
     //Used to create other attack commands
     AttackCommand attack;
 
-    private AudioSource enemyHit;
-    private AudioSource heroHit;
+    //public AudioClip enemyHit;
+    //public AudioClip heroHit;
+    public AudioSource[] allAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         inCombat = false;
-        enemyHit = gameObject.AddComponent<AudioSource>();
-        heroHit = gameObject.AddComponent<AudioSource>();
+        allAudio = GetComponents<AudioSource>();
+        //enemyHit = allAudio[0].clip;
+        //heroHit = allAudio[1].clip;
     }
 
     // Update is called once per frame
@@ -77,7 +79,8 @@ public class CombatManager : MonoBehaviour
                     //Debug.Log(enemies[i].GetComponent<Enemy>().attackTimer);
                     if (enemies[i].GetComponent<Enemy>().attackTimer >= enemies[i].GetComponent<Enemy>().weapon.atkSpeed)
                     {
-                        enemyHit.Play();
+                        //AudioClip.Play(enemyHit, 1f);
+                        allAudio[1].Play();
                         sendAttack(enemies[i].GetComponent<Enemy>(), hero);
                     }
                 }
@@ -85,7 +88,8 @@ public class CombatManager : MonoBehaviour
             //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
             if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
-                heroHit.Play();
+                allAudio[0].Play();
+                //AudioClip.Play(heroHit, 1f);
                 sendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
                 hero.attackTimer = 0;
             }
