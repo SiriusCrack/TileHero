@@ -19,16 +19,7 @@ public class BleedEffect : Effect
     {
         count = 0;
     }
-    void Update()
-    {   
 
-       // print("test");
-        //CountHits(10);
-        //CountHits2();
-    }
-
-//only 1.05 - 1.2 for strength (5% health to 20% health taken away every 5 seconds)
-//will change in the future, will be based on # of hits instead of time
     public float EffectFunction(float strength, float npcHealth)
     {
         float health;

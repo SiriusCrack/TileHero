@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atkSpeed: 100
-  atkDamage: 10
+  atkDamage: 1
   atkRange: 5
   attackTimer: 0
-  EffectType: 1
-  effect: {fileID: 0}
+  EffectType: 2
+  effect: {fileID: 7592531351797952012, guid: e64df6ecd66a9104b8d7d307afad3bc8, type: 3}
 --- !u!212 &2823926515785417382
 SpriteRenderer:
   m_ObjectHideFlags: 0
