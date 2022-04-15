@@ -8,6 +8,8 @@ public class CombatAI : MonoBehaviour
     float health;
     float maxHealth;
 
+    Vector3 barLocation;
+
     public GameObject healthBar;
     public Slider healthBarSlider;
 
@@ -37,6 +39,7 @@ public class CombatAI : MonoBehaviour
 
     public void updateLocation(Vector3 npcLocation)
     {
-        healthBar.transform.position = new Vector3(npcLocation.x * 68 + 212, npcLocation.y * 69 + 50, npcLocation.z);
+        barLocation = new Vector3(npcLocation.x, npcLocation.y - .15f, npcLocation.z);
+        healthBar.transform.position = Camera.main.WorldToScreenPoint(barLocation);
     }
 }
