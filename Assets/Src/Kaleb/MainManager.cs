@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MainManager : MonoBehaviour
     public float playerAtk = 0;
     public int gold = 0;
     public Weapon playerWeapon;
+    public int nextLevel;
     //public inventory
     
     private void Awake()
@@ -26,6 +28,7 @@ public class MainManager : MonoBehaviour
         playerHealth = 120;
         playerAtk = 0;
         gold = 0;
+        nextLevel = 1;
     }
 
     void Update()
@@ -36,6 +39,21 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    public void LoadNextLevel()
+    {
+        if(nextLevel == 1)
+        {
+            nextLevel++;
+            SceneManager.LoadScene("Level1");
+            return;
+        }
+        if(nextLevel == 2)
+        {
+            nextLevel++;
+            SceneManager.LoadScene("Level2");
+            return;
+        }
+    }
     
 
 

@@ -9,13 +9,13 @@ public class StartMenu : MonoBehaviour
 
     public void SwitchScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Level0");
     }
 
     public void StartBCMode()
     {
         MainManager.Instance.drbcEnable = true;
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Level0");
     }
 
     public void QuitProgram()

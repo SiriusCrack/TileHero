@@ -138,10 +138,14 @@ public class Hero : NPC
         }
         if(other.tag == "End")
         {
-            SceneManager.LoadScene("StartMenu");
+            
             if(inDemo)
             {
                 SceneManager.LoadScene("StartMenu");
+            }else
+            {
+                MainManager.Instance.playerHealth = health;
+                MainManager.Instance.LoadNextLevel();
             }
             gameObject.SetActive(false);
         }
