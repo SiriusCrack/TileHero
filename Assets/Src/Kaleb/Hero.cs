@@ -20,9 +20,11 @@ public class Hero : NPC
     private bool isMoving;
 
     public Enemy currentEnemy; //Bob Variable
+
     [SerializeField]
     public bool collectEnemy = false; //Bob Variable
     public List<GameObject> enemies; //Bob Variable
+
     int left = 0;
 
     [SerializeField]
@@ -123,7 +125,6 @@ public class Hero : NPC
             true will tell the combat manager to pick them up off the hero*/ 
             StartCombat();
             enemies = other.GetComponent<LevelTile>().enemy;
-            collectEnemy = true;
 
             nextDirection = other.GetComponent<LevelTile>().exit;
             print("Next Direction: " + nextDirection);
@@ -169,10 +170,11 @@ public class Hero : NPC
                 Vector3 oldPosition = transform.position;
                 transform.Translate(.01f,0,0);
                 distTraveled += Vector3.Distance(oldPosition, transform.position);
-                //Debug.Log(transform.position);
+                Debug.Log(transform.position);
                 yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
+            collectEnemy = true;
         }
 
         //move left one tile
@@ -187,6 +189,7 @@ public class Hero : NPC
                 yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
+            collectEnemy = true;
         }
 
         //move up one tile
@@ -201,6 +204,7 @@ public class Hero : NPC
                 yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
+            collectEnemy = true;
         }
 
         //move down one tile
@@ -215,6 +219,7 @@ public class Hero : NPC
                 yield return new WaitForSeconds(.01f);
             }
             isMoving = false;
+            collectEnemy = true;
         }
     }
 }

@@ -23,6 +23,8 @@ public class CombatManager : MonoBehaviour
     //tells if the hero is currently in combat
     bool inCombat;
 
+    Vector3 centerPosition;
+
     public AttackCommand attackCommand;
 
     //Used to create other attack commands
@@ -65,12 +67,14 @@ public class CombatManager : MonoBehaviour
                     }
                 }
             }
+
             //if the hero's health drops to zero, remove them from the game
             if (hero.health == 0)
             {
                 hero.gameObject.SetActive(false);
                 inCombat = false;
             }
+
             //If the enemy's attack timer reaches their weaponspeed, have them attack the hero
             for (i = 0; i < listLength; i++)
             {
@@ -86,6 +90,7 @@ public class CombatManager : MonoBehaviour
                     }
                 }
             }
+
             //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
             if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
@@ -95,13 +100,13 @@ public class CombatManager : MonoBehaviour
                 sendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
                 hero.attackTimer = 0;
             }
+
         }
     }
 
     //Handles removing an enemy
     void enemyDeath(int enemyIndex)
     {
-
         //moves the enemy out of the game so the hero doesn't get stuck on them and sets them inactive
         enemies[enemyIndex].transform.Translate(1000, 1000, 0);
         enemies[enemyIndex].gameObject.SetActive(false);
@@ -120,11 +125,20 @@ public class CombatManager : MonoBehaviour
         if (enemiesRemaining == 0)
         {
             inCombat = false;
+            hero.transform.position = centerPosition;
             hero.EndCombat();
         }
         else
         {
             currentEnemy++;
+            if (enemies[currentEnemy])
+            {
+                enemies[currentEnemy].GetComponent<Enemy>().transform.position =
+                    enemies[currentEnemy].GetComponent<Enemy>().combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+
+                hero.transform.position = hero.combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+                
+            }
         }
     }
 
@@ -144,25 +158,22 @@ public class CombatManager : MonoBehaviour
 
     //sets necessary values for variables upon combat start. kinda like the unity start() for combat
     void enterCombat()
-    {
+    { 
+        centerPosition = hero.transform.position;
         //allows combat manager to process combat
         inCombat = true;
 
-        //reset hero and enemy attack timers since they run constantly out of combat
+        enemies[currentEnemy].GetComponent<Enemy>().transform.position =
+    enemies[currentEnemy].GetComponent<Enemy>().combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+
+        hero.transform.position = hero.combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+
+        //reset hero attack timer since it runs constantly out of combat
         hero.attackTimer = 0;
-        //for (i = 0; i < enemies.Length; i++)
-        //{
-        //    if (enemies[i].activeSelf)
-        //    {
-        //        Debug.Log("Enemies Index:");
-        //        Debug.Log(i);
-        //        enemies[i].GetComponent<Enemy>().attackTimer = 0;
-        //    }
-        //}
     }
 
     //Used to add enemies to the enemies array when a hero encounters them
-    void collectEnemy()
+    void  collectEnemy()
     {
         //Gets the length of the list of enemies in the room
         if (hero.enemies.Count != 0)
@@ -179,9 +190,16 @@ public class CombatManager : MonoBehaviour
 
             //sets the current enemy to the first one
             currentEnemy = 0;
+
+            enemies[currentEnemy].GetComponent<Enemy>().transform.position =
+                enemies[currentEnemy].GetComponent<Enemy>().combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+
+            //hero.transform.position = hero.combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+
             //resets the collectionflag
             hero.collectEnemy = false;
             //begins combat
+            
             enterCombat();
         }
         else

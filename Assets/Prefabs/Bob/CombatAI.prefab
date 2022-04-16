@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: -5.1191607, y: -1.1198874, z: -100.46645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 978880291117327676}
+  - {fileID: 8726020262383814235}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84aa14437d80a944886a2d3f600d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarSlider: {fileID: 504774601415744233}
+  healthBar: {fileID: 0}
+  healthBarSlider: {fileID: 0}
 --- !u!1001 &7629794983334108137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,6 +53,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7629794982631376042}
     m_Modifications:
+    - target: {fileID: 1223702766905804331, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223702766905804331, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7239488489950166737, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
@@ -150,19 +159,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
---- !u!224 &978880291117327676 stripped
+--- !u!224 &8726020262383814235 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7239488489950166741, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1223702766712544690, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
   m_PrefabInstance: {fileID: 7629794983334108137}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &504774601415744233 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7990278334957846784, guid: 01fd5e2a815967b48a64848c11728a19, type: 3}
-  m_PrefabInstance: {fileID: 7629794983334108137}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
