@@ -1,47 +1,72 @@
+/*
+ * Filename:    CombatManager.cs
+ * Developer:   Robert Walko
+ * Purpose:     Contains the combat manager object
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Summary: Mediator which processes all combat in the game. It
+ * gets the enemies from the hero and keeps track of if they're
+ * alive, if they need to attack, and who the hero is targeting.
+ * It also sends attacks between the hero and the enemies.
+ * 
+ * Member Variables:
+ * i:                   iterator variable used in loops.
+ * enemiesRemaining:    The amount of enemies still alive. this
+ *                      is used in the EnemyDeath function to
+ *                      determine if combat should end.
+ * hero:                The hero NPC.
+ * enemies:             an array which contains the enemies in 
+ *                      the tile the hero is currently in. This
+ *                      is referenced in most function in the CM
+ * currentEnemy:        The index of the enemy the hero is targeting
+ * listLength:          The number of enemies in the room at combat
+ *                      start, which allows for loops to check through
+ *                      all enemies
+ * inCombat:            Tracks whether the hero is in combat at the moment
+ * centerPosition:      Combat does not start until the hero stops moving.
+ *                      when the hero stops, this vector3 is set, and the 
+ *                      hero will return here when combat ends. This allows
+ *                      the CM to move the hero all over the room without
+ *                      worrying about disrupting the movement script
+ * attackCommand:       This is used as a model for the other commands. The
+ *                      clones are the object attack, which is used to make
+ *                      attacks.
+ * attack:              the command that is sent to npcs
+ * allAudio:            An audiosource object holding two clips, the two hit
+ *                      sounds
+ */
 public class CombatManager : MonoBehaviour
 {
     int i;
-    int enemiesRemaining;
 
-    public Hero hero;
-
-    //enemies array stores all the enemies the hero encounters
     public GameObject[] enemies;
-
-    //currentEnemy specifies which enemy in the array the hero
-    //will attack
     int currentEnemy = 0;
-
-    //Specifies how many enemies are in the room when combat
-    //starts, allowing for loops to check all enemies
+    int enemiesRemaining;
     int listLength;
 
-    //tells if the hero is currently in combat
+    public Hero hero;
     bool inCombat;
 
     Vector3 centerPosition;
 
     public AttackCommand attackCommand;
-
-    //Used to create other attack commands
     AttackCommand attack;
 
-    //public AudioClip enemyHit;
-    //public AudioClip heroHit;
     public AudioSource[] allAudio;
 
-    // Start is called before the first frame update
     void Start()
     {
         inCombat = false;
+        //this makes it so all audio sources attached to the object
+        //fall into  one array. Without this, audiosources are all wonky
         allAudio = GetComponents<AudioSource>();
-        //enemyHit = allAudio[0].clip;
-        //heroHit = allAudio[1].clip;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -50,7 +75,7 @@ public class CombatManager : MonoBehaviour
         //This code will run when the hero enters a new room to get the enemies in the room
         if (hero.collectEnemy == true)
         {
-            collectEnemy();
+            CollectEnemy();
         }
 
         //Combat code
@@ -63,7 +88,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (enemies[i].GetComponent<Enemy>().health == 0)
                     {
-                        enemyDeath(i);
+                        EnemyDeath(i);
                     }
                 }
             }
@@ -80,13 +105,10 @@ public class CombatManager : MonoBehaviour
             {
                 if (enemies[i].activeSelf)
                 {
-                    //Debug.Log(enemies[i].GetComponent<Enemy>().attackTimer);
                     if (enemies[i].GetComponent<Enemy>().attackTimer >= enemies[i].GetComponent<Enemy>().weapon.atkSpeed)
                     {
-                        //AudioClip.Play(enemyHit, 1f);
                         allAudio[1].Play();
-                        //hero.combatAI.updateSlider(enemies[i].GetComponent<Enemy>().weapon.atkDamage);
-                        sendAttack(enemies[i].GetComponent<Enemy>(), hero);
+                        SendAttack(enemies[i].GetComponent<Enemy>(), hero);
                     }
                 }
             }
@@ -95,19 +117,30 @@ public class CombatManager : MonoBehaviour
             if (hero.attackTimer >= hero.weapon.atkSpeed)
             {
                 allAudio[0].Play();
-                //enemies[currentEnemy].GetComponent<Enemy>().combatAI.updateSlider(hero.weapon.atkDamage);
-                //AudioClip.Play(heroHit, 1f);
-                sendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
+                SendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
                 hero.attackTimer = 0;
             }
 
         }
     }
 
-    //Handles removing an enemy
-    void enemyDeath(int enemyIndex)
+
+
+    /*
+     * Summary: Handles everything that occurs when an enemy dies. This incluides
+     * setting the enemy inactive, ending combat if no enemies remain, and having the 
+     * hero engage the next enemy if there are more
+     * 
+     * Parameters: 'enemyIndex' the index of the last enemy killed. Currently, that is
+     * always going to be the currentEnemy variable since there are no AOE attacks :(
+     * 
+     * Returns:
+     * Nothing
+     */
+    void EnemyDeath(int enemyIndex)
     {
         //moves the enemy out of the game so the hero doesn't get stuck on them and sets them inactive
+        //leftover from the combat demo - No longer really necessary but I'm afraid to get rid of it now 
         enemies[enemyIndex].transform.Translate(1000, 1000, 0);
         enemies[enemyIndex].gameObject.SetActive(false);
 
@@ -131,51 +164,78 @@ public class CombatManager : MonoBehaviour
         else
         {
             currentEnemy++;
+            //If the next enemy exists, have the next enemy and the hero's sprites will move to show who the current target is
             if (enemies[currentEnemy])
             {
                 enemies[currentEnemy].GetComponent<Enemy>().transform.position =
-                    enemies[currentEnemy].GetComponent<Enemy>().combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+                    enemies[currentEnemy].GetComponent<Enemy>().combatAI.EngageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
 
-                hero.transform.position = hero.combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+                hero.transform.position = hero.combatAI.EngageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
                 
             }
         }
     }
 
+    /*
+    * Summary:      Sends an attack to an NPC, then calls the recieve function on the NPC.
+    * 
+    * Parameters:   Sender and reciever, the guy attacking and the guy getting hit
+    * 
+    * Returns:      Nothing
+    */
     //Creates and sends attacks to NPCs
-    void sendAttack(NPC sender, NPC reciever)
+    void SendAttack(NPC sender, NPC reciever)
     {
-        //resets the attack timer
+        //resets the attack timer on the sender
         sender.attackTimer = 0;
         //creates an attack command object based on the sender/reciever
         attack = Instantiate(attackCommand);
-        attack.setAttributes(sender, reciever, sender.weapon.atkDamage, sender.weapon.EffectType);
+        attack.SetAttributes(sender, reciever, sender.weapon.atkDamage, sender.weapon.EffectType);
         //sends that to the target
         reciever.receiveAttack(attack);
         //destroys the object
-        Destroy(attack);
+        GameObject.DestroyImmediate(attack);
     }
 
-    //sets necessary values for variables upon combat start. kinda like the unity start() for combat
-    void enterCombat()
+
+    /*
+     * Summary:     Preps everybody in the tile for combat. The combat bool is set to true,
+     *              the hero's attackTimer gets reset, and the acting npcs move into action
+     * 
+     * Parameters:  none
+     * 
+     * Returns:     nothing
+     */
+    void EnterCombat()
     { 
         centerPosition = hero.transform.position;
         //allows combat manager to process combat
         inCombat = true;
 
         enemies[currentEnemy].GetComponent<Enemy>().transform.position =
-    enemies[currentEnemy].GetComponent<Enemy>().combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+    enemies[currentEnemy].GetComponent<Enemy>().combatAI.EngageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
 
-        hero.transform.position = hero.combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+        hero.transform.position = hero.combatAI.EngageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
 
         //reset hero attack timer since it runs constantly out of combat
         hero.attackTimer = 0;
     }
 
-    //Used to add enemies to the enemies array when a hero encounters them
-    void  collectEnemy()
+
+    /*
+     * Summary:     Function that fills the enemies array. The hero npc will set
+     *              a flag saying it has the enemies, and this function gets called
+     *              to fill them into this array. The flag will be set each time the
+     *              hero enters the tile. I know this is unreasonably high coupling,
+     *              but I didn't know a better way to do this
+     * 
+     * Parameters:  None
+     * 
+     * Returns:     Nothing
+     */
+    void CollectEnemy()
     {
-        //Gets the length of the list of enemies in the room
+        //Gets the length of the list of enemies in the room, if it's clear the flag and keep moving
         if (hero.enemies.Count != 0)
         {
             listLength = hero.enemies.Count;
@@ -191,17 +251,17 @@ public class CombatManager : MonoBehaviour
             //sets the current enemy to the first one
             currentEnemy = 0;
 
+            //This looks ugly, it just has the enemy move toward the hero to easily see who's being attacked
             enemies[currentEnemy].GetComponent<Enemy>().transform.position =
-                enemies[currentEnemy].GetComponent<Enemy>().combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
+                enemies[currentEnemy].GetComponent<Enemy>().combatAI.EngageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
 
-            //hero.transform.position = hero.combatAI.engageCombat(enemies[currentEnemy].GetComponent<Enemy>().transform.position);
-
-            //resets the collectionflag
+            //resets the collection flag on the hero
             hero.collectEnemy = false;
+
             //begins combat
-            
-            enterCombat();
+            EnterCombat();
         }
+        //this is the skip option if the list on the hero is empty
         else
         {
             hero.EndCombat();
