@@ -170,5 +170,5 @@ MonoBehaviour:
   playerHealth: 0
   playerAtk: 0
   gold: 0
-  playerWeapon: {fileID: -2998070377772663916, guid: 5e3b4967667c2cc4c9dd80712386e72e, type: 3}
+  playerWeapon: {fileID: 6415989519732206632, guid: f1e52910097c9df4c8c3d871ef5ded92, type: 3}
   nextLevel: 0
