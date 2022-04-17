@@ -4839,7 +4839,19 @@ PrefabInstance:
     - target: {fileID: 3641018321177110881, guid: 9069f305045f57af5b501efa6efee027, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c2f1d856be30898489eaf0e806b58642, type: 3}
+      objectReference: {fileID: 21300000, guid: af2acf8e9ed7bb191bd5e44fa9f7520f, type: 3}
+    - target: {fileID: 6238863517761800235, guid: 9069f305045f57af5b501efa6efee027, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238863517761800235, guid: 9069f305045f57af5b501efa6efee027, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.49440855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238863517761800235, guid: 9069f305045f57af5b501efa6efee027, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.4575472
+      objectReference: {fileID: 0}
     - target: {fileID: 6460754544934218111, guid: 9069f305045f57af5b501efa6efee027, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5202,8 +5214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b09622c60f6ceef08d601dd58db4224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileTypeA: {fileID: 0}
-  tileTypeB: {fileID: 0}
 --- !u!4 &1563654902
 Transform:
   m_ObjectHideFlags: 0
@@ -5265,7 +5275,19 @@ PrefabInstance:
     - target: {fileID: 3641018321177110881, guid: 9069f305045f57af5b501efa6efee027, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c2f1d856be30898489eaf0e806b58642, type: 3}
+      objectReference: {fileID: 21300000, guid: af2acf8e9ed7bb191bd5e44fa9f7520f, type: 3}
+    - target: {fileID: 6238863517761800235, guid: 9069f305045f57af5b501efa6efee027, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238863517761800235, guid: 9069f305045f57af5b501efa6efee027, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238863517761800235, guid: 9069f305045f57af5b501efa6efee027, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6460754544934218111, guid: 9069f305045f57af5b501efa6efee027, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

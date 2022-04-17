@@ -32,7 +32,7 @@ public class BleedEffect : MonoBehaviour
  * strength - amount of damaged added on with attack
  * npcHealth - copies the amount of health the npc has
  * Returns:
- * None
+ * health - health of the npc
  */   
     public float EffectFunction(float strength, float npcHealth)
     {
@@ -43,6 +43,15 @@ public class BleedEffect : MonoBehaviour
         return health;
     }
 
+/*
+ * Summary: Changes the health of the npc when called
+ *
+ * Parameters:
+ * strength - amount of damaged added on with attack
+ * npcHealth - copies the amount of health the npc has
+ * Returns:
+ * health - health of the npc
+ */   
     public float CountHits(float strength, float npcHealth)
     {
         float health;
@@ -57,6 +66,14 @@ public class BleedEffect : MonoBehaviour
         return health;
     }
 
+/*
+ * Summary: Changes the sprite of the npc
+ *
+ * Parameters:
+ * None
+ * Returns:
+ * None
+ */   
         public void CountHits2()
     {
         BleedCultistsSpriteChange.ShowBleed();

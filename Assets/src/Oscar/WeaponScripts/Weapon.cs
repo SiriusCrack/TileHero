@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
  *
  * Returns:
  * None
- */   
+ */
     public void UpdateDamage(float damage)
     {
         atkDamage = damage;
