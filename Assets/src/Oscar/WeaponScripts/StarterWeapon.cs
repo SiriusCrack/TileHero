@@ -15,7 +15,7 @@ using static Weapon;
  */
 public class StarterWeapon : Weapon
 {
-    //public int EffectType;
+    // public int EffectType;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,15 @@ public class StarterWeapon : Weapon
         UpdateRange(5f);
     }
 
+/*
+ * Summary: Updates the weapon damage to match the given input
+ *
+ * Parameters:
+ * damage - inputs a float to give damage value
+ *
+ * Returns:
+ * None
+ */
     public void ChangeEffectType(int change)
     {
         EffectType = change;
