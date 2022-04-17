@@ -67,6 +67,11 @@ public abstract class NPC : MonoBehaviour
         }
         if(attack.effect == 2)
         {
+            //5 = strength, subtracts 5 health from npc over time
+            health = poisonEffect.CountEffect(5, health);
+        }
+        if(attack.effect == 3)
+        {
             //5 = strength, subtracts 5 health from npc
             health = poisonEffect.CountEffect(5, health);
         }

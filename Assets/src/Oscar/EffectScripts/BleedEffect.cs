@@ -1,16 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Effect;
-using static NPC;
 
-
-public class BleedEffect : Effect
+public class BleedEffect : MonoBehaviour
 {
     public int EffectType = 1;
-    NPC npc;
-    Hero hero;
-    Weapon weapon;
     BleedCultistsSpriteChange BleedCultistsSpriteChange;
     int count;
 
@@ -48,3 +42,4 @@ public class BleedEffect : Effect
         BleedCultistsSpriteChange.ShowBleed();
     }
 }
+
