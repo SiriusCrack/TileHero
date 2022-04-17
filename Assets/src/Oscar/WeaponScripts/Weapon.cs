@@ -27,6 +27,8 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     public float atkRange;
 
+    public Effect effect = null;
+
     public int EffectType;
 
 
