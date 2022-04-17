@@ -1,8 +1,21 @@
+/*
+* Filename:Enemy.cs
+* Developer: Kaleb Browning, kalebbrowning14@gmail.com, github.com/Brow8820
+* Purpose: A class for the enemies of the game
+*/
 using static NPC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+* Summary: an abstract class for NPCs within a game
+*
+* Member Variables:
+*     messagePrinted- debug for combat
+*     thisEnemy- a self referential var for the combat manager
+*     enemyType type- an enum that determines the type of the enemy
+*/
 
 public class Enemy : NPC
 {
@@ -28,6 +41,13 @@ public class Enemy : NPC
         
     }
 
+    /*
+    * Summary: not implemented
+    *
+    * Parameters: heroLocation- the location of the hero
+    *
+    * Returns
+    */
     public override IEnumerator Move(int heroLocation)
     {
         yield return new WaitForSeconds(1f);
@@ -38,6 +58,8 @@ public class Enemy : NPC
         combatAI.updateLocation(transform.position);
         attackTimer += 1;
     }
+
+
     public void takeDamage(int dmg)
     {
         if(dmg > health)
@@ -48,6 +70,13 @@ public class Enemy : NPC
         health -= dmg;
     }
 
+    /*
+    * Summary: sets stats based on enemy stats
+    *
+    * Parameters: localType- the enemy type 
+    *
+    * Returns
+    */
     private void SetStats(enemyType localType)
     {
         switch(localType)
@@ -77,10 +106,7 @@ public class Enemy : NPC
 
     
 
-   /* public int getAtk()
-    {
-        return base_atk;
-    }*/
+
 
 
 }

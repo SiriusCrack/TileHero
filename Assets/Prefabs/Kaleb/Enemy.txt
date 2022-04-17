@@ -1,0 +1,13 @@
+Name: Enemy
+Summary: A simple enemy class and sprite, sprite is basic pill
+         Includes health, interface for a weapon, as well as non-implemented movement for customization
+
+Description: 
+    Interfaces- health, attack, attack timing, weapon, effects (bleed, poison, buff), an AI interface, and enemy type 
+    Integration- simply drag the enemy to the current scene and set its type (or create a prefab variant for the type)
+                 either add a combat AI of your own, or simply write a movement script to implement smart movement and attacks
+
+    Troubleshooting- 
+                I cant make enemies interact with the environment- simply add a collider to the enemy
+                It cannot move- movement is not shipped with the prefab, either add movement via the Combat AI interface or code 
+                                the movement you want in the script.

@@ -1,9 +1,22 @@
+/*
+* Filename: StartButton.cs
+* Developer: Kaleb Browning, kalebbrowning14@gmail.com, github.com/Brow8820
+* Purpose: Code for the buttons in-game
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
+/*
+* Summary: class for buttons within the main game
+*
+* Member Variables:
+*     hero- the hero in the scene
+*     gridManager- the gridmanager for the level
+*     EndTile-debug only
+*/
 public class StartButton : MonoBehaviour
 {
     [SerializeField] GameObject hero;
@@ -22,7 +35,8 @@ public class StartButton : MonoBehaviour
     }
 
     public void ResetGrid() {
-        SceneManager.LoadScene("Level0");
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     public void StartGame()

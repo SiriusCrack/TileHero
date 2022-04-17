@@ -1,0 +1,16 @@
+Name: Hero
+Summary: A simple hero class and sprite, sprite is basic pill
+         Includes health, interface for a weapon, as well as fully automatic, direction based movement
+
+Description: 
+    Interfaces- health, attack, attack timing, weapon, effects (bleed, poison, buff), Inventory, a Combat AI, the next direction,
+                the current enemy, as well as a list of current engaged enemies.
+    
+    Integration- simply drag the hero to the current scene. Feed the hero directions theough a manager object.
+
+    Troubleshooting- 
+                I cant make the hero interact with the environment- make sure the other environment pieces have box colliders
+                I want to change how much it moves- to do this change the value in all the while loops in the Move function 
+                I want to move a variable amount- the hero does not support this out of the box, try using movement on a small distance
+                                        multiple times in a row
+                        

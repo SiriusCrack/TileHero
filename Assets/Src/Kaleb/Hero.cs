@@ -1,10 +1,33 @@
+/*
+* Filename: Hero.cs
+* Developer: Kaleb Browning, kalebbrowning14@gmail.com, github.com/Brow8820
+* Purpose: A class for the auto-moving, auto-battling hero.
+*/
 using static NPC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+/*
+* Summary: Hero class
+*
+* Member Variables:
+*     inventory- an interface var for the player inventory
+*     inCombat- a bool to tell whether the player is or is not in combat
+*     distTraveled- the amount traveled, for use in the movement
+*     nextDirection- the next direction that hero has to move
+*     hasDirection- a bool to tell whether a new direction has been given
+*     currentTile- the current tile that the hero is in
+*     AmbientMusic- the ambient music from the scene
+*     isMoving- a bool that says when the player is moving
+*     currentEnemy- the current target for combat
+*     collectEnemy- an interface bool for the combat manager
+*     enemies- a list of enemies that interfaces with the combat manager
+*     left- debug only
+*     inDemo- tells the hero whether demo mode is active or not
+*     
+*/
 public class Hero : NPC
 {
     public ShopMenu inventory;
@@ -88,6 +111,14 @@ public class Hero : NPC
     {
         
     }
+
+        /*
+    * Summary: makes time move/stop
+    *
+    * Parameters: 
+    *
+    * Returns
+    */
     public void SetTime()
     {
         if(Time.timeScale == 0)
@@ -114,6 +145,13 @@ public class Hero : NPC
         print("Attack: " + weapon.atkDamage);
     }
 
+    /*
+    * Summary: interact with tile and things inside it
+    *
+    * Parameters: other- the other collider within the tile
+    *
+    * Returns
+    */
     void OnTriggerEnter2D(Collider2D other)
     {
         print("Collision here");
@@ -152,10 +190,14 @@ public class Hero : NPC
         }
     }
 
-    //move hero automatically between tiles
-    //takes in the direction of the next tile
-    //moves hero by a set distance in direction specified
-
+   
+    /*
+    * Summary: interface to move hero
+    *
+    * Parameters: nextDirection- the next direction the hero moves
+    *
+    * Returns
+    */
     public override IEnumerator Move(int nextDirection)
     {
         print("Moving now");

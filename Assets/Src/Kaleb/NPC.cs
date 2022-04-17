@@ -18,6 +18,7 @@ using UnityEngine;
 *     attackTimer- An int that represents the time between attacks
 *     weapon- A custom Weapon class variable that stores the NPCs weapon
 *     position- A Vector2 that stores the NPCs coordinates
+*     *Effect- an effect that can be placed on any npc
 */
 
 public abstract class NPC : MonoBehaviour
@@ -54,7 +55,13 @@ public abstract class NPC : MonoBehaviour
         
     }
 
-
+    /*
+    * Summary: interface to take damage
+    *
+    * Parameters: attack- an attack from the combat manager
+    *
+    * Returns
+    */
     public void receiveAttack(AttackCommand attack)
     {
         if (locationBool != 1)
@@ -87,7 +94,20 @@ public abstract class NPC : MonoBehaviour
         Destroy(attack);
     }
 
+    /*
+    * Summary: abstract function for movements
+    *
+    * Parameters: goalCoords- the goal of the movement
+    *
+    * Returns
+    */
     public abstract IEnumerator Move(int goalCoords);
+    
+    /*
+    * Summary: get atk
+    * Parameters: 
+    * Returns: float atk
+    */
     public float getAtk()
     {
         return baseAtk;
@@ -97,6 +117,10 @@ public abstract class NPC : MonoBehaviour
     {
         baseAtk = atk;
     }
+       
+     /*
+    * Summary: not used, depricated
+    */
     public void debuff(string type, float amount)
     {
         if(type == "atk")
