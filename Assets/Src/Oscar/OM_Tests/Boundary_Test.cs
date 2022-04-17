@@ -8,6 +8,9 @@ public class Boundary_Test
 {
     Weapon weapon;
     Enemy enemy;
+    BleedEffect bleedEffect;
+    PoisonEffect poisonEffect;
+    BuffEffect buffEffect;
     GameObject gameObject;
 
     [SetUp]
@@ -38,7 +41,7 @@ public class Boundary_Test
     }
 
     [Test]
-    public void Damage_Recieved()
+    public void Damage_Recieved() //for weapon class
     {
         enemy.health = 100;
 
