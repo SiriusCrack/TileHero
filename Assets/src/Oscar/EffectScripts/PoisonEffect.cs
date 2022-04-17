@@ -1,23 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Effect;
-using static NPC;
 using System.Threading.Tasks;
 
-public class PoisonEffect : Effect
+public class PoisonEffect : MonoBehaviour
 {
-    NPC npc;
-    Hero hero;
-    Weapon weapon;
-    //int count;
-    bool EffectApplied = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //count = 0;
-    }
+    bool EffectApplied = false;
+    public int EffectType = 2;
 
     public float EffectFunction(float strength, float npcHealth)
     {
@@ -25,9 +15,7 @@ public class PoisonEffect : Effect
         float health;
         health = npcHealth;
         if(EffectApplied == true){
-            print("Effect used, health now" + health);
             health = (health - strength);
-            print("Health after: " + health);
             StartCoroutine(sleep());
         }
         return health;
@@ -46,3 +34,4 @@ public class PoisonEffect : Effect
     }
 
 }
+

@@ -34,10 +34,6 @@ public class Boundary_Test
         weapon.UpdateSpeed(5);    
         Debug.Log("Expected:" + 5 + " Actual:" + weapon.atkSpeed);
         Assert.AreEqual(5,weapon.atkSpeed);
-
-        weapon.UpdateSpeed(-1);    
-        Debug.Log("Expected:" + 5 + " Actual:" + weapon.atkSpeed);
-        Assert.AreEqual(5,weapon.atkSpeed);
         
     }
 

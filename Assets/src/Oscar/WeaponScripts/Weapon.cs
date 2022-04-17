@@ -26,30 +26,8 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     public float atkRange;
-    
-    public int attackTimer = 0;
 
     public int EffectType;
-
-    public Effect effect = null;
-
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //public void applyEffect(Effect effectType, Enemy target)
-    //{
-        
-    //}
 
 
 /*
@@ -112,9 +90,9 @@ public class Weapon : MonoBehaviour
         atkSpeed = speed;
     }
 
-    public void CriticalHit(int chance)
-    {
-        // random %(chance) * damage amount
-    }
+    // public void CriticalHit(int chance)
+    // {
+    //     // random %(chance) * damage amount
+    // }
  
 }

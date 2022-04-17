@@ -1,16 +1,22 @@
+/*
+ * Filename: BleedEffect.cs
+ * Developer: Oscar Michua-Zarate
+ * Purpose: This file will show how an effect effects a npc with bleed
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Effect;
-using static NPC;
 
-
-public class BleedEffect : Effect
+/*
+ * Summary: Creates a weapon class with blank inputs 
+ *
+ * Member Variables:
+ * count - Int value to keep track how many hits has occured
+ * EffectType - tells the game which effect id it is
+ */
+public class BleedEffect : MonoBehaviour
 {
     public int EffectType = 1;
-    NPC npc;
-    Hero hero;
-    Weapon weapon;
     BleedCultistsSpriteChange BleedCultistsSpriteChange;
     int count;
 
@@ -19,7 +25,15 @@ public class BleedEffect : Effect
     {
         count = 0;
     }
-
+/*
+ * Summary: Changes the health of the npc when called
+ *
+ * Parameters:
+ * strength - amount of damaged added on with attack
+ * npcHealth - copies the amount of health the npc has
+ * Returns:
+ * None
+ */   
     public float EffectFunction(float strength, float npcHealth)
     {
         float health;
@@ -48,3 +62,4 @@ public class BleedEffect : Effect
         BleedCultistsSpriteChange.ShowBleed();
     }
 }
+
