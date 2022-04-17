@@ -66,7 +66,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (locationBool != 1)
         {
-            combatAI.setMaxHealth(health);
+            combatAI.SetMaxHealth(health);
             locationBool = 1;
         }
         if (attack.effect == 1)
@@ -90,7 +90,7 @@ public abstract class NPC : MonoBehaviour
         {
             health = 0;
         }
-        combatAI.updateSlider(health);
+        combatAI.UpdateSlider(health);
         Destroy(attack);
     }
 

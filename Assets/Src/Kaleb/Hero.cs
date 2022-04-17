@@ -61,8 +61,8 @@ public class Hero : NPC
     }
     void Awake()
     {
-        combatAI.setMaxHealth(health);
-        combatAI.updateLocation(transform.position);
+        combatAI.SetMaxHealth(health);
+        combatAI.UpdateLocation(transform.position);
         weapon = MainManager.Instance.playerWeapon;
         health = MainManager.Instance.playerHealth;
         setAtk(MainManager.Instance.playerAtk);
@@ -84,7 +84,7 @@ public class Hero : NPC
     }
     void FixedUpdate()
     {
-        combatAI.updateLocation(transform.position);
+        combatAI.UpdateLocation(transform.position);
         // Debug.Log("IsMoving: " + isMoving + " , HasDirection: " + hasDirection);
         //やった! ゴールゲット
         if (!inCombat)

@@ -55,7 +55,7 @@ public class Enemy : NPC
 
     void FixedUpdate()
     {
-        combatAI.updateLocation(transform.position);
+        combatAI.UpdateLocation(transform.position);
         attackTimer += 1;
     }
 
