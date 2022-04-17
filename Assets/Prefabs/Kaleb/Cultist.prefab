@@ -100,8 +100,9 @@ MonoBehaviour:
   baseAtk: 0
   attackTimer: 0
   weapon: {fileID: -807170638058990434, guid: efdf8834b781fff4a8994a5d180e5f28, type: 3}
-  bleedEffect: {fileID: 1348698798823616042, guid: 4c2af81a1cec6074faf5ebd64c8ca476, type: 3}
-  poisonEffect: {fileID: 7592531351797952012, guid: e64df6ecd66a9104b8d7d307afad3bc8, type: 3}
+  bleedEffect: {fileID: -2198301055520930909, guid: 8390570ac10b92e438a51cd7dbfc832d, type: 3}
+  poisonEffect: {fileID: 0}
+  buffEffect: {fileID: 1260827584686791564, guid: 77a053bf32d1ba94fa967f4033d55173, type: 3}
   combatAI: {fileID: 0}
   thisEnemy: {fileID: 0}
   type: 2

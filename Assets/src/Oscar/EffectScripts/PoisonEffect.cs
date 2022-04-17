@@ -15,9 +15,7 @@ public class PoisonEffect : MonoBehaviour
         float health;
         health = npcHealth;
         if(EffectApplied == true){
-            print("Effect used, health now" + health);
             health = (health - strength);
-            print("Health after: " + health);
             StartCoroutine(sleep());
         }
         return health;

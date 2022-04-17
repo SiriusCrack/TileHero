@@ -11,9 +11,7 @@ public class BuffEffect : MonoBehaviour
     {
         float health;
         health = npcHealth;
-        print("Effect used, health now" + health);
         health = (health - strength);
-        print("Health after: " + health);
         return health;
     }
 
