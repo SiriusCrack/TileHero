@@ -16,11 +16,11 @@ public class Inventory
     public Item OffHandSlot     = new Item { itemType = Item.ItemType.Empty, amount = 1 };
     public Item BootsSlot       = new Item { itemType = Item.ItemType.Empty, amount = 1 };
 
-    public Inventory()
+    public Inventory()                                                      //Constructor, this dictates what is in the inventory to start off
     {
         Debug.Log("inventory add");
         itemList = new List<Item>();
-        AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
+        AddItem(new InvisibleItem { itemType = Item.ItemType.Sword, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
@@ -32,7 +32,7 @@ public class Inventory
 
 
 
-    public int EquipItem(Item item)
+    public int EquipItem(Item item)                                         // For each item type it equipes it to the appropreate slot
     {
 
         if (item.itemType == Item.ItemType.Helmet)
@@ -137,7 +137,7 @@ public class Inventory
 
 
 
-    public void AddItem(Item item)
+    public void AddItem(Item item)                                         //Adds an Item to the list unless the list is above 16 items then it does nothing
     {
         if (itemList.Count < 16)
         {

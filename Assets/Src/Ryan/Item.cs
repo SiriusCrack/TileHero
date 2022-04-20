@@ -23,13 +23,19 @@ public class Item
         switch (itemType)
         {
             default:
-            case ItemType.Empty:    return ItemAssets.Instance.emptySprite;
-            case ItemType.Sword:    return ItemAssets.Instance.swordSprite;
-            case ItemType.Shield:   return ItemAssets.Instance.shieldSprite;
-            case ItemType.Boots:    return ItemAssets.Instance.bootsSprite;
-            case ItemType.Helmet:   return ItemAssets.Instance.helmetSprite;
-            case ItemType.Chest:    return ItemAssets.Instance.chestSprite;
-            case ItemType.Legs:     return ItemAssets.Instance.swordSprite;
+            case ItemType.Empty: return ItemAssets.Instance.emptySprite;
+            case ItemType.Sword: return ItemAssets.Instance.swordSprite;
+            case ItemType.Shield: return ItemAssets.Instance.shieldSprite;
+            case ItemType.Boots: return ItemAssets.Instance.bootsSprite;
+            case ItemType.Helmet: return ItemAssets.Instance.helmetSprite;
+            case ItemType.Chest: return ItemAssets.Instance.chestSprite;
+            case ItemType.Legs: return ItemAssets.Instance.swordSprite;
         }
     }
+    public virtual int GetItemClass()
+    {
+        Debug.Log("SuperClass");
+        return 1;
+    }
 }
+    

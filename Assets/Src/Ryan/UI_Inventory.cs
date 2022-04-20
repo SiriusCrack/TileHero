@@ -43,13 +43,6 @@ public class UI_Inventory : MonoBehaviour
          RefreshInventoryItems();
      }
 
-    private void HideInventoryItems()
-    {
-        foreach (Item item in inventory.GetItemList())
-        {
-
-        }
-    }
 
     private void RefreshInventoryItems()
     {
@@ -67,16 +60,19 @@ public class UI_Inventory : MonoBehaviour
 
         foreach (Item item in inventory.GetItemList())
         {
-            RectTransform itemSlotRectTrasnfrom = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
-            itemSlotRectTrasnfrom.gameObject.SetActive(true);
-            itemSlotRectTrasnfrom.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
-            Image image = itemSlotRectTrasnfrom.Find("Icon").GetComponent<Image>();
-            image.sprite = item.GetSprite();
-            x++;
-            if (x > 7)
+            if (item.GetItemClass() == 1)
             {
-                x = 0;
-                y--;
+                RectTransform itemSlotRectTrasnfrom = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
+                itemSlotRectTrasnfrom.gameObject.SetActive(true);
+                itemSlotRectTrasnfrom.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+                Image image = itemSlotRectTrasnfrom.Find("Icon").GetComponent<Image>();
+                image.sprite = item.GetSprite();
+                x++;
+                if (x > 7)
+                {
+                    x = 0;
+                    y--;
+                }
             }
         }
     }

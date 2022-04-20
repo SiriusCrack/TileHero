@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class GoldManager
 {
+
     public int Gold = 0;
     public GoldManager(int num)
     {
         Gold = num;
+    }
+    public void AddGold(int amount)
+    {
+        Gold = Gold + amount;
     }
     public void RemoveGold(int amount)
     {
@@ -23,4 +28,6 @@ public class GoldManager
             //return true;
         }
     }
+
+
 }

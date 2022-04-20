@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class HeroInventory : MonoBehaviour
 {
-
+    //builds the inventory 
     private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
     private void Awake()
     {
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
-        //inventory.AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }
