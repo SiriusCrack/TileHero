@@ -15,6 +15,13 @@ using UnityEngine;
  * Member Variables:
  * exit - value that communicates the direction of the door
 */
+
+/* This class contains override methods. The keyword override, as defined by Microsoft for C#, is required
+ * to extend or modify the abstract or virtual implemetation of an inherited method, property
+ * indexer, or event.
+*/
+
+// This class inherits from the EmptyTile class //
 public class StartTile : EmptyTile
 {
     public int exit;

@@ -14,6 +14,13 @@ using UnityEngine;
  * 
  * Member Variables: None
 */
+
+/* This class contains override methods. The keyword override, as defined by Microsoft for C#, is required
+ * to extend or modify the abstract or virtual implemetation of an inherited method, property
+ * indexer, or event.
+*/
+
+// This class inherits from the EmptyTile class //
 public class EndTile : EmptyTile
 {
 

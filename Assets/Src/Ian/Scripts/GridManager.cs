@@ -10,6 +10,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/* This uses the Abstract Factory and Factory Method design patterns.
+ * Abstract Factory - provides an interface for creating families of related or dependet objects without
+ * specifying their concrete classes. It also defines a Factory Method.
+ * Factory Method - Creates an instance of several derived classes. 
+ *
+ * In this case, InitGrid() is the Factory Method. It creates/instantiates all the tile objects (with their
+ * corresponding classes) once called (in this case, EmptyTile, StartTile, EndTile). All these tile objects are children to the Grid Manager parent.
+ * These patterns are solely responsible in the primary function of the Grid Manager script.
+*/  
+
 /*
  * Summary: GridManager class contains all code implementations to initialize the grid system.
  * 
@@ -566,3 +576,48 @@ public class GridManager : MonoBehaviour {
         return true;
     }
 }
+
+/*
+CLASS DIAGRAM (ABSTRACT FACTORY AND FACTORY METHOD)
+
+#####################
+# Grid Manager      #
+#                   #
+# +InitGrid()       #
+# +InitTile()       #
+# +SetTile()        #
+# +SetDirection()   #
+#                   # 
+#####################
+        | 1
+        |
+        |
+        | (aggregation)
+        |
+        | 1..*
+#####################           #####################
+# Empty Tile        #           # End Tile          #
+#                   #           #                   #
+# +OnMouseEnter()(v)#           # +OnMouseEnter()(o)#               
+# +OnMouserExit()(v)#<----------# +OnMouserExit()(o)#
+# +OnMouseDown() (v)#           # +OnMouseDown() (o)#
+#                   #           #                   #
+#                   #<-|        #                   #
+#####################  |        ##################### 
+        ^              |
+        |              |------------------|
+        |                                 |
+        |                                 |
+        |                                 |
+        |                                 |  
+#####################           #####################
+# Start Tile        #           # Obstacle Tile     #
+#                   #           #                   #
+# +OnMouseEnter()(o)#           # +OnMouseEnter()(o)#
+# +OnMouserExit()(o)#<----------# +OnMouserExit()(o)#
+# +OnMouseDown() (o)#           # +OnMouseDown() (o)#
+#                   #           #                   #
+#                   #           #                   #
+#####################           #####################
+
+*/

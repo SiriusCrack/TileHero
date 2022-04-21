@@ -20,6 +20,12 @@ using UnityEngine;
  * indY - Y index of the tile
  * highlight - Game object placeholder for the highlight effect
 */
+
+/* This class contains virtual methods. The keyword virtual, as defined by Microsoft for C#, is used
+ * to modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived
+ * or inherited class. 
+*/
+
 public class EmptyTile : MonoBehaviour {
 
     public Texture2D cursorTexture;
@@ -32,7 +38,7 @@ public class EmptyTile : MonoBehaviour {
 
 
     /*
-     * Summary: Function call when mouse enters the object.
+     * Summary: Virtual function call when mouse enters the object.
      *
      * Parameters: None
      *
@@ -45,7 +51,7 @@ public class EmptyTile : MonoBehaviour {
 
 
     /*
-     * Summary: Function call when mouse exits the object.
+     * Summary: Virtual function call when mouse exits the object.
      *
      * Parameters: None
      *
@@ -58,7 +64,7 @@ public class EmptyTile : MonoBehaviour {
 
 
     /*
-     * Summary: Function call when mouse clicks the object.
+     * Summary: Virtual function call when mouse clicks the object.
      *
      * Parameters: None
      *

@@ -1,7 +1,7 @@
 /*
  * Filename: ObstacleTile.cs
  * Developer: Ian Fleming
- * Purpose: This script contains implementations for the obstacle tile object.
+ * Purpose: This script contains implementations for the obstacle tile object
  */
 
 using System;
@@ -14,6 +14,13 @@ using UnityEngine;
  * 
  * Member Variables: None
 */
+
+/* This class contains override methods. The keyword override, as defined by Microsoft for C#, is required
+ * to extend or modify the abstract or virtual implemetation of an inherited method, property
+ * indexer, or event.
+*/
+
+// This class inherits from the EmptyTile class //
 public class ObstacleTile : EmptyTile
 {
 
