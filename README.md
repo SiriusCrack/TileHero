@@ -1,11 +1,11 @@
 <p align="center">
-    <img src="https://i.imgur.com/zAB2pXp.png" width="75%">
+    <img src="Assets/Src/Bob/TileHeroTitlePic.png" width="75%">
 </p>
 
 <h2 align="center">
     Developed by 6People
 	<br>
-	<img src="https://i.imgur.com/7Nnqj7l.png" width="10%">
+	<img src="Assets/Src/Morgan/Resources/6plogo.png" width="10%">
 </h1>
 
 <p align="center">
@@ -17,7 +17,7 @@
     <br>
     <br>
     <br>
-    <img src="https://i.imgur.com/vfq0E7U.png" width="7%">
+    <img src="Assets/Src/Morgan/Resources/unity.png" width="7%">
     <br>
     <em>Made in Unity</em>
 </p>
