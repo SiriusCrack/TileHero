@@ -10,8 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// USES ABSTRACT FACTORY PATTERN
-
 /*
  * Summary: DemoGridManager class contains all code implementations to initialize and populate the grid system.
  * 
