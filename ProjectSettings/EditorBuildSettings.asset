@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/DontDestroyOnLoad.unity
+    guid: b37439a49b9068d42bb81bf7f6c6924b
+  - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 2cb023c7b1f681243a32319302183b13
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: e8cdd8322f356e54bacd8d1282604f39
+  - enabled: 1
+    path: Assets/Scenes/Demo.unity
+    guid: 532d6c0a1d529b84b969ed1dad81fd28
   m_configObjects: {}

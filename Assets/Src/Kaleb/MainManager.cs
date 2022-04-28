@@ -41,8 +41,9 @@ public class MainManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        playerHealth = 120;
-        playerAtk = 0;
+        SceneManager.LoadScene("StartMenu");
+        playerHealth = 130;
+        playerAtk = 10;
         gold = 0;
         nextLevel = 1;
     }
