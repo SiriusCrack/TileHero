@@ -5,12 +5,17 @@ using UnityEngine;
 public class HeroInventory : MonoBehaviour
 {
     //builds the inventory 
-    private Inventory inventory;
+    [SerializeField] private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
     private void Awake()
     {
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
         
+    }
+
+    public void EquipItem(int ListPos)
+    {
+        inventory.EquipItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
     }
 }

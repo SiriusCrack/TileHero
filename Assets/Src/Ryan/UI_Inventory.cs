@@ -7,6 +7,7 @@ public class UI_Inventory : MonoBehaviour
 {
     private InventoryTest inventoryT;
     private Inventory inventory;
+    public Button ItemButton;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     public Image HelmImage;
@@ -20,7 +21,10 @@ public class UI_Inventory : MonoBehaviour
 
 
 
-
+    private void Update()
+    {
+        RefreshInventoryItems();
+    }
     private void Awake()
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
@@ -46,7 +50,7 @@ public class UI_Inventory : MonoBehaviour
 
     private void RefreshInventoryItems()
     {
-  
+        int count = 0;
         int x = 0;
         int y = 0;
         float itemSlotCellSize = 110f;
@@ -67,6 +71,7 @@ public class UI_Inventory : MonoBehaviour
                 itemSlotRectTrasnfrom.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
                 Image image = itemSlotRectTrasnfrom.Find("Icon").GetComponent<Image>();
                 image.sprite = item.GetSprite();
+                itemSlotRectTrasnfrom.Find("Button").GetComponent<Image>();
                 x++;
                 if (x > 7)
                 {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Inventory 
 {
     public event EventHandler OnItemListChanged;
@@ -135,7 +136,7 @@ public class Inventory
         return 0;
     }
 
-
+    
 
     public void AddItem(Item item)                                         //Adds an Item to the list unless the list is above 16 items then it does nothing
     {
@@ -180,6 +181,15 @@ public class Inventory
     {
         return OffHandSlot;
     }
+
+
+
+
+
+
+    
+
+
 
     public List<Item> GetInventory()
     {

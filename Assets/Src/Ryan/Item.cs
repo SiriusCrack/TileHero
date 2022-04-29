@@ -34,7 +34,7 @@ public class Item
     }
     public virtual int GetItemClass()
     {
-        Debug.Log("SuperClass");
+        //Debug.Log("SuperClass");
         return 1;
     }
 }
