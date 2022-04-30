@@ -54,7 +54,7 @@ public class UI_Inventory : MonoBehaviour
         int x = 0;
         int y = 0;
         float itemSlotCellSize = 110f;
-
+        Button b;
         HelmImage.sprite = inventory.GetHelmSlot().GetSprite();
         ChestImage.sprite = inventory.GetChestSlot().GetSprite();
         LegImage.sprite = inventory.GetLegSlot().GetSprite();
@@ -71,7 +71,9 @@ public class UI_Inventory : MonoBehaviour
                 itemSlotRectTrasnfrom.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
                 Image image = itemSlotRectTrasnfrom.Find("Icon").GetComponent<Image>();
                 image.sprite = item.GetSprite();
-                itemSlotRectTrasnfrom.Find("Button").GetComponent<Image>();
+                b = itemSlotRectTrasnfrom.Find("Button").GetComponent<Button>();
+                b.onClick.AddListener(delegate { HeroInventory.EquipItem(count); });
+                count++;
                 x++;
                 if (x > 7)
                 {

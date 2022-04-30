@@ -1750,6 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba90f98529ebfad43810640596d9f6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemButton: {fileID: 5046051514398810049}
   HelmImage: {fileID: 3690580473312085005}
   ChestImage: {fileID: 3690580474571008371}
   LegImage: {fileID: 3690580474315470646}
@@ -2041,6 +2042,7 @@ GameObject:
   - component: {fileID: 1215692198815517158}
   - component: {fileID: 4037957065824273085}
   - component: {fileID: 5046051514398810049}
+  - component: {fileID: 6221000810783304945}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2150,18 +2152,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8430457180758608880}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 3690580474426655382}
+        m_TargetAssemblyTypeName: HeroInventory, Scripts
+        m_MethodName: EquipItem
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6221000810783304945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024054283606389579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb01b61709bd374ba73b7d8b48a927e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
 --- !u!1 &8430457180758608880
 GameObject:
   m_ObjectHideFlags: 0

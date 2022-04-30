@@ -6,7 +6,7 @@ public class InvisibleItem : Item
 {
     public override int GetItemClass()
     {
-        Debug.Log("Subclass");
+        //Debug.Log("Subclass");
         return 0;
     }
 

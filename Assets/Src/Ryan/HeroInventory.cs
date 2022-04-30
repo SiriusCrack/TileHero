@@ -16,6 +16,6 @@ public class HeroInventory : MonoBehaviour
 
     public void EquipItem(int ListPos)
     {
-        inventory.EquipItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
+        inventory.EquipItem(inventory.GetItemPos(ListPos));
     }
 }

@@ -202,6 +202,11 @@ public class Inventory
     }
 
 
+    public Item GetItemPos(int position)
+    {
+        return itemList[position];
+    }
+
 
     public List<Item> GetItemList()
     {
