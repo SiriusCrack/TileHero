@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShopMenu : MonoBehaviour
 {
     public GameObject total;
-
+    public bool shopActive;
     // Start is called before the first frame update
     void Start()
     {

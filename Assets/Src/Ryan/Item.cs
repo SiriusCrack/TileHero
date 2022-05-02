@@ -15,8 +15,28 @@ public class Item
         Legs,
     }
 
+    public enum ItemSlot
+    {
+        A,
+        B,
+        C,
+        D,
+        E,
+        F
+    }
+
     public ItemType itemType;
-    public int amount;
+    public ItemSlot itemSlot;
+
+    public ItemType GetItemType()
+    {
+        return itemType;
+    }
+
+    public ItemSlot GetItemSlot()
+    {
+        return itemSlot;
+    }
 
     public Sprite GetSprite()
     {
@@ -29,13 +49,22 @@ public class Item
             case ItemType.Boots: return ItemAssets.Instance.bootsSprite;
             case ItemType.Helmet: return ItemAssets.Instance.helmetSprite;
             case ItemType.Chest: return ItemAssets.Instance.chestSprite;
-            case ItemType.Legs: return ItemAssets.Instance.swordSprite;
+            case ItemType.Legs: return ItemAssets.Instance.legsSprite;
         }
     }
-    public virtual int GetItemClass()
+
+    public string ItemTypeString()
     {
-        //Debug.Log("SuperClass");
-        return 1;
+        switch (itemSlot)
+        {
+            default: return "Other";
+            case ItemSlot.A: return "A";
+            case ItemSlot.B: return "B";
+            case ItemSlot.C: return "C";
+            case ItemSlot.D: return "D";
+            case ItemSlot.E: return "E";
+            case ItemSlot.F: return "F";
+        }
     }
+
 }
-    

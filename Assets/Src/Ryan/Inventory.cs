@@ -1,216 +1,74 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Inventory 
+public class Inventory : MonoBehaviour
 {
-    public event EventHandler OnItemListChanged;
+    public const int MAX_INVENTORY_SIZE = 16;
 
-    public List<Item> itemList;
+    public static Inventory instance { get; private set; }
 
-    public Item HelmetSlot      = new Item { itemType = Item.ItemType.Empty, amount = 1 };
-    public Item ChestSlot       = new Item { itemType = Item.ItemType.Empty, amount = 1 };
-    public Item LegSlot         = new Item { itemType = Item.ItemType.Empty, amount = 1 };
-    public Item MainHandSlot    = new Item { itemType = Item.ItemType.Empty, amount = 1 };
-    public Item OffHandSlot     = new Item { itemType = Item.ItemType.Empty, amount = 1 };
-    public Item BootsSlot       = new Item { itemType = Item.ItemType.Empty, amount = 1 };
+    private List<Item> itemList;
 
-    public Inventory()                                                      //Constructor, this dictates what is in the inventory to start off
+    private void Awake()
     {
-        Debug.Log("inventory add");
-        itemList = new List<Item>();
-        AddItem(new InvisibleItem { itemType = Item.ItemType.Sword, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Shield, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Boots, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-        EquipItem(new Item { itemType = Item.ItemType.Helmet, amount = 1 });
-        EquipItem(new Item { itemType = Item.ItemType.Chest, amount = 1 });
-    }
-
-
-
-    public int EquipItem(Item item)                                         // For each item type it equipes it to the appropreate slot
-    {
-
-        if (item.itemType == Item.ItemType.Helmet)
+        if (instance != null && instance != this)
         {
-            if (HelmetSlot.itemType == Item.ItemType.Empty)
-            {
-                HelmetSlot = item;
-                return 1;
-            }
-            else
-            {
-                Item temporary = HelmetSlot;
-                HelmetSlot = item;
-                AddItem(temporary);
-                return 1;
-            }
-        }
-
-        if (item.itemType == Item.ItemType.Chest)
-        {
-            if (ChestSlot.itemType == Item.ItemType.Empty)
-            {
-                ChestSlot = item;
-                return 1;
-            }
-            else
-            {
-                Item temporary = ChestSlot;
-                ChestSlot = item;
-                AddItem(temporary);
-                return 1;
-            }
-        }
-
-        if (item.itemType == Item.ItemType.Legs)
-        {
-            if (LegSlot.itemType == Item.ItemType.Empty)
-            {
-                LegSlot = item;
-                return 1;
-            }
-            else
-            {
-                Item temporary = LegSlot;
-                LegSlot = item;
-                AddItem(temporary);
-                return 1;
-            }
-        }
-
-        if (item.itemType == Item.ItemType.Sword)
-        {
-            if (MainHandSlot.itemType == Item.ItemType.Empty)
-            {
-                MainHandSlot = item;
-                return 1;
-            }
-            else
-            {
-                Item temporary = MainHandSlot;
-                MainHandSlot = item;
-                AddItem(temporary);
-                return 1;
-            }
-        }
-
-        if (item.itemType == Item.ItemType.Shield)
-        {
-            if (OffHandSlot.itemType == Item.ItemType.Empty)
-            {
-                OffHandSlot = item;
-                return 1;
-            }
-            else
-            {
-                Item temporary = OffHandSlot;
-                OffHandSlot = item;
-                AddItem(temporary);
-                return 1;
-            }
-        }
-
-        if (item.itemType == Item.ItemType.Boots)
-        {
-            if (BootsSlot.itemType == Item.ItemType.Empty)
-            {
-                BootsSlot = item;
-                return 1;
-            }
-            else
-            {
-                Item temporary = BootsSlot;
-                BootsSlot = item;
-                AddItem(temporary);
-                return 1;
-            }
-        }
-        OnItemListChanged?.Invoke(this, EventArgs.Empty);
-        Debug.Log(item.itemType);
-        return 0;
-    }
-
-    
-
-    public void AddItem(Item item)                                         //Adds an Item to the list unless the list is above 16 items then it does nothing
-    {
-        if (itemList.Count < 16)
-        {
-            itemList.Add(item);
-            OnItemListChanged?.Invoke(this, EventArgs.Empty);
-            Debug.Log(itemList.Count);
+            Destroy(this);
         }
         else
         {
-            Debug.Log("inventory full, item not added");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+
+        itemList = new List<Item>();
+        Debug.Log("Initialized empty inventory");
+
+        AddItem(new Item { itemType = Item.ItemType.Sword, itemSlot = Item.ItemSlot.A });
+        AddItem(new Item { itemType = Item.ItemType.Sword, itemSlot = Item.ItemSlot.B });
+        AddItem(new Item { itemType = Item.ItemType.Helmet, itemSlot = Item.ItemSlot.B });
+        AddItem(new Item { itemType = Item.ItemType.Legs, itemSlot = Item.ItemSlot.E });
+        AddItem(new Item { itemType = Item.ItemType.Shield, itemSlot = Item.ItemSlot.F }); ;
+        AddItem(new Item { itemType = Item.ItemType.Boots, itemSlot = Item.ItemSlot.C });
     }
 
-    public Item GetHelmSlot()
+    public void AddItem(Item item)
     {
-        return HelmetSlot;
+        if (itemList.Count < MAX_INVENTORY_SIZE)
+        {
+            itemList.Add(item);
+            Debug.Log("Added item of type " + item.ItemTypeString());
+        }
+        else
+        {
+            Debug.Log("Exceeded maximum inventory size");
+        }
+
+        InventoryButtons.instance.UpdateInventory();
     }
 
-    public Item GetChestSlot()
+    public void RemoveItem(Item item)
     {
-        return ChestSlot;
+        foreach (Item removedItem in itemList)
+        {
+            if (removedItem.GetItemType() == item.GetItemType())
+            {
+                itemList.RemoveAt(itemList.IndexOf(removedItem));
+                break;
+            }
+        }
+
+        InventoryButtons.instance.UpdateInventory();
     }
-
-    public Item GetLegSlot()
-    {
-        return LegSlot;
-    }
-
-    public Item GetBootsSlot()
-    {
-        return BootsSlot;
-    }
-
-    public Item GetMainHandSlot()
-    {
-        return MainHandSlot;
-    }
-
-    public Item GetOffHandSlot()
-    {
-        return OffHandSlot;
-    }
-
-
-
-
-
-
-    
-
-
 
     public List<Item> GetInventory()
     {
         return itemList;
     }
 
-    public void RemoveItem(Item item)
+    public int InventorySize()
     {
-        itemList.Remove(item);
+        return itemList.Count;
     }
-
-
-    public Item GetItemPos(int position)
-    {
-        return itemList[position];
-    }
-
-
-    public List<Item> GetItemList()
-    {
-        return itemList;
-    }
-    
 }
