@@ -60,7 +60,7 @@ public class Enemy : NPC
     }
 
 
-    public void takeDamage(int dmg)
+   public void takeDamage(int dmg)
     {
         if(dmg > health)
         {
@@ -68,7 +68,7 @@ public class Enemy : NPC
             return;
         }
         health -= dmg;
-    }
+    } 
 
     /*
     * Summary: sets stats based on enemy stats

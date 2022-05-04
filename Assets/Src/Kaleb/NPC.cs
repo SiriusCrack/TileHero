@@ -40,6 +40,8 @@ public abstract class NPC : MonoBehaviour
 
     public CombatAI combatAI;
 
+    public Animator animator;
+
     int locationBool;
 
     Vector2 position; 
@@ -90,6 +92,7 @@ public abstract class NPC : MonoBehaviour
         {
             health = 0;
         }
+        animator.SetTrigger("Attacked");
         combatAI.UpdateSlider(health);
         Destroy(attack);
     }
