@@ -38,6 +38,6 @@ public class StartMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         //Debug.LogError("-------------------Transition Here---------------------------------");
-        SceneManager.LoadScene("Demo");
+        // SceneManager.LoadScene("Demo");
     }
 }
