@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
         Debug.Log("Initialized empty inventory");
 
         AddItem(new Item { itemType = Item.ItemType.Sword, itemSlot = Item.ItemSlot.A });
-        AddItem(new Item { itemType = Item.ItemType.Sword, itemSlot = Item.ItemSlot.B });
+        AddItem(new Item { itemType = Item.ItemType.Chest, itemSlot = Item.ItemSlot.B });
         AddItem(new Item { itemType = Item.ItemType.Helmet, itemSlot = Item.ItemSlot.B });
         AddItem(new Item { itemType = Item.ItemType.Legs, itemSlot = Item.ItemSlot.E });
         AddItem(new Item { itemType = Item.ItemType.Shield, itemSlot = Item.ItemSlot.F }); ;
