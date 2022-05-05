@@ -105,7 +105,7 @@ public class CombatManager : MonoBehaviour
             {
                 if (enemies[i].activeSelf)
                 {
-                    if (enemies[i].GetComponent<Enemy>().attackTimer >= enemies[i].GetComponent<Enemy>().weapon.atkSpeed)
+                    if (enemies[i].GetComponent<Enemy>().attackTimer >= (enemies[i].GetComponent<Enemy>().weapon.atkSpeed/2))
                     {
                         allAudio[1].Play();
                         SendAttack(enemies[i].GetComponent<Enemy>(), hero);
@@ -114,7 +114,7 @@ public class CombatManager : MonoBehaviour
             }
 
             //If the hero's attack timer reaches their weaponspeed, have them attack the current enemy
-            if (hero.attackTimer >= hero.weapon.atkSpeed)
+            if (hero.attackTimer >= (hero.weapon.atkSpeed/2))
             {
                 allAudio[0].Play();
                 SendAttack(hero, enemies[currentEnemy].GetComponent<Enemy>());
